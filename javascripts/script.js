@@ -35,26 +35,22 @@ function draw() {
   }
 
   background(191,183,159);
-  fill(79,107,98);
+  fill(79,107,98, 60);
 
-  xDiff = x - width/2;
-  yDiff = y - height/2;
-
-  rect(width/2 + xDiff, height/2 + yDiff, -xDiff, yDiff);
-  rect(width/2 + xDiff, height/2 - yDiff, xDiff, yDiff);
-  rect(width/2 - xDiff, height/2 + yDiff, -xDiff, yDiff);
-  rect(width/2 - xDiff, height/2 - yDiff, xDiff, -yDiff);
-
-  textSize(40);
-
-  if (x % 10 < 5) {
-    fill(255,255,255);
-  } else {
-    fill(143,16,16);
+  for (i = 0; i < 10; i++) {
+    for (j = 0; j < 10; j++) {
+      drawRectangleGroup(x * i, y * j);
+    }
   }
 
-  text("Whats", 200, 300);
-  text("GUCCI?", 200, 340);
+  // if (x % 60 < 30) {
+  //   fill(255,255,255);
+  // } else {
+  //   fill(143,16,16);
+  // }
+  //
+  // textSize(30);
+  // text("Whats GUCCI?", 0, 600);
   console.log(randomX);
   console.log(randomY);
 }
@@ -62,4 +58,13 @@ function draw() {
 function generateCordinate() {
   randomX = int(random(0,width));
   randomY = int(random(0,height));
+}
+
+function drawRectangleGroup(_x, _y) {
+  xDiff = _x - width/2;
+  yDiff = _y - height/2;
+  rect(width/2 + xDiff, height/2 + yDiff, -xDiff, yDiff);
+  rect(width/2 + xDiff, height/2 - yDiff, xDiff, yDiff);
+  rect(width/2 - xDiff, height/2 + yDiff, -xDiff, yDiff);
+  rect(width/2 - xDiff, height/2 - yDiff, xDiff, -yDiff);
 }
