@@ -1,6 +1,8 @@
 var x = 0;
 var x2 = 255;
 
+var xDiff;
+var yDiff;
 
 function setup() {
   createCanvas(600,600);
@@ -13,7 +15,15 @@ function draw() {
   x2 --;
   background(191,183,159);
   fill(79,107,98);
-  rect(0,0, mouseX, mouseY);
+
+  xDiff = mouseX - width/2;
+  yDiff = mouseY - height/2;
+
+  rect(width/2 + xDiff, height/2 + yDiff, -xDiff, yDiff);
+  rect(width/2 + xDiff, height/2 - yDiff, xDiff, yDiff);
+  rect(width/2 - xDiff, height/2 + yDiff, -xDiff, yDiff);
+  rect(width/2 - xDiff, height/2 - yDiff, xDiff, -yDiff);
+
   textSize(40);
 
   if (x % 10 < 5) {
