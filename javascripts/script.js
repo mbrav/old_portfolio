@@ -63,7 +63,6 @@ function generateCordinate() {
 function drawRectangleGroup(_x, _y) {
   xDiff = _x - width/2;
   yDiff = _y - height/2;
-  rect(width/2 + xDiff, height/2 + yDiff, -xDiff, yDiff);
   rect(width/2 + xDiff, height/2 - yDiff, xDiff, yDiff);
   rect(width/2 - xDiff, height/2 + yDiff, -xDiff, yDiff);
   rect(width/2 - xDiff, height/2 - yDiff, xDiff, -yDiff);
