@@ -3,12 +3,25 @@
   margin: 0;
 }
 
-h1 {
+body {
+	width: 600px;
+	margin: 0 auto;
+	background-color: #2B2207;
+	background: url(../images/bg.png);
 }
 
-.title {
-  text-align: center;
-  border-style: double;
-  border-color: brown;
-  border: 2px;
+h1 {
+	font-family: 'Arvo', serif;
+	font-size: 50px;
+	color: #ff900d;
+	text-shadow: -4px 3px 0 #624019, -8px 7px 0 #181304;
+	text-align: center;
+}
+
+h2 {
+	font-family: 'Quicksand', sans-serif;
+	font-style: bold;
+	color: #bfb79f;
+	text-shadow: -4px 3px #4F6B62;
+	padding-left: 130px;
 }
