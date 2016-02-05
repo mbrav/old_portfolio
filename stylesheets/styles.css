@@ -19,9 +19,9 @@ h1 {
 }
 
 h2 {
+  text-align: left;
 	font-family: 'Quicksand', sans-serif;
 	font-style: bold;
 	color: #bfb79f;
 	text-shadow: -4px 3px #4F6B62;
-	padding-left: 130px;
 }
