@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+	width: 600px;
+	margin: 0 auto;
+	background-color: #2B2207;
+	background: url(../img/bg.png);
+}
+
+h1 {
+	font-family: 'Arvo', serif;
+	font-size: 50px;
+	color: #ff900d;
+	text-shadow: -4px 3px 0 #624019, -8px 7px 0 #181304;
+	text-align: center;
+}
+
+h2 {
+    color: white;
+    text-align: left;
+	font-family: 'Quicksand', sans-serif;
+	font-style: bold;
+	text-shadow: -4px 3px black;
+    color: #bfb79f;
+}
+
+h2 a:link {
+    color: #bfb79f;
+}
+
+h2 a:visited {
+    color: white;
+}
+
+h2 a:hover {
+    color: yellow;
+}
+
+#squarework {
+    color: #bfb79f;
+    text-shadow: -4px 3px #4F6B62;
+}
