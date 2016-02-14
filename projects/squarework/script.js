@@ -10,10 +10,11 @@ var randomX;
 var randomY;
 
 function setup() {
-  createCanvas(600,600);
-  background(191,183,159);
-  noStroke();
-  generateCordinate();
+
+    createCanvas(windowWidth,windowHeight);
+    background(191,183,159);
+    noStroke();
+    generateCordinate();
 }
 
 function draw() {
