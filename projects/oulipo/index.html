@@ -11,13 +11,100 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: #BCD0FF;
+            font-family: Futura;
+        }
+
+        header {
+            height: 100px;
+            background-color: #608FD0;
+        }
+
+        main {
+            width: 500px;
+            margin: 0 auto;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 70px;
+            text-shadow: -3px 2px black, -5px 5px white;
+        }
+
+        /*Every first span*/
+        h1 span:nth-child(4n+1) {
+            color: #FFEB3B;
+        }
+
+        /*Every second span*/
+        h1 span:nth-child(4n+2) {
+            color: #2196F3;
+        }
+
+        /*Every third span*/
+        h1 span:nth-child(4n+3) {
+            color: #F44336;
+        }
+
+        /*Every fourth span*/
+        h1 span:nth-child(4n+4) {
+            color: #4CAF50;
+        }
+
+        h2 {
+            color: #608FD0;
+            text-shadow: -2px 2px white;
+        }
+
+        .enter {
+            border: 0px white;
+            /*border-radius: 5px;*/
+            border-style: solid;
+            background-color: #608FD0;
+            color: white;;
+
+            margin-top: 17px;
+            height: 200px;
+            width: 300px;
+
+            font-size: 30px;
+        }
+
+        .button {
+            font-family: Futura;
+            font-size: 20px;
+            border-style: solid;;
+            border-width: 2px;
+            border-color: #FFEB3B;
+            background-color: #608FD0;
+            color: #FFEB3B;
+            margin-top: 20px;
+            display: inline-block;
+            height: 40px;
+            width: 200px;
+        }
     </style>
   </head>
   <body>
+      <header>
+          <h1><span>O</span><span>u</span><span>l</span><span>i</span><span>p</span><span>o</span><span>o</span><span>o</span><span>o</span><span>o</span><span>!</span></h1>
+      </header>
       <main>
-          <input type="text" class="enter" id="inputField"/>
-          <input type="button" value="click" OnClick="generate('inputField')"/>
-          <h3> Output: </h3>
+          <h2> Put the words in!</h2>
+          <input type="text" class="enter" value="your words..." id="inputField" autofocus/>
+          <p>
+
+          </p>
+          <input type="button" class="button" value="SUBMIT" OnClick="generate('inputField')"/>
       </main>
   </body>
   <script src="../p5.min.js"></script>
