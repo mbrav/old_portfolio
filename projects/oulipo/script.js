@@ -16,25 +16,24 @@ function generate(id) {
     // generate the poem into the poemArray
     for (var i = 0; i < arrayText.length * 10; i++) {
 
-        add += primeNumbers[i % primeNumbers.length];
-        add = (add + i) % arrayText.length;
+        add += primeNumbers[i % primeNumbers.length] + i;
+        console.log(add % arrayText.length);
 
-        poemArray.push = arrayText[add];
+        poemArray.push(arrayText[add % arrayText.length]);
     }
 
     // generate poem in html
     document.write("<h1>Generated Poem</h1><h3>Enjoy!</h3>");
+    for (var a = 1; a < 9; a++) {
+        for (var i = 1; i < 5; i++) {
 
-
-    for (var a = 0; a < 8; a++) {
-        for (var i = 0; i < 4; i++) {
-
-            var randomSentenceSize = 10;
+            var randomSentenceSize = 10; // to randomize
             document.write("<p>");
 
-            for (var j = 0; j < randomSentenceSize; j++) {
+            for (var j = 1; j < randomSentenceSize; j++) {
                 // Problem: document.write does not write arrays
-                document.write(poemArray.length);
+                document.write(poemArray[a*i*j]);
+                document.write(" ");
             }
 
             document.write("</p>");
