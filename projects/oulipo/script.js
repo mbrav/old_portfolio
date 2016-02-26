@@ -11,9 +11,9 @@ function setup() {
 
 function draw() {
   if (frameCount % 10 == 0 && generated) {
-    var title1 = select('.one')
-    var title2 = select('.two')
-    var title3 = select('.poemTitle')
+    var title1 = select('.one');
+    var title2 = select('.two');
+    var title3 = select('.poemTitle');
     if (blink) {
       title1.attribute("id", "on");
       title2.attribute("id", "on");
@@ -22,7 +22,7 @@ function draw() {
       title1.attribute("id", "off");
       title2.attribute("id", "off");
       title3.attribute("id", "off");
-    // }
+    }
     blink = !blink;
   }
 }
