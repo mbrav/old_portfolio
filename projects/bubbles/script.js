@@ -27,8 +27,8 @@ function draw() {
 }
 
 function Bubble() {
-  this.x = random(height);
-  this.y = random(width);
+  this.x = random(windowHeight);
+  this.y = random(windowWidth);
   this.speedX = random(-3, 3);
   this.speedY = random(-3, 3);
 

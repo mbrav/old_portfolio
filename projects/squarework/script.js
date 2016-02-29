@@ -59,8 +59,8 @@ function draw() {
 }
 
 function generateCordinate() {
-  randomX = int(random(0,width));
-  randomY = int(random(0,height));
+  randomX = int(random(0,windowWidth));
+  randomY = int(random(0,windowHeight));
 }
 
 function drawRectangleGroup(_x, _y) {
