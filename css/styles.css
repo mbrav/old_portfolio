@@ -37,9 +37,9 @@ main {
 
 .project-link {
     text-align: left;
-	font-family: 'Quicksand', sans-serif;
-	font-style: bold;
-	/*text-shadow: -4px 3px white;*/
+    font-family: 'Quicksand', sans-serif;
+    font-style: bold;
+    /*text-shadow: -4px 3px white;*/
 }
 
 .project-link h2 {
@@ -51,7 +51,7 @@ main {
 .project-link h2 span {
     color: #B0B0B0;
     font-size: 70%;
-    margin-left: 1em;
+    margin-right: 1em;
 }
 
 /*Every first .project-link*/
