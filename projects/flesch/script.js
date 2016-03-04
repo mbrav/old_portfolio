@@ -11,6 +11,9 @@
 var dropzone, input, button;
 var theText;
 
+var donaldTrump;
+var haircut = 1;
+
 function setup() {
   noCanvas();
 
@@ -18,17 +21,24 @@ function setup() {
   button = select('#submit');
   button.mousePressed(handleInput);
   dropzone = select('#dropzone');
+  dropzoneText = select('#dropzone-text')
   dropzone.dragOver(highlight);
   dropzone.dragLeave(unhighlight);
   dropzone.drop(gotFile, unhighlight);
 }
 
+function draw() {
+  donaldTrump + haircut;
+}
+
 function highlight() {
-  dropzone.style('background', '#AAA');
+  dropzone.style('background', 'repeating-linear-gradient(45deg, #999, #999 19px, white 19px, white 20px)');
+  dropzoneText.style('color', '#6CA4BB;');
 }
 
 function unhighlight() {
   dropzone.style('background', '');
+  dropzoneText.style('color', '');
 }
 
 function gotFile(file) {
