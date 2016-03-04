@@ -105,6 +105,18 @@ function processFlesch(data) {
       totalWords++;
     }
 
+    // Coleman–Liau
+    // count average number of LETTERS per 100 words
+    var hundredWords = ' ';
+    for (var i = 0; i < 100; i++) {
+      hundredWords = hundredWords + words[i];
+    }
+    console.log(hundredWords.length);
+    // Coleman–Liau
+    // count average number of SENTENCES per 100 words
+    var numberOfSetencesPer100Words = splitTokens(hundredWords, sentenceDelim);
+    console.log(numberOfSetencesPer100Words);
+
     //look for sentence delimiters
     var sentenceDelim = '.:;?!';
     var sentences = splitTokens(data, sentenceDelim);
@@ -118,12 +130,16 @@ function processFlesch(data) {
     var r2 = totalWords / totalSentences;
     var flesch = f1 - (f2 * r1) - (f3 * r2);
 
+    // Coleman–Liau index
+    var liau = 0.588 * hundredWords.length - 0.296 * numberOfSetencesPer100Words.length - 15.8;
+
     var report = "";
 
     report += "Total Syllables: " + "<span>" + totalSyllables + "</span>" + "<br>";
-    report += "Total Words    : " + "<span>" + totalWords + "</span>" + "<br>";
+    report += "Total Words: " + "<span>" + totalWords + "</span>" + "<br>";
     report += "Total Sentences: " + "<span>" + totalSentences + "</span>" +"<br>";
-    report += "Flesch Index   : " + "<span>" +  flesch.toFixed(2) + "</span>" + "\n";
+    report += "Flesch Index: " + "<span>" +  flesch.toFixed(2) + "</span>" +"<br>";
+    report += "C–Liau index: " + "<span>" +  liau.toFixed(2) + "</span>" + "\n";
 
     var reportParagraph = createDiv('');
     reportParagraph.attribute('class', 'report-paragraph')
@@ -148,6 +164,11 @@ function countSyllables(word) {
     } else {
       vowel = false;
     }
+  }
+
+  // Coleman–Liau index
+  //average number of sentences per 100 words
+  function avLetters(sentences) {
   }
 
   var tempChar = word.charAt(word.length-1);
