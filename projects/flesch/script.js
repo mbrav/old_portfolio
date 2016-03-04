@@ -14,17 +14,24 @@ var theText;
 var donaldTrump;
 var haircut = 1;
 
+var dropZoneView = true;
+
 function setup() {
   noCanvas();
 
   input = select('#textinput');
   button = select('#submit');
   button.mousePressed(handleInput);
+  buttonMode = select('#toggle');
+  buttonMode.mousePressed(toggleMode);
   dropzone = select('#dropzone');
   dropzoneText = select('#dropzone-text')
   dropzone.dragOver(highlight);
   dropzone.dragLeave(unhighlight);
   dropzone.drop(gotFile, unhighlight);
+
+  dropZoneView = false;
+  toggleMode();
 }
 
 function draw() {
@@ -32,7 +39,7 @@ function draw() {
 }
 
 function highlight() {
-  dropzone.style('background', 'repeating-linear-gradient(45deg, #999, #999 19px, white 19px, white 20px)');
+  dropzone.style('background', 'repeating-linear-gradient(45deg, #BACFD8, #BACFD8 19px, white 19px, white 20px)');
   dropzoneText.style('color', '#6CA4BB;');
 }
 
@@ -53,6 +60,30 @@ function gotFile(file) {
 function handleInput() {
   theText = input.value();
   processFlesch(theText);
+}
+
+function toggleMode() {
+
+  if (dropZoneView) {
+    dropZoneView = false;
+    console.log("text-field show");
+    dropzone.hide();
+    dropzoneText.hide();
+    input.show();
+    button.show();
+
+    buttonMode.html('DropZone Input');
+  } else {
+    dropZoneView = true;
+    console.log("dropzone show");
+    dropzone.show();
+    dropzoneText.show();
+    input.hide();
+    button.hide();
+
+    buttonMode.html('Text-Field Input');
+  }
+
 }
 
 

@@ -43,16 +43,20 @@
       text-align: center;
 
       /* stripes */
-      background: repeating-linear-gradient(45deg, white 0px, white 19px, #999 19px, #999 20px);
+      background: repeating-linear-gradient(45deg, white 0px, white 19px, #BACFD8 19px, #BACFD8 20px);
+
+      height: 200px;
+      font-size: 30px;
     }
 
     #dropzone-text {
       position: relative;
+      color: #999;
     }
 
-    .phead {
+    /*.phead {
       color: #6CA4BB;
-    }
+    }*/
 
     .report-paragraph {
       /*background-color: pink;*/
@@ -75,21 +79,29 @@
       padding: 5px;
     }
 
-    #submit {
-      font-family: 'Indie Flower', cursive;
+    button {
+      font-family: 'Poiret One', cursive;
       font-size: 20px;
       border-width: 1px;
       border-color: #666;
       background-color: inherit;
       border-radius: 7px;
       color: #6CA4BB;
-      display: inline-block;
       height: 40px;
       width: 200px;
     }
 
+    #toggle {
+      font-size: 20px;
+      border-style: none;
+      background-color: #BACFD8;
+      color: white;
+      width: auto;
+      padding: 5px;
+    }
+
     ::-webkit-input-placeholder {
-       color: #BACFD8;
+       /*color: #BACFD8;*/
        font-size: 20px;
        padding-left: 20px;
        padding-top: 10px;
@@ -99,9 +111,9 @@
 </head>
 <body>
   <h1>Flesch index reader/generator</h1>
-  <p class="phead">Load text from file or in text box.</p>
+  <button id="toggle">Change to File Input</button>
   <p>
-    <div id="dropzone"> <p id ="dropzone-text">Drag in a file here</p></div>
+    <div id="dropzone"> <p id ="dropzone-text">Drag in some nice file please...</p></div>
   <p>
   <textarea id="textinput" placeholder="Enter some nice text please..." rows="10" cols="60"></textarea><br>
   <button id="submit">Submit</button>
