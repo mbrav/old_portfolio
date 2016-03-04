@@ -43,7 +43,7 @@
       text-align: center;
 
       /* stripes */
-      background: repeating-linear-gradient(45deg, white, white 19px, #999 19px, #999 20px);
+      background: repeating-linear-gradient(45deg, white 0px, white 19px, #999 19px, #999 20px);
     }
 
     #dropzone-text {
@@ -61,14 +61,38 @@
       width: 150px;
     }
 
-    p span {
+    .report-paragraph span {
       color: #6CA4BB;
     }
 
     textarea {
+      font-family: 'Indie Flower', cursive;
+      resize: none;
+      color: #444;
       border-radius: 10px;
+      border: 1px double #666;
+      font-size: 15px;
+      padding: 5px;
+    }
+
+    #submit {
+      font-family: 'Indie Flower', cursive;
+      font-size: 20px;
+      border-width: 1px;
       border-color: #666;
-      border-style: double;
+      background-color: inherit;
+      border-radius: 7px;
+      color: #6CA4BB;
+      display: inline-block;
+      height: 40px;
+      width: 200px;
+    }
+
+    ::-webkit-input-placeholder {
+       color: #BACFD8;
+       font-size: 20px;
+       padding-left: 20px;
+       padding-top: 10px;
     }
 
   </style>
@@ -79,7 +103,7 @@
   <p>
     <div id="dropzone"> <p id ="dropzone-text">Drag in a file here</p></div>
   <p>
-  <textarea id="textinput" rows="10" cols="70">Enter some text</textarea><br>
+  <textarea id="textinput" placeholder="Enter some nice text please..." rows="10" cols="60"></textarea><br>
   <button id="submit">Submit</button>
   </p>
 </body>
