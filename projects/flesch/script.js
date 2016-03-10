@@ -97,12 +97,8 @@ function processFlesch(data) {
     var totalWords = 0;
 
     //look for word delimiters
-    // var delimiters = '.:;?! !@#$%^&*()+';
-    var delimiters = /([\W\s])/;
-
-    // var words = splitTokens(data, delimiters);  //http://p5js.org/reference/#/p5/splitTokens
-    var words = data.split(delimiters);
-
+    var delimiters = '.:;?! !@#$%^&*()+';
+    var words = splitTokens(data, delimiters);  //http://p5js.org/reference/#/p5/splitTokens
     for (var i = 0; i < words.length; i++) {
       var word = words[i];
       totalSyllables += countSyllables(word);
@@ -122,9 +118,8 @@ function processFlesch(data) {
     console.log(numberOfSetencesPer100Words);
 
     //look for sentence delimiters
-    var sentenceDelim = /([\W\s])/;
-    // var sentences = splitTokens(data, sentenceDelim);
-    var sentences = data.split(sentenceDelim);
+    var sentenceDelim = '.:;?!';
+    var sentences = splitTokens(data, sentenceDelim);
     totalSentences = sentences.length;
 
     //calculate flesch index
@@ -186,18 +181,11 @@ function countSyllables(word) {
 }
 
 function isVowel(c) {
-  var vowel = /(aeiou)/;
-  if (vowel == c) {
-    return true;
-  } else {
-    return false;
-  }
-
-  // if      ((c == 'a') || (c == 'A')) { return true; }
-  // else if ((c == 'e') || (c == 'E')) { return true; }
-  // else if ((c == 'i') || (c == 'I')) { return true; }
-  // else if ((c == 'o') || (c == 'O')) { return true; }
-  // else if ((c == 'u') || (c == 'U')) { return true; }
-  // else if ((c == 'y') || (c == 'Y')) { return true; }
-  // else { return false; }
+  if      ((c == 'a') || (c == 'A')) { return true; }
+  else if ((c == 'e') || (c == 'E')) { return true; }
+  else if ((c == 'i') || (c == 'I')) { return true; }
+  else if ((c == 'o') || (c == 'O')) { return true; }
+  else if ((c == 'u') || (c == 'U')) { return true; }
+  else if ((c == 'y') || (c == 'Y')) { return true; }
+  else { return false; }
 }
