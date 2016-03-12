@@ -1,0 +1,29 @@
+/* Blog Styles  */
+
+body {
+  padding: 0;
+  margin: 0;
+	width: 750px;
+	margin: 0 auto;
+	background-color: #D9E8F5;
+  font-family: 'Bitter', serif;
+  color: #304269;
+}
+
+h1 {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #91BED4;
+  font-size: 40px;
+}
+
+a {
+  /*color: #9C4545;*/
+  color: #8B8F98;
+  text-decoration: none;
+}
+
+
+p {
+  margin-top: 1.5em;
+  line-height: 150%;
+}

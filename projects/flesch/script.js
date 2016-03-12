@@ -18,7 +18,6 @@ var dropZoneView = true;
 
 function setup() {
   noCanvas();
-
   input = select('#textinput');
   button = select('#submit');
   button.mousePressed(handleInput);
