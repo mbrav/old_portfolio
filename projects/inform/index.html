@@ -12,23 +12,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     <style>
     * {
         margin: 0;
-
     }
 
     body {
       font-family: 'Montserrat', sans-serif;
+      font-size: 120%;
       width: 600px;
       margin: 0 auto;
     }
 
+    body #submit-page {
+      display: block;
+    }
+
+    body #map-page {
+      display: none;
+    }
+
     h1, h2 {
       font-weight: 700;
+    }
+
+    h1 span {
+      font-size: 80%;
     }
 
     h2 {
@@ -55,26 +64,41 @@
       opacity: 0.9;
     }
 
+    #back-button {
+      position: absolute;
+      left: 0px;
+      margin: 15px;
+    }
+
     </style>
   </head>
   <body class="bg-silver">
-    <header>
-      <h1 id="title" class="blue"> in.fORM <span class="gray">alpha</span></h1>
-      <div id="about-text" class="bg-navy aqua">
-        <ol>
-          <li><b class="olive">ORM</b> - Object Relational Mapping</li>
-          <li><b class="olive">form</b> - based by Plato's theory of Forms where forms are presented as the most accurate formulations of reality</li>
-          <li><b class="olive">in.form.</b> - getting information in, getting a formulated structure out</li>
-          <li><b class="olive">inform</b> - inform the formulated structure effectively</li>
-        </ol>
-      </div>
-      <h2 id="subtitle" class="navy"> An Object-Relational Mapping tool </h2>
-    </header>
-    <main>
-      <textarea id="textinput" placeholder="Enter your text here..." rows="15"></textarea><br>
-      <a href="#" class="btn btn--s btn--blue">Submit<a>
-    </main>
-    <footer>
-    </footer>
+
+    <!-- SUBMIT FORM BODY -->
+    <div id="submit-page">
+      <header>
+        <h1 id="title" class="blue"> in.fORM <span class="gray">alpha</span></h1>
+        <div id="about-text" class="bg-navy aqua">
+          <ol>
+            <li><b class="olive">ORM</b> - Object Relational Mapping</li>
+            <li><b class="olive">form</b> - based by Plato's theory of Forms where forms are presented as the most accurate formulations of reality</li>
+            <li><b class="olive">in.form.</b> - getting information in, getting a formulated structure out</li>
+            <li><b class="olive">inform</b> - inform the formulated structure effectively</li>
+          </ol>
+        </div>
+        <h2 id="subtitle" class="navy"> An Object-Relational Mapping tool </h2>
+      </header>
+      <main>
+        <textarea id="text-field" placeholder="Enter your text here..." rows="15"></textarea><br>
+        <a id="submit-button" class="btn btn--s btn--blue">Submit<a>
+        </main>
+        <footer>
+        </footer>
+    </div>
+
+    <!-- Object Relational Map BODY -->
+    <div id="map-page">
+      <a id="back-button" class="btn btn--s btn--blue">back<a>
+    </div>
   </body>
 </html>
