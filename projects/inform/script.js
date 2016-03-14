@@ -59,7 +59,7 @@ function analyseHistoricDates(data) {
   // takes texts
 
   // var oldRegexFormula = /(in|of|late|early|mid)\s\d{1,4}/gi;
-  var regexFormula = /((?![^w]*(in|of|late|early)\s))\d{4}/gi;
+  var regexFormula = /((?![\b]*(in|on|of|late|early)\s))\d{4}/gi;
   var regexOutput = data.match(regexFormula);
 
   console.log(regexOutput);
