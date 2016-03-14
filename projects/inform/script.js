@@ -51,9 +51,14 @@ function back() {
 }
 
 // TEXT ANALYSIS FUNCTIONS
-function analyseHistoricDates(data) {
 
-  // var oldRegexFormula = /(in|of|late|early|mid)\s\d{3,4}/gi;
+// AnalyseHistoricDates
+// takes numbers and looks at weather it has words like "in", "of"
+// con
+function analyseHistoricDates(data) {
+  // takes texts
+
+  // var oldRegexFormula = /(in|of|late|early|mid)\s\d{1,4}/gi;
   var regexFormula = /((?![^w]*(in|of|late|early)\s))\d{4}/gi;
   var regexOutput = data.match(regexFormula);
 
@@ -62,31 +67,28 @@ function analyseHistoricDates(data) {
   var max = 0;
   var min = 9999; // should be good until year 9999
 
+  // calculate the minumum and maximum values
   for(var i = 0; i < regexOutput.length; i++) {
-    // necessary to etract only the n umbers
-    // now regexOutput[][] will have arrays in arrays :/
-    regexOutput[i] = regexOutput[i].match(/\d{4}/);
-
-    // check the minumum and maximum balues
-    if (regexOutput[i][0] > max) {
-      max = regexOutput[i][0];
+    if (regexOutput[i] > max) {
+      max = regexOutput[i];
     }
 
-    if (regexOutput[i][0] < min) {
-      min = regexOutput[i][0];
+    if (regexOutput[i] < min) {
+      min = regexOutput[i];
     }
   }
 
   for(var i = 0; i < regexOutput.length; i++) {
     // render results
     var resultDiv = createDiv('');
-    var textTitle = createElement('h2', regexOutput[i][0]);
+    var textTitle = createElement('h2', regexOutput[i]);
     mapBody.child(resultDiv);
     resultDiv.child(textTitle);
     resultDiv.attribute('id', i);
 
-    var x = map(regexOutput[i][0], min, max, 50, windowWidth - 50);
-    resultDiv.position(x, random(windowHeight));
+    // positon resulDiv'saccording to the window dimensions
+    var x = map(regexOutput[i], min, max, 10, windowWidth - 100);
+    resultDiv.position(x + 50, random(windowHeight-50));
   }
   console.log(max);
   console.log(min);
