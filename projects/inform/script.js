@@ -53,16 +53,17 @@ function back() {
 // TEXT ANALYSIS FUNCTIONS
 
 // AnalyseHistoricDates
-// takes numbers and looks at weather it has words like "in", "of"
-// con
+// takes numbers and looks at wether they have words like "in", "of"
+// plots the numbers as html elements, x being the year axis
 function analyseHistoricDates(data) {
   // takes texts
 
   // var oldRegexFormula = /(in|of|late|early|mid)\s\d{1,4}/gi;
-  var regexFormula = /((?![\b]*(in|on|of|late|early)\s))\d{4}/gi;
+  var regexFormula = /(?!(in|on|of|late|early)\s)\d{4}/gi;
+  // gets all the text until end of sentence after previous formula
+  var contextTextRegex = /(?!(in|on|of|late|early)\s)\d{4}(.*?)([.,?])/;
   var regexOutput = data.match(regexFormula);
-
-  console.log(regexOutput);
+  var contextTextRegexOutput = data.match(contextTextRegex);
 
   var max = 0;
   var min = 9999; // should be good until year 9999
@@ -82,14 +83,18 @@ function analyseHistoricDates(data) {
     // render results
     var resultDiv = createDiv('');
     var textTitle = createElement('h2', regexOutput[i]);
+    var textContext = createElement('p', contextTextRegexOutput[i]);
     mapBody.child(resultDiv);
     resultDiv.child(textTitle);
+    resultDiv.child(textContext);
     resultDiv.attribute('id', i);
+    resultDiv.attribute('class', 'blue');
+    textContext.attribute('class', 'black bg-white');
 
     // positon resulDiv'saccording to the window dimensions
     var x = map(regexOutput[i], min, max, 10, windowWidth - 100);
     resultDiv.position(x + 50, random(windowHeight-50));
   }
-  console.log(max);
-  console.log(min);
+  console.log("max = " + max);
+  console.log("min = " + min);
 }
