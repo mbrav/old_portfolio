@@ -53,9 +53,11 @@ function back() {
 // TEXT ANALYSIS FUNCTIONS
 function analyseHistoricDates(data) {
 
-  // did not sucessfully applied "?=" or "?:" expressions
-  var regexFormula = /(in|of|late|early|mid)\s\d{3,4}/gi;
+  // var oldRegexFormula = /(in|of|late|early|mid)\s\d{3,4}/gi;
+  var regexFormula = /((?![^w]*(in|of|late|early)\s))\d{4}/gi;
   var regexOutput = data.match(regexFormula);
+
+  console.log(regexOutput);
 
   var max = 0;
   var min = 9999; // should be good until year 9999
@@ -63,7 +65,7 @@ function analyseHistoricDates(data) {
   for(var i = 0; i < regexOutput.length; i++) {
     // necessary to etract only the n umbers
     // now regexOutput[][] will have arrays in arrays :/
-    regexOutput[i] = regexOutput[i].match(/\d{3,4}/);
+    regexOutput[i] = regexOutput[i].match(/\d{4}/);
 
     // check the minumum and maximum balues
     if (regexOutput[i][0] > max) {
