@@ -29,7 +29,7 @@ function setup() {
     aboutText.show();
   });
 
-  // title.mouseOut(function(){
+  title.mouseOut(function(){
     aboutText.hide();
   });
 }
