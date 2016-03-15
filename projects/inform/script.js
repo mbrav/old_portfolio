@@ -7,6 +7,8 @@ var submitBody, mapBody, title, aboutText, textField, submitButton, backButton;
 // App elements
 var rawInputText;
 
+var generated = false;
+
 function setup() {
   noCanvas();
 
@@ -23,16 +25,33 @@ function setup() {
   submitButton.mousePressed(submit);
   backButton.mousePressed(back);
 
-  title.mouseOver(function show(){
+  title.mouseOver(function(){
     aboutText.show();
   });
 
-  title.mouseOut(function hide(){
+  // title.mouseOut(function(){
     aboutText.hide();
   });
 }
 
 function draw() {
+
+  // atempt to toggle generated elements
+  if (generated) {
+    var resultDivs = selectAll('.data-set');
+    // textTitles = selectAll('.data-set-context');
+    // generated = false;
+
+    for (var i = 0; i < resultDivs.length; i++){
+      resultDivs[i].mouseOver(function(){
+        resultDivs[i].show();
+        console.log(resultDivs);
+      });
+      resultDivs[i].mouseOut(function(){
+        resultDivs[i].hide();
+      });
+    }
+  }
 }
 
 function submit() {
@@ -43,6 +62,7 @@ function submit() {
   // App function
   rawInputText = textField.value();
   analyseHistoricDates(rawInputText);
+  generated = true;
 }
 
 function back() {
@@ -59,9 +79,9 @@ function analyseHistoricDates(data) {
   // takes texts
 
   // var oldRegexFormula = /(in|of|late|early|mid)\s\d{1,4}/gi;
-  var regexFormula = /(?!(in|on|of|late|early)\s)\d{4}/gi;
+  var regexFormula = /(?!(in|on|of|late|early|the|from|by|as|january|february|march|april|may|june|july|august|september|october|november|december)\s)\d{4}/gi;
   // gets all the text until end of sentence after previous formula
-  var contextTextRegex = /(?!(in|on|of|late|early)\s)\d{4}(.*?)([.,?])/;
+  var contextTextRegex = /(?!(in|on|of|late|early|the|from|by|as|january|february|march|april|may|june|july|august|september|october|november|december)\s)\d{4}(.*?)([.,?])/gi;
   var regexOutput = data.match(regexFormula);
   var contextTextRegexOutput = data.match(contextTextRegex);
 
@@ -88,8 +108,9 @@ function analyseHistoricDates(data) {
     resultDiv.child(textTitle);
     resultDiv.child(textContext);
     resultDiv.attribute('id', i);
-    resultDiv.attribute('class', 'blue');
-    textContext.attribute('class', 'black bg-white');
+    resultDiv.attribute('class', 'data-set');
+    textTitle.attribute('class', 'data-set-title blue');
+    textContext.attribute('class', 'black bg-white data-set-context');
 
     // positon resulDiv'saccording to the window dimensions
     var x = map(regexOutput[i], min, max, 10, windowWidth - 100);
