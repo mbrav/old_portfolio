@@ -10,11 +10,20 @@ var data;
 
 var path = URIbase + URIword + URIquery + apiKey;
 
-  // p.exit().remove();
+// setup canvas
 var svg = d3.select("body").append("svg")
   .attr("width", window.innerWidth)
   .attr("height", window.innerHeight)
 
+// add main word
+  svg.append("text")
+    .text(URIword)
+    .attr("dx", window.innerWidth/2-20)
+    .attr("dy", window.innerHeight/2-20)
+    .attr("class", "fill-red")
+    .style("font-size", "40px");
+
+// generate JSON
 d3.json(path, function(error, json) {
   if (error) return console.warn(error);
   data = json;
