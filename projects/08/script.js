@@ -2,39 +2,34 @@
 //created by Michael Braverman on April 10, 2016
 
 var URIbase = "http://api.wordnik.com/v4/word.json/";
-var URIword = "hello";
+var URIword = "fast";
 var URIquery = "/relatedWords?useCanonical=false&limitPerRelationshipType=25&";
 var apiKey = "api_key=f25591c2a98764f728a0102bd600927221ca11d96990888de";
 
-var data; // a global
-d3.json(URIbase + URIword + URIquery + apiKey, function(error, json) {
-  if (error) return console.warn(error);
-  data = json;
-  console.log(data);
-});
+var data;
 
-function render(){
-  // DATA JOIN
-  // Join new data with old elements, if any.
-  // var p = d3.select("body").selectAll("p").data(data);
-  //
-  // // ENTER
-  // p.enter().append("p")
-  // .text(function(d) { return "I’m number " + d + "!"; })
-  //
-  // p.transition().duration(200)
-  // .style("font-size", function(d) {return d + "px";});
+var path = URIbase + URIword + URIquery + apiKey;
 
   // p.exit().remove();
+var svg = d3.select("body").append("svg")
+  .attr("width", window.innerWidth)
+  .attr("height", window.innerHeight)
 
-  var svg = d3.select("svg").selectAll("txt").text({data, function(d){
-      return d[5].words
-  }});
+d3.json(path, function(error, json) {
+  if (error) return console.warn(error);
+  data = json;
 
-}
+  var elem = svg.selectAll("g")
+    .data(json[5].words)
 
-// first update
-render();
+  var elemEnter = elem.enter()
+	    .append("g")
 
-// set interval for further updates
-// setInterval(render, 200);
+  /* Create the text for each block */
+  elemEnter.append("text")
+    .attr("dx", function() { return (Math.random() * window.innerWidth);})
+    .attr("dy", function() { return (Math.random() * window.innerHeight);})
+    .text(function(d){
+      console.log(d);
+      return d});
+});
