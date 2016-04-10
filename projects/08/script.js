@@ -36,6 +36,9 @@ d3.json(path, function(error, json) {
 
   /* Create the text for each block */
   elemEnter.append("text")
+    .attr("dx", window.innerWidth/2-20)
+    .attr("dy", window.innerHeight/2-20)
+    .transition()
     .attr("dx", function() { return (Math.random() * window.innerWidth);})
     .attr("dy", function() { return (Math.random() * window.innerHeight);})
     .text(function(d){
