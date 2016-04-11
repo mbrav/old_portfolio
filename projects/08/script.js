@@ -1,7 +1,7 @@
 //happy-api
 //created by Michael Braverman on April 10, 2016
 
-var URIbase = "http://api.wordnik.com/v4/word.json/";
+var URIbase = "https://api.wordnik.com/v4/word.json/";
 var URIword = "fast";
 var URIquery = "/relatedWords?useCanonical=false&limitPerRelationshipType=25&";
 var apiKey = "api_key=f25591c2a98764f728a0102bd600927221ca11d96990888de";
