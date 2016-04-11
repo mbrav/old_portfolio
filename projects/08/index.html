@@ -24,16 +24,41 @@
 
       h1 {
         position: absolute;
+        left: 10px;
       }
 
       h1 span {
         font-size: 70%;
       }
 
-      p{
+      p {
         position: absolute;
+        text-align: center;
+        top: 45px;
+        left: 10px;
+      }
 
-        top: 50px;
+      textarea {
+        margin: 0;
+        resize: none;
+        outline: none;
+        resize:none;
+        color: #444;
+        border-radius: 6px;
+        font-size: 15px;
+        padding: 10px;
+      }
+
+      button {
+        position: absolute;
+        left: 0;
+        height: 40px;
+        font-size: 18px;
+        border-width: 1px;
+        border-color: #666;
+        background-color: white;
+        border-radius: 7px;
+        color: #6CA4BB;
       }
 
 
@@ -43,8 +68,8 @@
 
     <h1 class="blue"> happy-api<span class="aqua"> d3.js</span></h1>
     <p name="myform">
-      <input id = "input" type="text" value = "word">
-      <button id = "submit">Submit</button>
+      <textarea id="input" placeholder="Enter your word here..." rows="1"></textarea>
+      <button id = "submit">submit</button>
     </p>
 
   </body>

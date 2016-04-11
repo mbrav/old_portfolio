@@ -36,7 +36,7 @@ function generate() {
     data = json;
 
     var elem = svg.selectAll("g")
-    .data(json[0].words)
+    .data(json[4].words)
 
     var elemEnter = elem.enter()
     .append("g")
@@ -50,7 +50,7 @@ function generate() {
     .attr("dy", function() { return (Math.random() * window.innerHeight);})
     .text(function(d){ console.log(d); return d})
 
-    .exit().remove();
+    // .exit().remove();
 
     // TODO Create lines for each block
     // elemEnter.append("line")
