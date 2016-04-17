@@ -4,8 +4,8 @@
 
 var animation = function( p ) {
   // attributes
-  var w = 250;
-  var h = 250;
+  var w = 400;
+  var h = 400;
 
   p.setup = function() {
     p.createCanvas(w, h, WEBGL).position(windowWidth/2 - w/2, 150);
@@ -17,18 +17,34 @@ var animation = function( p ) {
     p.fill(0);
     p.normalMaterial();
 
-    // "wtf? this is so cool!"
+
+    p.rotateZ(frameCount * 0.01);
+    p.rotateX(frameCount * 0.01);
+    p.rotateY(frameCount * 0.01);
+
+    //wtf animation
     for (var x = 0; x < 4; x++) {
       for (var y = 0; y < 4; y++) {
         p.translate(0, 0, 0);
-        p.translate(20 * x, 20 * y, 0);
+        p.translate(-50 + 20 * x, -50 + 20 * y, 0);
         p.push();
         p.box(10, 10, 0);
         p.pop();
-        p.rotateZ(frameCount * 0.02);
-        p.rotateX(frameCount * 0.01);
-        p.rotateY(frameCount * 0.01);
+        p.rotateZ(frameCount * 0.001);
+        p.rotateX(frameCount * 0.001);
+        p.rotateY(frameCount * 0.001);
+      }
+    }
 
+    // rottating cube
+    for (var x = 0; x < 4; x++) {
+      for (var y = 0; y < 4; y++) {
+        for (var z = 0; z < 4; z++) {
+          p.push();
+          p.translate(80 * x, 80 * y, 80 * z);
+          p.box(15, 15, 0);
+          p.pop();
+        }
       }
     }
   };
