@@ -9,22 +9,35 @@
     <style>
     body {
       font-family: 'Roboto Condensed', sans-serif;
-      background: #A5D6E6;
+      background: black;
+      color: #6CA4BB;
+    }
+
+    .defaultCanvas0 {
+      margin: 0 auto;
+      text-align: center;
     }
 
     .title {
+      width: 300px;
+      margin: 0 auto;
+      text-align: center;
     }
 
-    button {
-      position: absolute;
-      left: 0;
+    .options p {
+      text-align: center;
       padding: 20px;
       font-size: 25px;
-      border-width: 1px;
-      border-color: #666;
-      background-color: white;
       border-radius: 12px;
+      border: 1px solid white;
+      background-color: black;
       color: #6CA4BB;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
+    }
+
+    .options p:active{
+      background-color: white;
+      color: black;
     }
 
 
@@ -32,13 +45,13 @@
   </head>
   <body>
     <div class="title">
-      <h1>Teach Me </h1>
-      <h2>please be a good parent to me</h2>
+      <h1>Teach Me</h1>
+      <h2>please be a good teacher to me</h2>
     </div>
 
   <div class="options">
-    <button id = "button-one">good</button>
-    <button id = "button-two">bad</button>
+    <p id = "button-one">good</p>
+    <p id = "button-two">bad</p>
   </div>
 
 
