@@ -7,7 +7,7 @@ var app = require('./app');
 http.createServer(app.handleRequest).listen(8000);
 
 // var Twit = require('twit');
-// var config = require("./config");
+// var config = require("./configAPI");
 // var T = new Twit(config);
 // // posting status
 // var update = 'statuses/update';

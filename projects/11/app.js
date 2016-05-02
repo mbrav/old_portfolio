@@ -1,18 +1,6 @@
 var url = require('url');
 var fs = require('fs');
 
-function render(path, response) {
-  fs.readFile('./index.html', null, function(error, data) {
-    if (error) {
-      response.writeHead(404);
-      response.write('File not found!');
-    }  else {
-      response.write(data);
-    }
-    response.end();
-  });
-}
-
 module.exports = {
   // name a fucntion handlRequest
   handleRequest: function(request, response) {
@@ -24,10 +12,19 @@ module.exports = {
       // check what url user has entered
       switch (path) {
         case '/':
-          render('./index.html', response);
+          render('./pages/index.html', response);
           break;
-        case '/login':
-          render('./index.html', response);
+        case '/1':
+          render('./pages/index.html', response);
+          break;
+        case '/2':
+          render('./pages/index2.html', response);
+          break;
+        case '/3':
+          render('./pages/index3.html', response);
+          break;
+        case '/4':
+          render('./pages/index4.html', response);
           break;
         default:
           response.writeHead(404);
@@ -36,3 +33,15 @@ module.exports = {
       }
   }
 };
+
+function render(path, response) {
+  fs.readFile(path, null, function(error, data) {
+    if (error) {
+      response.writeHead(404);
+      response.write('File not found!');
+    }  else {
+      response.write(data);
+    }
+    response.end();
+  });
+}
