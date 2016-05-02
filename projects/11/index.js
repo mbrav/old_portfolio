@@ -2,25 +2,9 @@
 //created by Michael Braverman on April 18, 2016
 
 var http = require('http');
-var fs = require('fs'); // filw sysytem
-var module1 = require('./module1');
+var app = require('./app');
 
-http.createServer(onRequest).listen(8000);
-
-function onRequest(request, response) {
-  // response.writeHead(200, {'Content-Type': 'text/plain'});
-  response.writeHead(200, {'Content-Type': 'html'});
-
-  fs.readFile('./index.html', null, function(error, data) {
-    if (error) {
-      response.writeHead(404);
-      response.write('File not found!');
-    }  else {
-      response.write(data);
-    }
-    response.end();
-  });
-}
+http.createServer(app.handleRequest).listen(8000);
 
 // var Twit = require('twit');
 // var config = require("./config");
