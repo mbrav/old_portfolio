@@ -1,10 +1,11 @@
 body {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Inconsolata', serif;
   background: #F1F6FF;
   display: block;
   margin: 0;
 }
 
+/*TITLES*/
 #title {
   font-family: 'Comfortaa', cursive;
   text-transform: uppercase;
@@ -22,6 +23,7 @@ body {
   color: black;
 }
 
+/*NAV BAR*/
 nav {
   margin: 30px;
   margin-top: 30px;
@@ -48,12 +50,26 @@ nav ul li:hover {
   color: #F1F6FF;
 }
 
+/*MAIN SITE BODY */
 main {
   display: inline-block;
   margin: 30px;
 }
 
-img {
-  height: 250px;
-  width: 100%;
+h1 {
+  font-family: 'Comfortaa', cursive;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+.crop-img {
+  width: 600px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.crop-img img {
+  width: 600px;
+  /*height: 300px;*/
+  margin: -100px 0;
 }
