@@ -1,9 +1,10 @@
+
 body {
   font-family: 'Inconsolata', serif;
   background: #F1F6FF;
   display: block;
   margin: 0;
-  padding: 35px;
+  padding: 30px;
 }
 
 /*TITLES*/
@@ -16,10 +17,10 @@ body {
 #title h1 {
   font-family: 'Comfortaa', cursive;
   font-size: 18px;
-  display: inline-block;
-  padding: 13px;
-  margin: 4px;
-  margin-left: 0;
+  display: block;
+  padding: 15px;
+  margin: 0;
+  margin-bottom: 12px;
   background-color: #9CBEF2;
   color: black;
   /*border-left: 5px solid #5A88CE;*/
@@ -71,8 +72,8 @@ nav ul li a {
 
 /*MAIN SITE BODY */
 main {
-  margin-left: 35px;
-  height: 500px;
+  margin-left: 30px;
+  height: 400px;
 
   /*hide all pages in the beginning */
   display: none;
@@ -110,13 +111,13 @@ main h3 {
 }
 
 .crop-img {
-  width: 650px;
+  /*width: 600px;*/
   height: 150px;
   overflow: hidden;
 }
 
 .crop-img img {
-  width: 650px;
+  width: 600px;
   /*height: 300px;*/
   margin: -100px 0;
 }
@@ -129,13 +130,50 @@ main h3 {
 }
 
 footer {
+  text-align: center;
   font-size: 14px;
   position: absolute;
-
   bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 15px;
+  /*height: 100px;*/
 }
+
 
 #gpg {
   color: #B19881;
   text-decoration: none;
+}
+
+@media screen and (max-width: 900px) {
+  body {
+    padding: 15px;
+  }
+
+  nav {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul li {
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+  #title h1 {
+    display: inline-block;
+  }
+
+  main {
+    width: 100%;
+    margin: 0;
+  }
+
+  .crop-img {
+    width: 100%;
+  }
+
+  .crop-img img {
+    width: 100%;
+  }
 }
