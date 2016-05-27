@@ -9,7 +9,7 @@ $(function() {
   $("#about-link").click(function() {
     $("li").removeClass("selected-page");
     $(this).addClass("selected-page");
-    $("main").hide(pageDuration).css("display", "none");
+    $("main").fadeOut(pageDuration).css("display", "none");
     $("#about")
     .fadeIn(pageDuration)
     .css("display", "inline-block");
@@ -17,7 +17,7 @@ $(function() {
   $("#projects-link").click(function() {
     $("li").removeClass("selected-page");
     $(this).addClass("selected-page");
-    $("main").hide(pageDuration).css("display", "none");
+    $("main").fadeOut(pageDuration).css("display", "none");
     $("#projects")
     .fadeIn(pageDuration)
     .css("display", "inline-block");
@@ -25,7 +25,7 @@ $(function() {
   $("#resume-link").click(function() {
     $("li").removeClass("selected-page");
     $(this).addClass("selected-page");
-    $("main").hide(pageDuration).css("display", "none");
+    $("main").fadeOut(pageDuration).css("display", "none");
     $("#resume")
     .fadeIn(pageDuration)
     .css("display", "inline-block");
@@ -33,7 +33,7 @@ $(function() {
   $("#contact-link").click(function() {
     $("li").removeClass("selected-page");
     $(this).addClass("selected-page");
-    $("main").hide(pageDuration).css("display", "none");
+    $("main").fadeOut(pageDuration).css("display", "none");
     $("#contact")
     .fadeIn(pageDuration)
     .css("display", "inline-block") ;
