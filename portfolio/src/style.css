@@ -52,6 +52,10 @@ nav ul li:hover {
   border-left: 5px solid #9CBEF2;
 }
 
+#nav-button {
+  display: none;
+}
+
 .selected-page {
   color: black;
   background: white;
@@ -182,18 +186,37 @@ footer {
 @media screen and (max-width: 700px) {
   body {
     padding: 0;
-    padding-top: 10px;
   }
 
   nav {
+    display: inline-block;
     width: 100%;
-    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  #nav-button {
+    display: block;
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    color: #5A88CE;
+  }
+
+  nav ul {
+    display: inline-block;
   }
 
   nav ul li {
     padding-bottom: 5px;
     padding-top: 5px;
+    display: none;
   }
+
+  #title {
+    display: inline-block;
+  }
+
   #title h1 {
     display: inline-block;
   }

@@ -38,4 +38,9 @@ $(function() {
     .fadeIn(pageDuration)
     .css("display", "inline-block") ;
   });
+
+
+    $("#nav-button").click(function() {
+      $("nav ul li").toggle();
+    });
 });
