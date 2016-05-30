@@ -2,7 +2,6 @@
 body {
   font-family: 'Inconsolata', serif;
   background: #F1F6FF;
-  display: block;
   margin: 0;
   padding: 30px;
 }
@@ -23,36 +22,35 @@ body {
   margin-bottom: 12px;
   background-color: #9CBEF2;
   color: black;
-  /*border-left: 5px solid #5A88CE;*/
 }
 
 /*NAV BAR*/
 nav {
   float: left;
+  /* for the gap between nav and main*/
+  margin-right: 30px;
 }
 
 nav ul {
   padding-left: 0;
-  line-height: 1.6em;
-  letter-spacing: 0.08em;
   list-style-type: none;
   font-size: 18px;
+  line-height: 1.6em;
+  letter-spacing: 0.08em;
 }
 
 nav ul li {
-  padding-left: 7px;
-  padding-right: 7px;
+  padding-left: 5px;
 }
 
 nav ul li:hover {
   display: inline-block;
   transition: background .5s ease-in-out;
-  /*background: white;*/
-  color: black;
   border-left: 5px solid #9CBEF2;
 }
 
-#nav-button {
+/*use in mobile only */
+#nav-toggle-button {
   display: none;
 }
 
@@ -76,17 +74,19 @@ nav ul li a {
 
 /*MAIN SITE BODY */
 main {
-  margin-left: 30px;
-  height: 400px;
+  overflow: hidden; /*life saver, worth dedicating */
+  min-height: 500px;
   width: 600px;
 
-  /*hide all pages in the beginning */
+  /*hide all mains in the beginning */
   display: none;
 }
 
 /*general element styles */
 main h1, main h2, main h3, main h4, main h5, main h6 {
   font-family: 'Inconsolata', serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 main h1 {
@@ -104,27 +104,42 @@ main h2 {
 }
 
 main h3 {
+  font-size: 17px;
+  font-style: italic;
+  font-weight: normal;
+}
+
+main h4 {
   font-size: 15px;
   font-style: italic;
   font-weight: normal;
 }
 
-/*PAGES*/
-
-#about{
-  display: inline-block;
+p {
+  line-height: 1.30;
 }
 
+a {
+  color: #B19881;
+  text-decoration: none;
+}
+
+/*PAGES*/
+
+/*display about in the beginning*/
+/*a minor aid if javascript is disabled */
+#about{
+  display: block;
+}
+
+/*image viewer*/
 .crop-img {
-  /*width: 600px;*/
   height: 150px;
   width: 100%;
   overflow: hidden;
 }
 
 .crop-img img {
-  /*width: 600px;*/
-  /*height: 300px;*/
   width: 100%;
   margin: -100px 0;
 }
@@ -136,81 +151,88 @@ main h3 {
   color: grey;
 }
 
+/*hi, I'm footer, I like acting like a d**k. */
 footer {
-  text-align: center;
   font-size: 14px;
   bottom: 0;
   right: 0;
   left: 0;
   padding: 15px;
   margin-top: 40px;
-  /*height: 100px;*/
 }
 
-
-#gpg {
-  color: #B19881;
-  text-decoration: none;
-}
-
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 875px) {
 
   body {
     padding: 20px;
   }
 
+  main {
+    width: auto;
+    max-width: 700px;
+  }
 
+/*decrease logo a tiny bit */
   #title h1 {
     font-size: 15px;
     padding: 12px;
-    margin: 0;
     margin-bottom: 9px;
   }
 
-  main {
-    margin-left: 20px;
-    width: 76%;
-  }
-  .crop-img {
-    width: 100%;
-  }
-  .crop-img img {
-    width: 100%;
-  }
-
-  nav ul {
-    font-size: 16px;
+  /*decrease the gap between nav and main */
+  nav {
+    margin-right: 20px;
   }
 }
 
-@media screen and (max-width: 700px) {
+
+/*thanks, Steve Jobs*/
+@media screen and (max-width: 600px) {
   body {
     padding: 0;
   }
 
-  nav {
-    display: inline-block;
-    width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
+  #title {
+    margin: 10px;
   }
 
-  #nav-button {
+  #title h1 {
+    margin-bottom: 0;
+  }
+
+  /*full width and no more stress*/
+  nav {
     display: block;
-    position: absolute;
-    right: 10px;
+    width: 100%;
+  }
+
+  /*show the nav toggle button*/
+  #nav-toggle-button {
+    text-decoration: underline;
+    display: inline-block;
+    position: fixed;
+    margin-top: 12px;
+    margin-right: 10px;
+    right: 0;
     font-size: 20px;
     color: #5A88CE;
   }
 
+  /*used to make sure that nav does not disapear
+  when rezising window from smaller screens
+  the nav can only hidden be hidden in mobile view*/
+  .show-nav-mobile {
+    display: block;
+  }
+
   nav ul {
-    display: inline-block;
+    display: none;
+    margin-top: 0;
   }
 
   nav ul li {
-    padding-bottom: 5px;
-    padding-top: 5px;
-    display: none;
+    padding-top: 4px;
+    padding-bottom: 4px;
   }
 
   #title {
@@ -221,21 +243,18 @@ footer {
     display: inline-block;
   }
 
+  /*full width and no more stress*/
   main {
     width: 100%;
     margin: 0;
   }
 
   .content {
-    margin-right: 10px;
-    margin-left: 10px;
+    margin: 5px;
   }
 
-  .crop-img {
-    width: 100%;
-  }
-
-  .crop-img img {
-    width: 100%;
+  /*truncate part of the gpg fingerprint*/
+  #gpg span {
+    display: none;
   }
 }

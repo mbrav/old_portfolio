@@ -10,37 +10,40 @@ $(function() {
     $("li").removeClass("selected-page");
     $(this).addClass("selected-page");
     $("main").fadeOut(pageDuration).css("display", "none");
-    $("#about")
-    .fadeIn(pageDuration)
-    .css("display", "inline-block");
+    $("#about").fadeIn(pageDuration);
+
+    // hides menu when in mobile view
+    $("nav ul").removeClass("show-nav-mobile");
   });
   $("#projects-link").click(function() {
     $("li").removeClass("selected-page");
     $(this).addClass("selected-page");
     $("main").fadeOut(pageDuration).css("display", "none");
-    $("#projects")
-    .fadeIn(pageDuration)
-    .css("display", "inline-block");
+    $("#projects").fadeIn(pageDuration);
+
+    // hides menu when in mobile view
+    $("nav ul").removeClass("show-nav-mobile");
   });
   $("#resume-link").click(function() {
     $("li").removeClass("selected-page");
     $(this).addClass("selected-page");
     $("main").fadeOut(pageDuration).css("display", "none");
-    $("#resume")
-    .fadeIn(pageDuration)
-    .css("display", "inline-block");
+    $("#resume").fadeIn(pageDuration);
+
+    // hides menu when in mobile view
+    $("nav ul").removeClass("show-nav-mobile");
   });
   $("#contact-link").click(function() {
     $("li").removeClass("selected-page");
     $(this).addClass("selected-page");
     $("main").fadeOut(pageDuration).css("display", "none");
-    $("#contact")
-    .fadeIn(pageDuration)
-    .css("display", "inline-block") ;
+    $("#contact").fadeIn(pageDuration);
+
+    // hides menu when in mobile view
+    $("nav ul").removeClass("show-nav-mobile");
   });
 
-
-    $("#nav-button").click(function() {
-      $("nav ul li").toggle();
-    });
+  $("#nav-toggle-button").click(function() {
+    $("nav ul").toggleClass("show-nav-mobile");
+  });
 });
