@@ -36,10 +36,10 @@ var imgData = [
       'year': 2015}
 ];
 
-var imageIndex = Math.floor(Math.random() * images.length);
+var imageIndex = Math.floor(Math.random() * imgData.length);
 
 $(".crop-img > img").click(function() {
-  imageIndex = (imageIndex + 1) % (images.length);
+  imageIndex = (imageIndex + 1) % (imgData.length);
   $(this).attr('src', "src/img/" + imgData[imageIndex]["file"]);
   $(".img-caption").text(imgData[imageIndex]["name"]);
 })
