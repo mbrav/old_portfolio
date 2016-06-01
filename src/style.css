@@ -161,7 +161,15 @@ footer {
   margin-top: 40px;
 }
 
-@media screen and (max-width: 875px) {
+/*for background canvas */
+canvas {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 850px) {
 
   body {
     padding: 20px;
@@ -187,7 +195,7 @@ footer {
 
 
 /*thanks, Steve Jobs*/
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   body {
     padding: 0;
   }

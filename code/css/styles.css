@@ -54,6 +54,11 @@ main {
     margin-right: 1em;
 }
 
+.project-link h2 b {
+  color: #B0B0B0;
+  font-size: 80%;
+}
+
 /*Every first .project-link*/
 .project-link:nth-child(3n+1) {
     color: #FFEB3B;
@@ -67,6 +72,12 @@ main {
 /*Every third .project-link*/
 .project-link:nth-child(3n+3) {
     color: #F44336;
+}
+
+.project-link h2:hover {
+  transition: .2s ease-in-out;
+  color: pink;
+
 }
 
 /*

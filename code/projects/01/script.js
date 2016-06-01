@@ -54,8 +54,6 @@ function draw() {
   //
   // textSize(30);
   // text("Whats GUCCI?", 0, 600);
-  console.log(randomX);
-  console.log(randomY);
 }
 
 function generateCordinate() {
