@@ -91,6 +91,10 @@ $(function() {
 
 function changeImg(transition) {
   imageIndex = (imageIndex + 1) % (imgData.length);
-  $(".crop-img > img").attr('src', "src/img/" + imgData[imageIndex]["file"]);
-  $(".img-caption").text(imgData[imageIndex]["name"] + " (" + imgData[imageIndex]["year"]  + ")");
+  var imgText = imgData[imageIndex]["name"] + " (" + imgData[imageIndex]["year"]  + ")";
+
+  $(".crop-img > img")
+    .attr('src', "src/img/" + imgData[imageIndex]["file"])
+    .attr('alt', imgText);
+  $(".img-caption").text(imgText);
 }
