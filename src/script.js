@@ -1,4 +1,4 @@
-//Personal Site
+//Portfolio Site
 //created by Michael Braverman on April 16, 2016
 
 var imgData = [
@@ -38,15 +38,14 @@ var imgData = [
 
 var imageIndex = Math.floor(Math.random() * imgData.length);
 
-$(".crop-img > img").click(function() {
-  imageIndex = (imageIndex + 1) % (imgData.length);
-  $(this).attr('src', "src/img/" + imgData[imageIndex]["file"]);
-  $(".img-caption").text(imgData[imageIndex]["name"]);
-})
-
-var pageDuration = 700;
-
 $(function() {
+
+  var pageDuration = 700;
+
+  $(".crop-img > img").click(function() {
+    changeImg(300);
+  })
+
   // TODO - chnage the way current pages are interacted with
   $("#about-link").click(function() {
     $("li").removeClass("selected-page");
@@ -89,3 +88,9 @@ $(function() {
     $("nav ul").toggleClass("show-nav-mobile");
   });
 });
+
+function changeImg(transition) {
+  imageIndex = (imageIndex + 1) % (imgData.length);
+  $(".crop-img > img").attr('src', "src/img/" + imgData[imageIndex]["file"]);
+  $(".img-caption").text(imgData[imageIndex]["name"] + " (" + imgData[imageIndex]["year"]  + ")");
+}

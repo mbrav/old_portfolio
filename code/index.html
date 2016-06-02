@@ -26,7 +26,9 @@
         <a class="project-link" href="projects/09/index.html"><h2><span>09</span>classified rita</h2></a>
         <a class="project-link" href="projects/10/index.html"><h2><span>10</span>teach me</h2></a>
         <a class="project-link" href="http://mbrav.com/"><h2><span>11</span>Téchnelogical Feudalism<b> (final)</b></h2></a>
-        <a class="project-link" href="projects/10/index.html"><h2><span>12</span>eccentric waves</h2></a>
+        <a class="project-link" href="projects/12/index.html"><h2><span>12</span>eccentric waves</h2></a>
+        <a class="project-link" href="projects/13/index.html"><h2><span>13</span>three.js</h2></a>
+        <a class="project-link" href="projects/14/index.html"><h2><span>14</span>free special characters</h2></a>
     </main>
   </body>
   <script type="text/javascript">
@@ -110,22 +112,22 @@
       "!": "___ . ___ . ____"
     };
 
-    var inp = document.getElementById("inp");
-    var butt = document.getElementById("butt");
-    var out = document.getElementById("out");
-
-    butt.addEventListener("click", function() {
-      var conv = inp.value;
-      conv = conv.toLowerCase();
-      conv = conv.split("");
-      for (var i = 0; i < conv.length; i++) {
-        conv[i] = morse[conv[i]];
-      }
-
-      conv = conv.join(" ");
-      console.log(conv);
-      out.innerHTML = conv;
-    });
+    // var inp = document.getElementById("inp");
+    // var butt = document.getElementById("butt");
+    // var out = document.getElementById("out");
+    //
+    // butt.addEventListener("click", function() {
+    //   var conv = inp.value;
+    //   conv = conv.toLowerCase();
+    //   conv = conv.split("");
+    //   for (var i = 0; i < conv.length; i++) {
+    //     conv[i] = morse[conv[i]];
+    //   }
+    //
+    //   conv = conv.join(" ");
+    //   console.log(conv);
+    //   out.innerHTML = conv;
+    // });
 
   </script>
 </html>

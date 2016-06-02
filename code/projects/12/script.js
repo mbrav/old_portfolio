@@ -1,8 +1,5 @@
 //Eccentric Waves
 //created by Michael Braverman on June 1st, 2016
-
-// Squarework
-
 var x = 100;
 var y = 100;
 
@@ -14,7 +11,7 @@ var randomY;
 
 function setup() {
     createCanvas(windowWidth,windowHeight);
-    frameRate(10); 
+    frameRate(10);
     background(191,183,159);
     noStroke();
 }
