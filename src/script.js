@@ -48,14 +48,30 @@ var projectData = [
 
 var imageIndex = Math.floor(Math.random() * projectData.length);
 
+// on load
 $(function() {
 
   var pageDuration = 700;
 
-  $(".crop-img > img").click(function() {
-    changeImg(300);
+  // change image slide on click
+  $(".slide-img").click(function() {
+    changeImg();
   })
 
+  // generate project links
+  generateProjectLinks;
+
+  // on project link click
+  $(".project-list > li > a").on('click', function(event) {
+    event.preventDefault(); // ignore link paths
+    var url = this.href;
+
+    $("main").fadeOut(pageDuration).css("display", "none");
+    $("#ajax > .content").load(url);
+    $("#ajax").fadeIn(pageDuration);
+  });
+
+  // page transitions based on nav clicks
   // TODO - chnage the way current pages are interacted with
   $("#about-link").click(function() {
     $("li").removeClass("selected-page");
@@ -99,11 +115,15 @@ $(function() {
   });
 });
 
-function changeImg(transition) {
+function generateProjectLinks() {
+
+}
+
+function changeImg() {
   imageIndex = (imageIndex + 1) % (projectData.length);
   var imgText = projectData[imageIndex]["name"] + " (" + projectData[imageIndex]["year"]  + ")";
 
-  $(".crop-img > img")
+  $(".slide-img > img")
     .attr('src', "src/img/" + projectData[imageIndex]["imgFile"])
     .attr('alt', imgText);
   $(".img-caption").text(imgText);

@@ -1,12 +1,14 @@
-
-html {
-}
 body {
-  animation: fade-in 2s cubic-bezier(0.84, -0.01, 0, 1.41);
   font-family: 'Inconsolata', serif;
   background: #F1F6FF;
   margin: 0;
   padding: 30px;
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
 /*TITLES*/
@@ -14,11 +16,13 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.18em;
   line-height: 75%;
+
+  animation: fade-in 2s ease;
 }
 
 #title h1 {
   font-family: 'Comfortaa', cursive;
-  font-size: 18px;
+  font-size: 19px;
   display: block;
   padding: 15px;
   margin: 0;
@@ -98,24 +102,24 @@ main h1 {
   font-family: 'Comfortaa', cursive;
   color: #5A88CE;
   letter-spacing: 0.10em;
-  font-size: 20px;
+  font-size: 21px;
 }
 
 main h2 {
   color: #9CBEF2;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 19px;
 }
 
 main h3 {
-  font-size: 17px;
+  font-size: 18px;
   font-style: italic;
   font-weight: normal;
 }
 
 main h4 {
-  font-size: 15px;
+  font-size: 16px;
   font-style: italic;
   font-weight: normal;
 }
@@ -138,20 +142,25 @@ a {
 }
 
 /*image viewer*/
-.crop-img {
+.slide-img {
   width: 100%;
   height: 200px;
   overflow: hidden;
+  position: relative;
   border-radius: 2px;
 }
 
-.crop-img img {
+.slide-img img {
+  -webkit-animation: fade-in 4s ease;
+  animation: fade-in 4s ease;
+  visibility: visible;
   width: 100%;
+  /*position: absolute;*/
   /*margin: -100px 0;*/
 }
 
 .img-caption {
-  font-size: 13px;
+  font-size: 14px;
   margin-top: 5px;
   text-align: right;
   color: grey;
@@ -159,7 +168,7 @@ a {
 
 /*hi, I'm footer, I like acting like a d**k. */
 footer {
-  font-size: 14px;
+  font-size: 15px;
   bottom: 0;
   right: 0;
   left: 0;
@@ -188,7 +197,7 @@ canvas {
 
 /*decrease logo a tiny bit */
   #title h1 {
-    font-size: 15px;
+    font-size: 16px;
     padding: 12px;
     margin-bottom: 9px;
   }
@@ -228,7 +237,7 @@ canvas {
     margin-top: 12px;
     margin-right: 10px;
     right: 0;
-    font-size: 20px;
+    font-size: 21px;
     color: #5A88CE;
   }
 
