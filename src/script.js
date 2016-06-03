@@ -1,42 +1,52 @@
 //Portfolio Site
 //created by Michael Braverman on April 16, 2016
 
-var imgData = [
+var projectData = [
     {
-      'file':'01.jpg',
+      'imgFile':'01.jpg',
+      'page':'intellect.html',
       'name':'Artificial Intellect Box',
-      'year': 2015},
+      'year': 2015,
+    },
     {
-      'file':'02.png',
-      'name':'Infrastructural Utopia',
-      'year': 2016},
+      'imgFile':'02.png',
+      'page':'utopia_tower.html',
+      'name':'Infrastructural Utopia Tower',
+      'year': 2016
+    },
     {
-      'file':'03.png',
+      'imgFile':'03.png',
       'name':'infORM alpha',
-      'year': 2016},
+      'year': 2016
+    },
     {
-      'file':'04.jpg',
+      'imgFile':'04.jpg',
       'name':'Poem Maschine',
-      'year': 2015},
+      'year': 2015
+    },
     {
-      'file':'05.png',
+      'imgFile':'05.png',
       'name':'Emotion Cube',
-      'year': 2015},
+      'year': 2015
+    },
     {
-      'file':'06.png',
+      'imgFile':'06.png',
       'name':'Multiverse Clockwork',
-      'year': 2016},
+      'year': 2016
+    },
     {
-      'file':'07.png',
+      'imgFile':'07.png',
       'name':'Flowing Pagoda',
-      'year': 2015},
+      'year': 2015
+    },
     {
-      'file':'08.jpg',
+      'imgFile':'08.jpg',
       'name':'The Endevours Guide to The 21st Century',
-      'year': 2015}
+      'year': 2015
+    }
 ];
 
-var imageIndex = Math.floor(Math.random() * imgData.length);
+var imageIndex = Math.floor(Math.random() * projectData.length);
 
 $(function() {
 
@@ -90,11 +100,11 @@ $(function() {
 });
 
 function changeImg(transition) {
-  imageIndex = (imageIndex + 1) % (imgData.length);
-  var imgText = imgData[imageIndex]["name"] + " (" + imgData[imageIndex]["year"]  + ")";
+  imageIndex = (imageIndex + 1) % (projectData.length);
+  var imgText = projectData[imageIndex]["name"] + " (" + projectData[imageIndex]["year"]  + ")";
 
   $(".crop-img > img")
-    .attr('src', "src/img/" + imgData[imageIndex]["file"])
+    .attr('src', "src/img/" + projectData[imageIndex]["imgFile"])
     .attr('alt', imgText);
   $(".img-caption").text(imgText);
 }
