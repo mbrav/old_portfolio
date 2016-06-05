@@ -10,7 +10,7 @@ var projectData = [
     },
     {
       'imgFile':'02.png',
-      'page':'utopia_tower.html',
+      'page':'utopia-tower.html',
       'name':'Infrastructural Utopia Tower',
       'year': 2016
     },
@@ -59,12 +59,20 @@ $(function() {
   })
 
   // generate project links
-  generateProjectLinks;
+  for (var i in projectData) {
+    var projectPath = "/pages/" + projectData[i]["page"];
+    var newItem = $("<li>").append(
+      $("<a href='" + projectPath + "'>" + projectData[i]["name"] + "</a>")
+    );
+    $("#project-list").append(newItem);
+  }
 
   // on project link click
-  $(".project-list > li > a").on('click', function(event) {
+  $("#project-list > li > a").on('click', function(event) {
     event.preventDefault(); // ignore link paths
     var url = this.href;
+
+    console.log("sd");
 
     $("main").fadeOut(pageDuration).css("display", "none");
     $("#ajax > .content").load(url);
@@ -114,10 +122,6 @@ $(function() {
     $("nav ul").toggleClass("show-nav-mobile");
   });
 });
-
-function generateProjectLinks() {
-
-}
 
 function changeImg() {
   imageIndex = (imageIndex + 1) % (projectData.length);

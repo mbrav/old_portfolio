@@ -1,9 +1,10 @@
 body {
   font-family: 'Inconsolata', serif;
+  font-family: 'Avenir', sans-serif;
   background: #F1F6FF;
   margin: 0;
   padding: 30px;
-  animation: fadein 2s;
+  animation: fadein 2s cubic-bezier(1, 0.17, 0.1, 1);
 }
 
 @keyframes fadein {
@@ -16,8 +17,6 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.18em;
   line-height: 75%;
-
-  animation: fade-in 2s ease;
 }
 
 #title h1 {
@@ -125,7 +124,7 @@ main h4 {
 }
 
 p {
-  line-height: 1.30;
+  line-height: 1.35;
 }
 
 a {
