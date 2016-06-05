@@ -30,6 +30,11 @@ var projectData = [
       'year': 2015
     },
     {
+      'imgFile':'08.jpg',
+      'name':'The Endevours Guide to The 21st Century',
+      'year': 2015
+    },
+    {
       'imgFile':'06.png',
       'name':'Multiverse Clockwork',
       'year': 2016
@@ -37,11 +42,6 @@ var projectData = [
     {
       'imgFile':'07.png',
       'name':'Flowing Pagoda',
-      'year': 2015
-    },
-    {
-      'imgFile':'08.jpg',
-      'name':'The Endevours Guide to The 21st Century',
       'year': 2015
     }
 ];
@@ -59,20 +59,25 @@ $(function() {
   })
 
   // generate project links
+  $("#project-list").empty();
   for (var i in projectData) {
-    var projectPath = "/pages/" + projectData[i]["page"];
-    var newItem = $("<li>").append(
-      $("<a href='" + projectPath + "'>" + projectData[i]["name"] + "</a>")
+    $("#project-list").append(
+      $("<div>").attr("id","project-" + i).append(
+        // link to project
+        $("<a>", {
+          href : "/pages/" + projectData[i]["page"],
+          text : projectData[i]["name"]
+        }),
+        // span same level as <a>
+        $("<span>", {text : projectData[i]["year"]})
+      )
     );
-    $("#project-list").append(newItem);
   }
 
   // on project link click
-  $("#project-list > li > a").on('click', function(event) {
+  $("#project-list > div > a").on('click', function(event) {
     event.preventDefault(); // ignore link paths
-    var url = this.href;
-
-    console.log("sd");
+    var url = this.href; // get link
 
     $("main").fadeOut(pageDuration).css("display", "none");
     $("#ajax > .content").load(url);
