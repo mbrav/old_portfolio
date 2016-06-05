@@ -1,5 +1,4 @@
 body {
-  font-family: 'Inconsolata', serif;
   font-family: 'Avenir', sans-serif;
   background: #F1F6FF;
   margin: 0;
@@ -186,7 +185,7 @@ a {
 
 iframe {
   width: 100%;
-  width: 200px;
+  height: 200px;
 }
 
 /*hi, I'm footer, I like acting like a d**k. */
