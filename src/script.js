@@ -62,7 +62,7 @@ $(function() {
   $("#project-list").empty();
   for (var i in projectData) {
     $("#project-list").append(
-      $("<div>").attr("id","project-" + i).append(
+      $("<div>").attr("id","project-" + i).addClass("grid-item").append(
         // link to project
         $("<a>", {
           href : "/pages/" + projectData[i]["page"],

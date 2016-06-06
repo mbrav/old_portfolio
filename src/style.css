@@ -1,9 +1,19 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 body {
-  font-family: 'Avenir', sans-serif;
+  /*on load fade in */
+  animation: fadein 2s cubic-bezier(1, 0.17, 0.1, 1);
+
+  font-family: "Brown-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
   background: #F1F6FF;
   margin: 0;
+  /*for footer */
+  margin-bottom: 50px;
   padding: 30px;
-  animation: fadein 2s cubic-bezier(1, 0.17, 0.1, 1);
 }
 
 @keyframes fadein {
@@ -14,16 +24,14 @@ body {
 /*TITLES*/
 #title {
   text-transform: uppercase;
-  letter-spacing: 0.18em;
   line-height: 75%;
 }
 
 #title h1 {
-  font-family: 'Comfortaa', cursive;
-  font-size: 19px;
   display: block;
   padding: 15px;
   margin: 0;
+  font-size: 15px;
   margin-bottom: 12px;
   background-color: #9CBEF2;
   color: black;
@@ -40,7 +48,6 @@ nav {
 nav ul {
   padding-left: 0;
   list-style-type: none;
-  font-size: 18px;
   line-height: 1.6em;
   letter-spacing: 0.08em;
 }
@@ -91,35 +98,22 @@ main {
 
 /*general element styles */
 main h1, main h2, main h3, main h4, main h5, main h6 {
-  font-family: 'Inconsolata', serif;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 main h1 {
-  font-family: 'Comfortaa', cursive;
   color: #5A88CE;
-  letter-spacing: 0.10em;
-  font-size: 21px;
 }
 
 main h2 {
   color: #9CBEF2;
-  letter-spacing: 0.10em;
   text-transform: uppercase;
-  font-size: 19px;
 }
 
-main h3 {
-  font-size: 18px;
-  font-style: italic;
+main h3, main h4  {
   font-weight: normal;
-}
-
-main h4 {
-  font-size: 16px;
   font-style: italic;
-  font-weight: normal;
 }
 
 p {
@@ -158,7 +152,6 @@ a {
 }
 
 .img-caption {
-  font-size: 14px;
   margin-top: 5px;
   text-align: right;
   color: grey;
@@ -169,13 +162,9 @@ a {
 }
 
 #project-list div {
-  display: inline-block;
   padding: 15px;
-  margin : 5px;
+  margin: 5px;
   background-color: white;
-  min-width: 100px;
-  max-width: 200px;
-  min-height: 70px;
 }
 
 #project-list span {
@@ -183,6 +172,7 @@ a {
   font-size: 70%;
 }
 
+/*for inline videos*/
 iframe {
   width: 100%;
   height: 200px;
@@ -190,12 +180,21 @@ iframe {
 
 /*hi, I'm footer, I like acting like a d**k. */
 footer {
-  font-size: 15px;
+  position: fixed;
   bottom: 0;
-  right: 0;
   left: 0;
-  padding: 15px;
-  margin-top: 40px;
+  height: 50px;
+  background-color: #F1F6FF;
+  width: 100%;
+  text-align: center;
+}
+
+footer p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
 }
 
 /*for background canvas */
@@ -220,7 +219,6 @@ canvas {
 
 /*decrease logo a tiny bit */
   #title h1 {
-    font-size: 16px;
     padding: 12px;
     margin-bottom: 9px;
   }
@@ -236,6 +234,7 @@ canvas {
 @media screen and (max-width: 650px) {
   body {
     padding: 0;
+    margin-bottom: 30px;
   }
 
   #title {
@@ -260,7 +259,6 @@ canvas {
     margin-top: 12px;
     margin-right: 10px;
     right: 0;
-    font-size: 21px;
     color: #5A88CE;
   }
 
@@ -302,5 +300,9 @@ canvas {
   /*truncate part of the gpg fingerprint*/
   #gpg span {
     display: none;
+  }
+
+  footer {
+    height: 30px;
   }
 }
