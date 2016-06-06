@@ -264,7 +264,8 @@ canvas {
 @media screen and (max-width: 650px) {
   body {
     padding: 0;
-    margin-bottom: 30px;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
   }
 
   #title {

@@ -6,15 +6,15 @@
 
   <!-- Description  -->
   <meta name="title" content="Michael Braverman" />
-  <meta name="description" content="Creative technology student based in New York" />
-  <meta name="keywords" content="design, art, technology, portfolio, creative coding, creative technology, physical computing, installation, concept design, Michael, Braverman" />
+  <meta name="description" content="Creative technology technologist based in New York" />
+  <meta name="keywords" content="design, art, technology, media, portfolio, creative coding, creative technology, physical computing, installation, concept design, Michael, Braverman" />
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
   <!-- Open Graph Protocol -->
 	<meta property="og:title" content="Michael Braverman"/>
 	<meta property="og:image" content="src/img/aibox-tmb.jpg"/>
 	<meta property="og:site_name" content="mbrav.com"/>
-	<meta property="og:description" content="Creative technology student based in New York"/>
+	<meta property="og:description" content="Creative technologist based in New York"/>
 
   <link rel="icon" sizes="16x16" href="favicon.ico">
   <link href='src/style.css' rel='stylesheet' type='text/css'>
@@ -23,10 +23,13 @@
 </head>
 <body>
   <!--
-  CODE ATTRIBUTIONS:
+  CODE ATTRIBUTIONS & INFLUENCES:
 
   Bryan Ma
   http://www.bryan-ma.com/
+
+  Malika Favre
+  http://malikafavre.com/
 
   -->
   <!-- NAVIGATION BAR-->
@@ -41,11 +44,19 @@
     <ul>
       <li id="about-link"><a href="#about">About</a></li>
       <li id="projects-link"><a href="#projects">Projects</a></li>
+      <li id="gallery-link"><a href="#gallery">Gallery</a></li>
       <li id="resume-link"><a href="#resume">Résumé</a></li>
       <li id="contact-link"><a href="#contact">Contact</a></li>
       <li id="blog-link"><a href="http://blog.mbrav.com">Blog</a></li>
     </ul>
   </nav>
+
+  <!-- DYNAMIC CONTENT PAGE-->
+  <main id="ajax">
+    <div class="content">
+      <!-- ajax content loads here   -->
+    </div>
+  </main>
 
   <!-- ABOUT PAGE  -->
   <main id="about">
@@ -82,10 +93,15 @@
     </div>
   </main>
 
-  <!-- DYNAMIC CONTENT PAGE-->
-  <main id="ajax">
+  <!-- Gallery PAGE  -->
+  <main id="gallery">
     <div class="content">
-      <!-- ajax content to load  -->
+      <h1>Media Gallery</h1>
+      <h3>"My life is a message."</h3>
+      <h4>- Mahatma Gandhi</h4>
+      <div id="project-grid">
+        <!-- PROJECT ARE GENERATED HERE  -->
+      </div>
     </div>
   </main>
 

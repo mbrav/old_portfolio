@@ -20,21 +20,6 @@ var projectData = [
       'year': 2016
     },
     {
-      'imgFile':'03.png',
-      'name':'infORM alpha',
-      'year': 2016
-    },
-    {
-      'imgFile':'03.png',
-      'name':'infORM alpha',
-      'year': 2016
-    },
-    {
-      'imgFile':'03.png',
-      'name':'infORM alpha',
-      'year': 2016
-    },
-    {
       'imgFile':'04.jpg',
       'name':'Poem Maschine',
       'year': 2015
@@ -148,7 +133,15 @@ $(function() {
       columnWidth: '.grid-sizer',
       percentagePosition: true
     });
+  });
+  $("#gallery-link").click(function() {
+    $("li").removeClass("selected-page");
+    $(this).addClass("selected-page");
+    $("main").fadeOut(pageDuration).css("display", "none");
+    $("#gallery").fadeIn(pageDuration);
 
+    // hides menu when in mobile view
+    $("nav ul").removeClass("show-nav-mobile");
   });
   $("#resume-link").click(function() {
     $("li").removeClass("selected-page");
