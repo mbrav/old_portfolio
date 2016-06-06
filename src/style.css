@@ -11,9 +11,10 @@ body {
   font-family: "Brown-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
   background: #F1F6FF;
   margin: 0;
+  padding: 30px;
   /*for footer */
   margin-bottom: 50px;
-  padding: 30px;
+  padding-bottom: 50px;
 }
 
 @keyframes fadein {
@@ -85,7 +86,6 @@ nav ul li a {
   border-left: 5px solid #5A88CE;
 }
 
-
 /*MAIN SITE BODY */
 main {
   overflow: hidden; /*life saver, worth dedicating */
@@ -94,6 +94,17 @@ main {
 
   /*hide all mains in the beginning */
   display: none;
+}
+
+/*more width for projects */
+main#projects {
+  max-width: 750px;
+}
+
+/*display about in the beginning*/
+/*a minor aid if javascript is disabled */
+main#about{
+  display: block;
 }
 
 /*general element styles */
@@ -117,7 +128,7 @@ main h3, main h4  {
 }
 
 p {
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 a {
@@ -126,12 +137,6 @@ a {
 }
 
 /*PAGES*/
-
-/*display about in the beginning*/
-/*a minor aid if javascript is disabled */
-#about{
-  display: block;
-}
 
 /*image viewer*/
 .slide-img {
@@ -158,18 +163,44 @@ a {
 }
 
 /*PROJECT LIST PAGE */
-#project-list {
-}
-
-#project-list div {
-  padding: 15px;
-  margin: 5px;
-  background-color: white;
-}
-
-#project-list span {
+#project-grid span {
   display: block;
-  font-size: 70%;
+}
+
+.grid-sizer, .grid-item {
+  padding: 10px;
+  margin: 1%;
+  border: 4px;
+  border-radius: 5px;
+  background-color: white;
+  float: left;
+  width: 31%;
+  height: 120px;
+}
+
+.grid-item--width2 {
+  width: 64%;
+}
+
+.grid-item--height2 {
+  height: 180px;
+}
+
+@media screen and (max-width: 850px) {
+  .grid-sizer, .grid-item {
+    width: 48%;
+  }
+
+  .grid-item--width2 {
+    width: 96%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .grid-sizer, .grid-item {
+    width: 96%;
+    margin: 2%;
+  }
 }
 
 /*for inline videos*/
@@ -182,17 +213,16 @@ iframe {
 footer {
   position: fixed;
   bottom: 0;
-  left: 0;
   height: 50px;
   background-color: #F1F6FF;
   width: 100%;
-  text-align: center;
 }
 
 footer p {
+  left: 190px;
+  text-align: left;
   position: absolute;
   top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
   margin: 0;
 }

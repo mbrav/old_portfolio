@@ -20,6 +20,21 @@ var projectData = [
       'year': 2016
     },
     {
+      'imgFile':'03.png',
+      'name':'infORM alpha',
+      'year': 2016
+    },
+    {
+      'imgFile':'03.png',
+      'name':'infORM alpha',
+      'year': 2016
+    },
+    {
+      'imgFile':'03.png',
+      'name':'infORM alpha',
+      'year': 2016
+    },
+    {
       'imgFile':'04.jpg',
       'name':'Poem Maschine',
       'year': 2015
@@ -59,10 +74,33 @@ $(function() {
   })
 
   // generate project links
-  $("#project-list").empty();
+  $("#project-grid").empty( );
   for (var i in projectData) {
-    $("#project-list").append(
-      $("<div>").attr("id","project-" + i).addClass("grid-item").append(
+    $("#project-grid").append(
+      $("<div>").attr("id","project-" + i).addClass(function(){
+        // set first element to grid-sizer
+        // needed for responsive Masonry grid
+        if( i == 0){
+          return "grid-sizer";
+        } else {
+          return "grid-item";
+        }
+      }).addClass(function(){
+        // make a wide tile every other 3 tiles
+        if ( i % 3 == 0 && i !=0) {
+          return "grid-item--width2";
+        } else {
+          return null;
+        }
+      }).addClass(function(){
+        // make a tall tile every other 3 tiles
+        if ( (i+1) % 3 == 0 && i !=0) {
+          return "grid-item--height2";
+        } else {
+          return null;
+        }
+      })
+      .append(
         // link to project
         $("<a>", {
           href : "/pages/" + projectData[i]["page"],
@@ -75,7 +113,7 @@ $(function() {
   }
 
   // on project link click
-  $("#project-list > div > a").on('click', function(event) {
+  $("#project-grid > div > a").on('click', function(event) {
     event.preventDefault(); // ignore link paths
     var url = this.href; // get link
 
@@ -103,6 +141,14 @@ $(function() {
 
     // hides menu when in mobile view
     $("nav ul").removeClass("show-nav-mobile");
+
+    // layout tiles using Masonry jQuery plugin
+    $("#project-grid").masonry({
+      itemSelector: '.grid-item',
+      columnWidth: '.grid-sizer',
+      percentagePosition: true
+    });
+
   });
   $("#resume-link").click(function() {
     $("li").removeClass("selected-page");
