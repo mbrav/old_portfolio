@@ -56,6 +56,7 @@ var projectData = [
 var imageIndex = Math.floor(Math.random() * projectData.length);
 
 // on load
+// $( document ).ready(function() {
 $(function() {
 
   var pageDuration = 700;
@@ -94,7 +95,7 @@ $(function() {
       })
       // content that goes inside each grid element
       .append(
-        // $("<div>").addClass("grid-description").append(
+        $("<div>").addClass("grid-description").append(
           // link to project
           $("<a>", {
             href : "/pages/" + projectData[i]["page"],
@@ -102,13 +103,13 @@ $(function() {
           }),
           // span same level as <a>
           $("<span>", {text : projectData[i]["year"]})
-        // )
+        )
       )
     );
   }
 
   // on project link click
-  $("#project-grid > div > a").on('click', function(event) {
+  $(".grid-description > a").on('click', function(event) {
     event.preventDefault(); // ignore link paths
     var url = this.href; // get link
 
