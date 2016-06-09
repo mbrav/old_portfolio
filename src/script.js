@@ -2,42 +2,82 @@
 //created by Michael Braverman on April 16, 2016
 
 // initial animations
-TweenMax.fromTo($('#title'), 1.5, {opacity:0.4, scale:3, left:200}, {opacity:1, rotationX:720, delay:1.0, rotationZ:360, rotationY:360, scale:1});
-TweenMax.fromTo($('nav ul'), 1, {opacity:0, scaleX:0} ,{opacity:1, delay:1.0, scale:1});
-TweenMax.fromTo($('#slide-img'), 1, {opacity:0, scale:0} ,{opacity:1, rotationX:720, delay:2.0, scale:1});
-TweenMax.fromTo($('.img-caption'), 1, {opacity:0, scale:0} ,{opacity:1, delay:2.0, scale:1});
-TweenMax.fromTo($('.content'), 1, {opacity:0, scale:0} ,{opacity:1, delay:2.5, rotationY:360, scale:1});
-TweenMax.fromTo($('footer'), 1, {opacity:0, scale:0} ,{opacity:1, delay:2.5, scale:1});
+TweenLite.to($('body'), 1.0, {opacity:1});
+TweenLite.from($('#title'), 1.5, {opacity:0.4, scale:3, left:200, delay:1,rotationZ:360, rotationY:360, perspective: 400});
+TweenLite.fromTo($('nav ul'), 1, {opacity:0, scaleX:0} ,{opacity:1, delay:1.0, scale:1});
+TweenLite.fromTo($('#slide-img'), 1, {opacity:0, scale:0} ,{opacity:1, rotationX:720, delay:2.0, scale:1});
+TweenLite.fromTo($('#nav-toggle-button'), 1, {opacity:0, scale:0} ,{opacity:1, rotationX:720, delay:2.0, scale:1});
+TweenLite.fromTo($('.img-caption'), 1, {opacity:0, scale:0} ,{opacity:1, delay:2.0, scale:1});
+TweenLite.fromTo($('.content'), 1, {opacity:0, scale:0} ,{opacity:1, delay:2.5, rotationY:360, scale:1});
+TweenLite.fromTo($('footer'), 1, {opacity:0, scale:0} ,{opacity:1, delay:2.5, scale:1});
 
 // on load
 $( document ).ready(function() {
 
-  var pageDuration = 700;
+  ////////////////////////// AJAX LOAD /////////////////////////////
 
-  // change image slide on click
-  $("#slide-img").click(function() {
-    changeImg();
-  })
+  // ANY page click
+  $(".page-link").click(function() {
+    // hides menu when in mobile view
+    $("nav ul").removeClass("show-nav-mobile");
+  });
 
-  $(".page-link").hover(
-    function() {
-      TweenLite.to($(this), 1, {scale:1.2});
-    },
-    function() {
-      TweenLite.to($(this), 1, {scale:1});
+  // ABOUT PAGE click
+  $("#about-link").click(function() {
+    $("li").removeClass("selected-link");
+    $(this).addClass("selected-link");
+
+    pageTransition("main", "#about");
+  });
+
+  $("#projects-link").click(function() {
+    $("li").removeClass("selected-link");
+    $(this).addClass("selected-link");
+
+    TweenLite.to($('main'), 1, {opacity:0, onComplete:next1});
+    function next1() {
+      TweenLite.to($('main'), 0, {css:{display:"none"}});
+      TweenLite.to($('#projects'), 0, {css:{display:"block"}, onComplete:reloadMasonry});
+      TweenLite.fromTo($('#projects'), 1, {opacity:0}, {opacity:1, rotationY:0, rotationX:0});
     }
-  );
 
-  $("#title > h1").hover(
-    function() {
-      TweenLite.to($(this), 1, {opacity:0.3, rotationY:180});
-    },
-    function() {
-      TweenLite.to($(this), 1, {opacity:1, rotationY:0});
+    reloadMasonry();
+
+    function reloadMasonry() {
+      // layout tiles using Masonry jQuery plugin
+      $("#project-grid").masonry({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        percentagePosition: true
+      });
     }
-  );
+  });
 
-  // generate project links
+  // GALLERY PAGE click
+  $("#gallery-link").click(function() {
+    $("li").removeClass("selected-link");
+    $(this).addClass("selected-link");
+
+    pageTransition("main", "#gallery");
+  });
+
+  // RESUME PAGE click
+  $("#resume-link").click(function() {
+    $("li").removeClass("selected-link");
+    $(this).addClass("selected-link");
+
+    pageTransition("main", "#resume");
+  });
+
+  // CONTACT PAGE click
+  $("#contact-link").click(function() {
+    $("li").removeClass("selected-link");
+    $(this).addClass("selected-link");
+
+    pageTransition("main", "#contact");
+  });
+
+  // Generate project links for PROJECT PAGE
   for (var i in projectData) {
     $("#project-grid").append(
       $("<div>").attr("id","project-" + i).addClass(function(){
@@ -78,79 +118,68 @@ $( document ).ready(function() {
     );
   }
 
-  // on project link click
+  // On project link click load AJAX
   $(".grid-description > a").on('click', function(event) {
     event.preventDefault(); // ignore default link behaviour
     var url = this.href; // get link path
 
-    $("main").css("display", "none");
+    // load page
     $("#ajax > .content").load(url);
-    $("#ajax").show();
+    pageTransition("main", "#ajax");
   });
 
-  // page transitions based on nav clicks
-  // TODO - chnage the way current pages are interacted with
-  $("#about-link").click(function() {
-    $("li").removeClass("selected-link");
-    $(this).addClass("selected-link");
-    $("main").css("display", "none");
-    $("#about").show();
+  /////////////////////// INDIVIDUAL ANIMATIONS ///////////////////////
 
-    // hides menu when in mobile view
-    $("nav ul").removeClass("show-nav-mobile");
-  });
-  $("#projects-link").click(function() {
-    $("li").removeClass("selected-link");
-    $(this).addClass("selected-link");
-    $("main").css("display", "none");
-    $("#projects").show();
+  // change image slide on click
+  $("#slide-img").click(function() {
+    changeImg();
+  })
 
-    // hides menu when in mobile view
-    $("nav ul").removeClass("show-nav-mobile");
+  // cool nav select effect
+  $(".page-link").hover(
+    function() {
+      TweenLite.to($(this), 1, {scale:1.2});
+    },
+    function() {
+      TweenLite.to($(this), 1, {scale:1});
+    }
+  );
 
-    // layout tiles using Masonry jQuery plugin
-    var projectGrid = $("#project-grid").masonry({
-      itemSelector: '.grid-item',
-      columnWidth: '.grid-sizer',
-      percentagePosition: true
-    });
+  // get the user busy with the title
+  $("#title > h1").hover(
+    function() {
+      TweenLite.to($(this), 1, {opacity:0.3, rotationY:180});
+    },
+    function() {
+      TweenLite.to($(this), 1, {opacity:1, rotationY:0});
+    }
+  );
 
-    // load masonry
-    projectGrid.masonry('reloadItems');
-  });
-  $("#gallery-link").click(function() {
-    $("li").removeClass("selected-link");
-    $(this).addClass("selected-link");
-    $("main").css("display", "none");
-    $("#gallery").show();
-
-    // hides menu when in mobile view
-    $("nav ul").removeClass("show-nav-mobile");
-  });
-  $("#resume-link").click(function() {
-    $("li").removeClass("selected-link");
-    $(this).addClass("selected-link");
-    $("main").css("display", "none");
-    $("#resume").show();
-
-    // hides menu when in mobile view
-    $("nav ul").removeClass("show-nav-mobile");
-  });
-  $("#contact-link").click(function() {
-    $("li").removeClass("selected-link");
-    $(this).addClass("selected-link");
-    $("main").css("display", "none");
-    $("#contact").show();
-
-    // hides menu when in mobile view
-    $("nav ul").removeClass("show-nav-mobile");
-  });
-
+  // mobile menu click animation
   $("#nav-toggle-button").click(function() {
+    TweenLite.fromTo($(this), 1.0, {rotationY:0, rotationX:0} ,{rotationY:360, rotationX:360});
+
+    // Show nav in mobile view
     $("nav ul").toggleClass("show-nav-mobile");
   });
+
 });
 
+// General page transition
+function pageTransition(_from, _to) {
+  TweenLite.to($(_from), 0.5, {opacity:0, rotationY:180, rotationX:180,  perspective:400, transformOrigin:"right 40% 100", onComplete:next1});
+  function next1() {
+    TweenLite.set($(_from), {css:{display:"none"}});
+    TweenLite.set($(_to), {css:{display:"block"}});
+
+    TweenLite.from($(_to), 1, { rotationY:180, rotationX:180,  perspective:400, transformOrigin:"right 40% 100"});
+    TweenLite.to($(_to), 1, {opacity:1, rotationY:0, rotationX:0});
+  }
+}
+
+/////////////////////////////////// MISC ///////////////////////////////////
+
+// Project Metadata
 var projectData = [
     {
       'imgFile':'01.jpg',
@@ -203,8 +232,9 @@ var projectData = [
     }
 ];
 
+// Randomize the sequence of photos
 var imageIndex = Math.floor(Math.random() * projectData.length);
-
+// Slide image change function
 function changeImg() {
   imageIndex = (imageIndex + 1) % (projectData.length);
   var imgText = projectData[imageIndex]["name"] + " (" + projectData[imageIndex]["year"]  + ")";
@@ -214,3 +244,12 @@ function changeImg() {
     .attr('alt', imgText);
   $(".img-caption").text(imgText);
 }
+
+// Iluminati-conspiracy-surveilance Google Analytics script
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-78885933-1', 'auto');
+ga('send', 'pageview');

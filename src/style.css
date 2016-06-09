@@ -5,6 +5,8 @@
 }
 
 body {
+  /*initial opacity */
+  opacity: 0;
 
   font-family: "Brown-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
   background: #F1F6FF;
@@ -13,11 +15,6 @@ body {
   /*for footer */
   margin-bottom: 50px;
   padding-bottom: 50px;
-}
-
-@keyframes fadein {
-  from {opacity: 0;}
-  to {opacity: 1;}
 }
 
 /*TITLES*/
@@ -151,7 +148,7 @@ a {
 }
 
 .img-caption {
-  margin-top: 5px;
+  margin: 6px;
   text-align: right;
   color: grey;
 }
@@ -162,12 +159,12 @@ a {
   padding: 10px;
   margin: 1%;
   border: 4px;
-  border-radius: 5px;
+  border-radius: 6px;
   background-color: #447C99;
   float: left;
   width: 31%;
   height: 160px;
-  font-size: 25px;
+  font-size: 26px;
   text-align: center;
 }
 
@@ -245,7 +242,7 @@ canvas {
 /*decrease logo a tiny bit */
   #title h1 {
     padding: 12px;
-    margin-bottom: 9px;
+    margin-bottom: 10px;
   }
 
   /*decrease the gap between nav and main */
@@ -310,7 +307,7 @@ canvas {
   }
 
   #title h1 {
-    display: inline-block;
+    display: inline-block;.
   }
 
   /*full width and no more stress*/
@@ -320,7 +317,7 @@ canvas {
   }
 
   .content {
-    margin: 5px;
+    margin: 12px;
   }
 
   /*truncate part of the gpg fingerprint*/
