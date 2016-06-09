@@ -2,14 +2,12 @@
 //created by Michael Braverman on April 16, 2016
 
 // initial animations
-// TweenMax.fromTo($('#title'), 1, {opacity:0, scaleY: 0}, {opacity:1, scaleY:1, z:0});
+TweenMax.fromTo($('#title'), 1.5, {opacity:0.4, scale:3, left:200}, {opacity:1, rotationX:720, delay:1.0, rotationZ:360, rotationY:360, scale:1});
 TweenMax.fromTo($('nav ul'), 1, {opacity:0, scaleX:0} ,{opacity:1, delay:1.0, scale:1});
 TweenMax.fromTo($('#slide-img'), 1, {opacity:0, scale:0} ,{opacity:1, rotationX:720, delay:2.0, scale:1});
 TweenMax.fromTo($('.img-caption'), 1, {opacity:0, scale:0} ,{opacity:1, delay:2.0, scale:1});
 TweenMax.fromTo($('.content'), 1, {opacity:0, scale:0} ,{opacity:1, delay:2.5, rotationY:360, scale:1});
 TweenMax.fromTo($('footer'), 1, {opacity:0, scale:0} ,{opacity:1, delay:2.5, scale:1});
-
-TweenMax.fromTo($('#title'), 1.5, {opacity:0.4, scale: 5, x:300, y:200}, {opacity:1, rotationX:720, delay:1.0, rotationZ:360, rotationY:360, scale:1.0, x:0, y:0});
 
 // on load
 $( document ).ready(function() {
@@ -32,10 +30,10 @@ $( document ).ready(function() {
 
   $("#title > h1").hover(
     function() {
-      TweenLite.to($(this), 1, {opacity:0.3, rotationY:180, perspective: 200});
+      TweenLite.to($(this), 1, {opacity:0.3, rotationY:180});
     },
     function() {
-      TweenLite.to($(this), 1, {opacity:1, rotationY:0, perspective: 200});
+      TweenLite.to($(this), 1, {opacity:1, rotationY:0});
     }
   );
 
@@ -96,7 +94,7 @@ $( document ).ready(function() {
     $("li").removeClass("selected-link");
     $(this).addClass("selected-link");
     $("main").css("display", "none");
-    $("#snout").show();
+    $("#about").show();
 
     // hides menu when in mobile view
     $("nav ul").removeClass("show-nav-mobile");
