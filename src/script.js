@@ -166,8 +166,10 @@ $( document ).ready(function() {
 
     // Show nav in mobile view
     $("nav ul").toggleClass("show-nav-mobile");
+    TweenLite.to($("nav ul"), 0, {css:{"z-index":5, "translateZ":100}});
     TweenLite.from($("nav ul"), 0.8, {transformOrigin:"50% 50%", scaleX:0, scaleY:0, opacity:0.4, ease:Elastic.easeOut});
     TweenLite.from($("nav ul li"), 1, {perspective:300, rotationY:90});
+
   });
 });
 
