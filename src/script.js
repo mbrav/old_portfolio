@@ -2,20 +2,18 @@
 //created by Michael Braverman on April 16, 2016
 
 // initial animations
-TweenLite.to($('body'), 1.0, {opacity:1});
-TweenLite.from($('#title'), 1.5, {opacity:0.4, scale:3, left:200, delay:1,rotationZ:360, rotationY:360, perspective: 400});
-TweenLite.fromTo($('nav ul'), 1, {opacity:0, scaleX:0} ,{opacity:1, delay:1.0, scale:1});
-TweenLite.fromTo($('#slide-img'), 1, {opacity:0, scale:0} ,{opacity:1, rotationX:720, delay:2.0, scale:1});
-TweenLite.fromTo($('#nav-toggle-button'), 1, {opacity:0, scale:0} ,{opacity:1, rotationX:720, delay:2.0, scale:1});
-TweenLite.fromTo($('.img-caption'), 1, {opacity:0, scale:0} ,{opacity:1, delay:2.0, scale:1});
-TweenLite.fromTo($('.content'), 1, {opacity:0, scale:0} ,{opacity:1, delay:2.5, rotationY:360, scale:1});
-TweenLite.fromTo($('footer'), 1, {opacity:0, scale:0} ,{opacity:1, delay:2.5, scale:1});
+TweenLite.to($('body'), 0.7, {opacity:1});
+TweenLite.from($('#title'), 1.5, {opacity:0.4, scale:3, rotationZ:360, rotationY:360, perspective:200, delay:0.7, ease:Elastic.easeInOut});
+TweenLite.from($('nav ul'), 1.5, {opacity:0, scaleX:0, delay:1.0, ease:Elastic.easeInOut});
+TweenLite.from($('#slide-img'), 1.5, {opacity:0, scale:0, rotationX:360, delay:1.5, ease:Elastic.easeOut});
+TweenLite.from($('#nav-toggle-button'), 1.5, {opacity:0, scale:2, rotationX:720, delay:1.5, scale:0, ease:Elastic.easeInOut});
+TweenLite.from($('.img-caption'), 1.5, {opacity:0, scale:0, delay:1.5,ease:Elastic.easeIn});
+TweenLite.from($('.content'), 1.5, {opacity:0, scale:0, rotationY:180, delay:2.0, ease:Elastic.easeOut});
+TweenLite.from($('footer'), 1.5, {opacity:0, scale:0, delay:2.0});
 
 // on load
 $( document ).ready(function() {
-
   ////////////////////////// AJAX LOAD /////////////////////////////
-
   // ANY page click
   $(".page-link").click(function() {
     // hides menu when in mobile view
@@ -30,26 +28,24 @@ $( document ).ready(function() {
     pageTransition("main", "#about");
   });
 
+  // on page load, selected by default
+  $("#about-link").addClass("selected-link");
+
+  // PROJECT PAGE click
   $("#projects-link").click(function() {
     $("li").removeClass("selected-link");
     $(this).addClass("selected-link");
 
-    TweenLite.to($('main'), 1, {opacity:0, onComplete:next1});
-    function next1() {
-      TweenLite.to($('main'), 0, {css:{display:"none"}});
-      TweenLite.to($('#projects'), 0, {css:{display:"block"}, onComplete:reloadMasonry});
-      TweenLite.fromTo($('#projects'), 1, {opacity:0}, {opacity:1, rotationY:0, rotationX:0});
-    }
-
+    // load project grid
     reloadMasonry();
 
-    function reloadMasonry() {
-      // layout tiles using Masonry jQuery plugin
-      $("#project-grid").masonry({
-        itemSelector: '.grid-item',
-        columnWidth: '.grid-sizer',
-        percentagePosition: true
-      });
+    pageTransition("main", "#projects");
+
+    // fade out return text
+    TweenMax.to($('#return-to-projecs'), 1, {opacity:0, onComplete:next});
+    function next() {
+      // clear return text
+      $("#return-to-projecs").empty();
     }
   });
 
@@ -126,6 +122,10 @@ $( document ).ready(function() {
     // load page
     $("#ajax > .content").load(url);
     pageTransition("main", "#ajax");
+
+    // show and animatate return text
+    $("#return-to-projecs").html("back");
+    TweenMax.fromTo($('#return-to-projecs'), 0.7, {opacity:1, scale:2}, {opacity:0.5, scale:1, repeat:-1, yoyo:true});
   });
 
   /////////////////////// INDIVIDUAL ANIMATIONS ///////////////////////
@@ -155,63 +155,104 @@ $( document ).ready(function() {
     }
   );
 
+  // return to about page when clicked
+  $("#title").click(function() {
+    pageTransition("main", "#about");
+  });
+
   // mobile menu click animation
   $("#nav-toggle-button").click(function() {
-    TweenLite.fromTo($(this), 1.0, {rotationY:0, rotationX:0} ,{rotationY:360, rotationX:360});
+    TweenLite.from($(this), 1.0, {rotationY:180, rotationX:180});
 
     // Show nav in mobile view
     $("nav ul").toggleClass("show-nav-mobile");
+    TweenLite.from($("nav ul"), 0.8, {transformOrigin:"50% 50%", scaleX:0, scaleY:0, opacity:0.4, ease:Elastic.easeOut});
+    TweenLite.from($("nav ul li"), 1, {perspective:300, rotationY:90});
   });
-
 });
 
-// General page transition
-function pageTransition(_from, _to) {
-  TweenLite.to($(_from), 0.5, {opacity:0, rotationY:180, rotationX:180,  perspective:400, transformOrigin:"right 40% 100", onComplete:next1});
+// General page transitions
+function pageTransition(hide, show) {
+  TweenLite.to($(hide),  0.75, {opacity:0.5 , rotationY:90, transformPerspective:1000, transformOrigin:"right 0% 20%", onComplete:next1, ease:Power2.easeIn});
   function next1() {
-    TweenLite.set($(_from), {css:{display:"none"}});
-    TweenLite.set($(_to), {css:{display:"block"}});
+    TweenLite.set($(hide), {css:{display:"none"}});
 
-    TweenLite.from($(_to), 1, { rotationY:180, rotationX:180,  perspective:400, transformOrigin:"right 40% 100"});
-    TweenLite.to($(_to), 1, {opacity:1, rotationY:0, rotationX:0});
+    // exeption for PROJECTS PAGE
+    if (show == "#projects") {
+      TweenLite.to($('#projects'), 0, {css:{display:"block"}, onComplete:reloadMasonry});
+    } else {
+      TweenLite.set($(show), {css:{display:"block"}});
+    }
+
+    TweenLite.from($(show), 1, {transformOrigin:"left 0% 20%", rotationY:90});
+    TweenLite.to($(show), 1, {opacity:1, rotationY:0, ease:Elastic.easeOut});
   }
 }
 
+function reloadMasonry() {
+  // layout tiles using Masonry jQuery plugin
+  $("#project-grid").masonry({
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-sizer',
+    percentagePosition: true
+  });
+}
 /////////////////////////////////// MISC ///////////////////////////////////
+
+// var isMobile = false;
+// // check if mobile device
+//
+// if (isMobile) {
+//   $(".grid-description > a").show();
+//   $(".grid-description > span").show();
+// } else {
+//   $(".grid-description > a").hide();
+//   $(".grid-description > span").hide();
+//   $(".grid-description > a").hover(function() {
+//     $(this).show();
+//   });
+//   $(".grid-description > span").hover(function() {
+//     $(this).show();
+//   });
+// }
+
 
 // Project Metadata
 var projectData = [
     {
       'imgFile':'01.jpg',
-      'page':'intellect.html',
       'name':'Artificial Intellect Box',
+      'page':'intellect-box.html',
       'year': 2015,
     },
     {
       'imgFile':'01.jpg',
-      'page':'intellect.html',
       'name':'Artificial Intellect Box',
+      'page':'intellect-box.html',
       'year': 2015,
     },
     {
       'imgFile':'02.png',
-      'page':'utopia-tower.html',
       'name':'Infrastructural Utopia Tower',
+      'page':'utopia-tower.html',
       'year': 2016
     },
     {
       'imgFile':'03.png',
       'name':'infORM alpha',
+      'page':'inform.html',
       'year': 2016
     },
     {
       'imgFile':'04.jpg',
       'name':'Poem Maschine',
+      'page':'poem-maschine.html',
       'year': 2015
     },
     {
       'imgFile':'05.png',
       'name':'Emotion Cube',
+      'page':'emotion-cube.html',
       'year': 2015
     },
     {
@@ -223,11 +264,13 @@ var projectData = [
     {
       'imgFile':'07.png',
       'name':'Flowing Pagoda',
+      'page':'flowing-pagoda.html',
       'year': 2015
     },
     {
       'imgFile':'08.jpg',
       'name':'The Endevours Guide to The 21st Century',
+      'page':'endevour.html',
       'year': 2015
     }
 ];

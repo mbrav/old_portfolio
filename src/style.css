@@ -64,6 +64,11 @@ nav ul {
   text-decoration: none;
 }
 
+/*back to projects sign */
+span#return-to-projecs {
+  color: #B19881;
+}
+
 /*use in mobile only */
 #nav-toggle-button {
   display: none;
@@ -138,8 +143,8 @@ a {
   width: 100%;
   height: 200px;
   overflow: hidden;
-  position: relative;
   border-radius: 2px;
+  z-index: -1;
 }
 
 .crop-img img {
@@ -170,19 +175,16 @@ a {
 
 .grid-item span {
   color: #5A88CE;
-  display: none;
+  display: block;
 }
 
 .grid-item a {
   color: #9CBEF2;
-  display: none;
+  display: block;
 }
 
 .grid-item:hover {
   background-blend-mode: difference;
-}
-.grid-item:hover span, .grid-item:hover a {
-  display: block;
 }
 
 .grid-item--height2 {
@@ -279,8 +281,8 @@ canvas {
     text-decoration: underline;
     display: inline-block;
     position: fixed;
-    margin-top: 12px;
-    margin-right: 10px;
+    margin-top: 16px;
+    margin-right: 12px;
     right: 0;
     color: #5A88CE;
   }
@@ -290,16 +292,29 @@ canvas {
   the nav can only hidden be hidden in mobile view*/
   .show-nav-mobile {
     display: block;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    background-color: #F1F6FF;
   }
 
   nav ul {
     display: none;
     margin-top: 0;
+    padding-bottom: 8px;
   }
 
   nav ul li {
     padding-top: 4px;
     padding-bottom: 4px;
+    text-align: center;
+  }
+
+  .selected-link {
+    border-left: 5px solid #5A88CE;
+    border-right: 5px solid #5A88CE;
+    margin-left: 16px;
+    margin-right: 16px;
   }
 
   #title {
