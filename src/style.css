@@ -96,15 +96,13 @@ main {
   display: none;
 }
 
+.current-main {
+  display: block;
+}
+
 /*more width for projects */
 main#projects {
   max-width: 750px;
-}
-
-/*display about in the beginning*/
-/*a minor aid if javascript is disabled */
-main#about{
-  display: block;
 }
 
 /*general element styles */
@@ -144,7 +142,6 @@ a {
   height: 200px;
   overflow: hidden;
   border-radius: 2px;
-  z-index: -1;
 }
 
 .crop-img img {
@@ -278,13 +275,15 @@ canvas {
 
   /*show the nav toggle button*/
   #nav-toggle-button {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
+    font-weight: bold;
     display: inline-block;
     position: fixed;
     margin-top: 16px;
     margin-right: 12px;
     right: 0;
     color: #5A88CE;
+    z-index:5;
   }
 
   /*used to make sure that nav does not disapear
@@ -294,7 +293,6 @@ canvas {
     display: block;
     position: absolute;
     width: 100%;
-    z-index: 1;
     background-color: #F1F6FF;
   }
 

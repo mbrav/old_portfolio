@@ -14,11 +14,17 @@ TweenLite.from($('footer'), 1.5, {opacity:0, scale:0, delay:2.0});
 // on load
 $( document ).ready(function() {
   ////////////////////////// AJAX LOAD /////////////////////////////
+
   // ANY page click
   $(".page-link").click(function() {
     // hides menu when in mobile view
     $("nav ul").removeClass("show-nav-mobile");
   });
+
+  // show ABOUT PAGE on load
+  $("#about").addClass("current-main");
+  // on page load, selected by default
+  $("#about-link").addClass("selected-link");
 
   // ABOUT PAGE click
   $("#about-link").click(function() {
@@ -27,9 +33,6 @@ $( document ).ready(function() {
 
     pageTransition("main", "#about");
   });
-
-  // on page load, selected by default
-  $("#about-link").addClass("selected-link");
 
   // PROJECT PAGE click
   $("#projects-link").click(function() {
@@ -168,26 +171,42 @@ $( document ).ready(function() {
     $("nav ul").toggleClass("show-nav-mobile");
     TweenLite.to($("nav ul"), 0, {css:{"z-index":5, "translateZ":100}});
     TweenLite.from($("nav ul"), 0.8, {transformOrigin:"50% 50%", scaleX:0, scaleY:0, opacity:0.4, ease:Elastic.easeOut});
-    TweenLite.from($("nav ul li"), 1, {perspective:300, rotationY:90});
 
   });
 });
 
 // General page transitions
 function pageTransition(hide, show) {
-  TweenLite.to($(hide),  0.75, {opacity:0.5 , rotationY:90, transformPerspective:1000, transformOrigin:"right 0% 20%", onComplete:next1, ease:Power2.easeIn});
-  function next1() {
-    TweenLite.set($(hide), {css:{display:"none"}});
 
-    // exeption for PROJECTS PAGE
+  var ajaxExeption;
+  if ($("#ajax").hasClass("current-main")) {
+    // different animation when returning back from project view
+    TweenLite.to($(hide),  0.75, {opacity:0.5 , rotationY:90, transformPerspective:1000, transformOrigin:"left 0% 20%", onComplete:next1, ease:Power2.easeOut});
+    ajaxExeption = true;
+  } else {
+    // default animation for other elements
+    TweenLite.to($(hide),  0.75, {opacity:0.5 , rotationY:90, transformPerspective:1000, transformOrigin:"right 0% 20%", onComplete:next1, ease:Power2.easeIn});
+  }
+
+  function next1() {
+    $(hide).removeClass("current-main");
+    $(show).addClass("current-main");
+
     if (show == "#projects") {
-      TweenLite.to($('#projects'), 0, {css:{display:"block"}, onComplete:reloadMasonry});
-    } else {
-      TweenLite.set($(show), {css:{display:"block"}});
+      // reload tiles
+      reloadMasonry();
     }
 
-    TweenLite.from($(show), 1, {transformOrigin:"left 0% 20%", rotationY:90});
-    TweenLite.to($(show), 1, {opacity:1, rotationY:0, ease:Elastic.easeOut});
+    if(ajaxExeption) {
+      // different animation when returning back from project view
+      TweenLite.fromTo($(show), 1, {transformOrigin:"right 0% 20%", rotationY:90, transformPerspective:1200, opacity:0.5}, {rotationY:0, opacity:1, ease:Power2.easeOut});
+      ajaxExeption = false;
+    } else {
+      // default animation for other elements
+      TweenLite.from($(show), 1, {transformOrigin:"left 0% 20%", rotationY:90});
+      TweenLite.to($(show), 1, {opacity:1, rotationY:0, ease:Elastic.easeOut});
+    }
+
   }
 }
 
