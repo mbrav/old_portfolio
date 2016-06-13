@@ -13,12 +13,24 @@ TweenLite.from($('footer'), 1.5, {opacity:0, scale:0, delay:2.0});
 
 // on load
 $( document ).ready(function() {
-  ////////////////////////// AJAX LOAD /////////////////////////////
+  var windowWidth = $(window).width();
+  var windowHeight = $(window).height();
+  // update values on resize
+  $(window).resize(function() {
+    windowWidth = $(window).width();
+    windowHeight = $(window).height();
+    console.log(windowHeight);
+    console.log(windowWidth);
+  });
 
+  ////////////////////////// AJAX LOAD /////////////////////////////
   // ANY page click
   $(".page-link").click(function() {
     // hides menu when in mobile view
     $("nav ul").removeClass("show-nav-mobile");
+    // remove blur effect
+    $("main").removeClass("blur-effect");
+    $("footer").removeClass("blur-effect");
   });
 
   // show ABOUT PAGE on load
@@ -36,6 +48,11 @@ $( document ).ready(function() {
 
   // PROJECT PAGE click
   $("#projects-link").click(function() {
+    loadProjectPage();
+  });
+
+  // for navigable reference
+  function loadProjectPage() {
     $("li").removeClass("selected-link");
     $(this).addClass("selected-link");
 
@@ -50,7 +67,7 @@ $( document ).ready(function() {
       // clear return text
       $("#return-to-projecs").empty();
     }
-  });
+  }
 
   // GALLERY PAGE click
   $("#gallery-link").click(function() {
@@ -122,13 +139,17 @@ $( document ).ready(function() {
     event.preventDefault(); // ignore default link behaviour
     var url = this.href; // get link path
 
-    // load page
-    $("#ajax > .content").load(url);
-    pageTransition("main", "#ajax");
-
-    // show and animatate return text
+    // change nav button text for mobile
+    $("#nav-toggle-button").html("BACK");
+    // show and animate return text for non-mobile
     $("#return-to-projecs").html("back");
     TweenMax.fromTo($('#return-to-projecs'), 0.7, {opacity:1, scale:2}, {opacity:0.5, scale:1, repeat:-1, yoyo:true});
+
+    // load page
+    $("#ajax > .content").load(url, function(){
+      // wait before loaded
+      pageTransition("main", "#ajax");
+    });
   });
 
   /////////////////////// INDIVIDUAL ANIMATIONS ///////////////////////
@@ -165,13 +186,30 @@ $( document ).ready(function() {
 
   // mobile menu click animation
   $("#nav-toggle-button").click(function() {
+    var navUl = $("nav ul");
     TweenLite.from($(this), 1.0, {rotationY:180, rotationX:180});
 
-    // Show nav in mobile view
-    $("nav ul").toggleClass("show-nav-mobile");
-    TweenLite.to($("nav ul"), 0, {css:{"z-index":5, "translateZ":100}});
-    TweenLite.from($("nav ul"), 0.8, {transformOrigin:"50% 50%", scaleX:0, scaleY:0, opacity:0.4, ease:Elastic.easeOut});
+    // scroll to top of menu
+    $(window).scrollTop(0);
+    // add blur effect
+    $("main").toggleClass("blur-effect");
+    $("footer").toggleClass("blur-effect");
 
+    // if "project view" is the the current visible main
+    if ($("#ajax").hasClass("current-main")){
+      // load projects page
+      loadProjectPage();
+      // change nav button text back to MENU when done
+      $("#nav-toggle-button").html("MENU");
+      // remove blur effect
+      $("main").removeClass("blur-effect");
+      $("footer").removeClass("blur-effect");
+    } else {
+      // show navigation menu for mobile
+      navUl.toggleClass("show-nav-mobile");
+      TweenLite.to(navUl, 0, {css:{"z-index":5, "translateZ":100}});
+      TweenLite.from(navUl, 0.8, {transformOrigin:"50% 50%", scaleX:0, scaleY:0, opacity:0.4, ease:Elastic.easeOut});
+    }
   });
 });
 

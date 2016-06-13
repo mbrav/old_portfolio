@@ -155,28 +155,43 @@ a {
   color: grey;
 }
 
+.blur-effect {
+  filter: blur(4px);
+  -o-filter: blur(4px);
+  -ms-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -webkit-filter: blur(4px);
+}
+
 /*PROJECT TILE PAGE SETTINGS*/
 
 .grid-sizer, .grid-item {
-  padding: 10px;
-  margin: 1%;
-  border: 4px;
+  margin: 0.75%;
   border-radius: 6px;
-  background-color: #447C99;
+  background-color: #9CBEF2;
   float: left;
   width: 31%;
   height: 160px;
-  font-size: 26px;
-  text-align: center;
+  display: table;
 }
 
-.grid-item span {
-  color: #5A88CE;
-  display: block;
+.grid-description {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 8px;
+  border-radius: 6px;
+  background-color: rgba(0,0,0,0.5);
+  text-align: center;
 }
 
 .grid-item a {
   color: #9CBEF2;
+  display: block;
+  font-size: 20px;
+}
+
+.grid-item span {
+  color: white;
   display: block;
 }
 
@@ -184,6 +199,11 @@ a {
   background-blend-mode: difference;
 }
 
+.grid-item:hover .grid-description{
+  background-color: rgba(0,0,0,1);
+}
+
+/*mansory settings */
 .grid-item--height2 {
   height: 240px;
 }
@@ -260,11 +280,14 @@ canvas {
   }
 
   #title {
-    margin: 10px;
+    margin: 8px;
+    margin-bottom: 2px;
   }
 
   #title h1 {
-    margin-bottom: 0;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin-bottom: 6px;
   }
 
   /*full width and no more stress*/
@@ -279,7 +302,7 @@ canvas {
     font-weight: bold;
     display: inline-block;
     position: fixed;
-    margin-top: 16px;
+    margin-top: 20px;
     margin-right: 12px;
     right: 0;
     color: #5A88CE;
@@ -293,26 +316,30 @@ canvas {
     display: block;
     position: absolute;
     width: 100%;
-    background-color: #F1F6FF;
+    background-color: #DAE4F3;
+    border-radius: 4px;
+    padding-top: 8px;
   }
 
   nav ul {
     display: none;
     margin-top: 0;
-    padding-bottom: 8px;
+    padding-bottom: 12px;
+    opacity: 0.9;
   }
 
   nav ul li {
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     text-align: center;
+    font-size: 110%;
   }
 
   .selected-link {
     border-left: 5px solid #5A88CE;
     border-right: 5px solid #5A88CE;
-    margin-left: 16px;
-    margin-right: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   #title {
@@ -330,7 +357,7 @@ canvas {
   }
 
   .content {
-    margin: 12px;
+    margin: 8px;
   }
 
   /*truncate part of the gpg fingerprint*/
