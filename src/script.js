@@ -216,10 +216,11 @@ $( document ).ready(function() {
 // General page transitions
 function pageTransition(hide, show) {
 
-  var ajaxExeption;
-  if ($("#ajax").hasClass("current-main")) {
-    // different animation when returning back from project view
-    TweenLite.to($(hide),  0.75, {opacity:0.5 , rotationY:90, transformPerspective:1000, transformOrigin:"left 0% 20%", onComplete:next1, ease:Power2.easeOut});
+  // HIDE exeptions
+  var ajaxExeption = false;
+  if ($("#ajax").hasClass("current-main") && show == "#projects") {
+    // different animation when returning FROM project view
+    TweenLite.to($(hide), 0.75, {opacity:0.5 , rotationY:-90, transformPerspective:1000, transformOrigin:"right 0% 20%", onComplete:next1, ease:Power2.easeIn});
     ajaxExeption = true;
   } else {
     // default animation for other elements
@@ -230,6 +231,7 @@ function pageTransition(hide, show) {
     $(hide).removeClass("current-main");
     $(show).addClass("current-main");
 
+    // SHOW exeptions
     if (show == "#projects") {
       // reload tiles
       reloadMasonry();
@@ -240,11 +242,18 @@ function pageTransition(hide, show) {
       TweenLite.fromTo($(show), 1, {transformOrigin:"right 0% 20%", rotationY:90, transformPerspective:1200, opacity:0.5}, {rotationY:0, opacity:1, ease:Power2.easeOut});
       ajaxExeption = false;
     } else {
-      // default animation for other elements
-      TweenLite.from($(show), 1, {transformOrigin:"left 0% 20%", rotationY:90});
-      TweenLite.to($(show), 1, {opacity:1, rotationY:0, ease:Elastic.easeOut});
+      // SHOW exeptions
+      if (show == "#ajax") {
+        // different animation when going INTO project view
+        TweenLite.from($(show), 1, {transformOrigin:"left 0% 20%", rotationY:90});
+        TweenLite.to($(show), 1, {opacity:1, rotationY:0, ease:Power3.easeOut});
+      }
+      // DEFAULT
+      else {
+        TweenLite.from($(show), 1, {transformOrigin:"left 0% 20%", rotationY:90});
+        TweenLite.to($(show), 1, {opacity:1, rotationY:0, ease:Elastic.easeOut});
+      }
     }
-
   }
 }
 
