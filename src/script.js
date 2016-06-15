@@ -13,6 +13,7 @@ TweenLite.from($('footer'), 1.5, {opacity:0, scale:0, delay:2.0});
 
 // on load
 $( document ).ready(function() {
+  // get window dimensions
   var windowWidth = $(window).width();
   var windowHeight = $(window).height();
   // update values on resize
@@ -33,25 +34,18 @@ $( document ).ready(function() {
     $("footer").removeClass("blur-effect");
   });
 
-  // show ABOUT PAGE on load
-  $("#about").addClass("current-main");
-  // on page load, selected by default
-  $("#about-link").addClass("selected-link");
-
   // ABOUT PAGE click
-  $("#about-link").click(function() {
+  function loadAboutPage() {
     $("li").removeClass("selected-link");
     $(this).addClass("selected-link");
 
     pageTransition("main", "#about");
+  }
+  $("#about-link").click(function() {
+    loadAboutPage();
   });
 
   // PROJECT PAGE click
-  $("#projects-link").click(function() {
-    loadProjectPage();
-  });
-
-  // for navigable reference
   function loadProjectPage() {
     $("li").removeClass("selected-link");
     $(this).addClass("selected-link");
@@ -68,29 +62,41 @@ $( document ).ready(function() {
       $("#return-to-projecs").empty();
     }
   }
+  $("#projects-link").click(function() {
+    loadProjectPage();
+  });
 
   // GALLERY PAGE click
-  $("#gallery-link").click(function() {
+  function loadGalleryPage() {
     $("li").removeClass("selected-link");
     $(this).addClass("selected-link");
 
     pageTransition("main", "#gallery");
+  }
+  $("#gallery-link").click(function() {
+    loadGalleryPage();
   });
 
   // RESUME PAGE click
-  $("#resume-link").click(function() {
+  function loadResumePage() {
     $("li").removeClass("selected-link");
     $(this).addClass("selected-link");
 
     pageTransition("main", "#resume");
+  }
+  $("#resume-link").click(function() {
+    loadResumePage();
   });
 
   // CONTACT PAGE click
-  $("#contact-link").click(function() {
+  function loadContactPage() {
     $("li").removeClass("selected-link");
     $(this).addClass("selected-link");
 
     pageTransition("main", "#contact");
+  }
+  $("#contact-link").click(function() {
+    loadContactPage();
   });
 
   // Generate project links for PROJECT PAGE
@@ -147,10 +153,87 @@ $( document ).ready(function() {
 
     // load page
     $("#ajax > .content").load(url, function(){
+      // scroll to top of menu
+      $(window).scrollTop(0);
       // wait before loaded
       pageTransition("main", "#ajax");
     });
   });
+
+
+  checkHash();
+  // check if user presses back in history
+  $(window).on('hashchange', function(){
+    checkHash();
+  });
+  // open window based on hash
+  function checkHash() {
+    // open pages on load based on the url hash
+    switch (window.location.hash) {
+      case "#about":
+      loadAboutPage();
+      break;
+      case "#gallery":
+      loadGalleryPage();
+      break;
+      case "#projects":
+      loadProjectPage();
+      break;
+      case "#resume":
+      loadResumePage();
+      break;
+      case "#contact":
+      loadContactPage();
+      break;
+      default:
+      // default home page
+      loadAboutPage();
+      break;
+    }
+  }
+
+  // General page transitions
+  function pageTransition(hide, show) {
+    // HIDE exeptions
+    var ajaxExeption = false;
+    if ($("#ajax").hasClass("current-main") && show == "#projects") {
+      // different animation when returning FROM project view
+      TweenLite.to($(hide), 0.75, {opacity:0.5 , rotationY:-90, transformPerspective:1000, transformOrigin:"right 0% 20%", onComplete:next1, ease:Power2.easeIn});
+      ajaxExeption = true;
+    } else {
+      // default animation for other elements
+      TweenLite.to($(hide),  0.75, {opacity:0.5 , rotationY:90, transformPerspective:1000, transformOrigin:"right 0% 20%", onComplete:next1, ease:Power2.easeIn});
+    }
+
+    function next1() {
+      $(hide).removeClass("current-main");
+      $(show).addClass("current-main");
+
+      // SHOW exeptions
+      if (show == "#projects") {
+        // reload tiles
+        reloadMasonry();
+      }
+
+      if(ajaxExeption) {
+        // different animation when returning back from project view
+        TweenLite.fromTo($(show), 1, {transformOrigin:"right 0% 20%", rotationY:90, transformPerspective:1200, opacity:0.5}, {rotationY:0, opacity:1, ease:Power2.easeOut});
+        ajaxExeption = false;
+      } else {
+        // SHOW exeptions
+        if (show == "#ajax") {
+          // different animation when going INTO project view
+          TweenLite.from($(show), 1, {transformOrigin:"left 0% 20%", rotationY:90});
+          TweenLite.to($(show), 1, {opacity:1, rotationY:0, ease:Power3.easeOut});
+        }
+        // DEFAULT
+        else {
+          TweenLite.from($(show), 1, {transformOrigin:"left 0% 20%", rotationY:90});
+          TweenLite.to($(show), 1, {opacity:1, rotationY:0, ease:Elastic.easeOut});
+        }
+      }
+    }
+  }
 
   /////////////////////// INDIVIDUAL ANIMATIONS ///////////////////////
 
@@ -213,50 +296,6 @@ $( document ).ready(function() {
   });
 });
 
-// General page transitions
-function pageTransition(hide, show) {
-
-  // HIDE exeptions
-  var ajaxExeption = false;
-  if ($("#ajax").hasClass("current-main") && show == "#projects") {
-    // different animation when returning FROM project view
-    TweenLite.to($(hide), 0.75, {opacity:0.5 , rotationY:-90, transformPerspective:1000, transformOrigin:"right 0% 20%", onComplete:next1, ease:Power2.easeIn});
-    ajaxExeption = true;
-  } else {
-    // default animation for other elements
-    TweenLite.to($(hide),  0.75, {opacity:0.5 , rotationY:90, transformPerspective:1000, transformOrigin:"right 0% 20%", onComplete:next1, ease:Power2.easeIn});
-  }
-
-  function next1() {
-    $(hide).removeClass("current-main");
-    $(show).addClass("current-main");
-
-    // SHOW exeptions
-    if (show == "#projects") {
-      // reload tiles
-      reloadMasonry();
-    }
-
-    if(ajaxExeption) {
-      // different animation when returning back from project view
-      TweenLite.fromTo($(show), 1, {transformOrigin:"right 0% 20%", rotationY:90, transformPerspective:1200, opacity:0.5}, {rotationY:0, opacity:1, ease:Power2.easeOut});
-      ajaxExeption = false;
-    } else {
-      // SHOW exeptions
-      if (show == "#ajax") {
-        // different animation when going INTO project view
-        TweenLite.from($(show), 1, {transformOrigin:"left 0% 20%", rotationY:90});
-        TweenLite.to($(show), 1, {opacity:1, rotationY:0, ease:Power3.easeOut});
-      }
-      // DEFAULT
-      else {
-        TweenLite.from($(show), 1, {transformOrigin:"left 0% 20%", rotationY:90});
-        TweenLite.to($(show), 1, {opacity:1, rotationY:0, ease:Elastic.easeOut});
-      }
-    }
-  }
-}
-
 function reloadMasonry() {
   // layout tiles using Masonry jQuery plugin
   $("#project-grid").masonry({
@@ -295,8 +334,8 @@ var projectData = [
     },
     {
       'imgFile':'01.jpg',
-      'name':'Artificial Intellect Box',
-      'page':'intellect-box.html',
+      'name':'Artificial Personality Box',
+      'page':'personality-box.html',
       'year': 2015,
     },
     {
