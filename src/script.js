@@ -237,6 +237,8 @@ $( document ).ready(function() {
 
   /////////////////////// INDIVIDUAL ANIMATIONS ///////////////////////
 
+  // change image on load
+  changeImg();
   // change image slide on click
   $("#slide-img").click(function() {
     changeImg();
@@ -270,7 +272,7 @@ $( document ).ready(function() {
   // mobile menu click animation
   $("#nav-toggle-button").click(function() {
     var navUl = $("nav ul");
-    TweenLite.from($(this), 1.0, {rotationY:180, rotationX:180});
+    TweenLite.fromTo($(this), 0.7, {rotationY:180, rotationX:180}, {rotationY:0, rotationX:0});
 
     // scroll to top of menu
     $(window).scrollTop(0);
@@ -328,8 +330,8 @@ function reloadMasonry() {
 var projectData = [
     {
       'imgFile':'01.jpg',
-      'name':'Artificial Intellect Box',
-      'page':'intellect-box.html',
+      'name':'Artificial Personality Boxx',
+      'page':'personality-box.html',
       'year': 2015,
     },
     {
