@@ -1,21 +1,24 @@
-//Eccentric Waves
-//created by Michael Braverman on June 1st, 2016
-var x = 100;
-var y = 100;
+// three.js reated June 1st, 2016
 
-var xDiff;
-var yDiff;
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-var randomX;
-var randomY;
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
 
-function setup() {
-    createCanvas(windowWidth,windowHeight);
-    frameRate(10);
-    background(191,183,159);
-    noStroke();
+var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+var cube = new THREE.Mesh( geometry, material );
+scene.add( cube );
+
+camera.position.z = 5;
+
+function render() {
+	requestAnimationFrame( render );
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.03;
+  cube.rotation.z += 0.02;
+  renderer.render( scene, camera );
 }
-
-function draw() {
-  background(191,183,159);
-}
+render();

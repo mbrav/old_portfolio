@@ -381,17 +381,32 @@ var projectData = [
       'name':'The Endevours Guide to The 21st Century',
       'page':'endevour.html',
       'year': 2015
+    },
+    {
+      'name':'Data Poetics',
+      'page':'js-experiments.html',
+      'year': 2016
     }
 ];
 
-// Randomize the sequence of photos
-var imageIndex = Math.floor(Math.random() * projectData.length);
 // Slide image change function
+var previousIndex;
+var imageIndex;
 function changeImg() {
-  imageIndex = (imageIndex + 1) % (projectData.length);
+  previousIndex = imageIndex;
+  // Randomize the sequence of photos
+  imageIndex = (Math.floor(Math.random() * projectData.length) + 1) % (projectData.length);
+
+  if (previousIndex == null) {
+    previousIndex = imageIndex;
+  }
+
   var imgText = projectData[imageIndex]["name"] + " (" + projectData[imageIndex]["year"]  + ")";
 
-  $("#slide-img > img")
+  $("#slide-img > img#previous-slide")
+  .attr('src', "src/img/" + projectData[previousIndex]["imgFile"])
+  .attr('alt', imgText);
+  $("#slide-img > img#current-slide")
     .attr('src', "src/img/" + projectData[imageIndex]["imgFile"])
     .attr('alt', imgText);
   $(".img-caption").text(imgText);
