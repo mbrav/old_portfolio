@@ -7,7 +7,7 @@ TweenLite.from($('#title'), 1.5, {opacity:0.4, scale:3, rotationZ:360, rotationY
 TweenLite.from($('nav ul'), 1.5, {opacity:0, scaleX:0, delay:1.0, ease:Elastic.easeInOut});
 TweenLite.from($('#slide-img'), 1.5, {opacity:0, scale:0, rotationX:360, delay:1.5, ease:Elastic.easeOut});
 TweenLite.from($('#nav-toggle-button'), 1.5, {opacity:0, scale:2, rotationX:720, delay:1.5, scale:0, ease:Elastic.easeInOut});
-TweenLite.from($('.img-caption'), 1.5, {opacity:0, scale:0, delay:1.5,ease:Elastic.easeIn});
+TweenLite.from($('.img-caption'), 1.5, {opacity:0, scale:0, delay:1,ease:Elastic.easeIn});
 TweenLite.from($('.content'), 1.5, {opacity:0, scale:0, rotationY:180, delay:2.0, ease:Elastic.easeOut});
 TweenLite.from($('footer'), 1.5, {opacity:0, scale:0, delay:2.0});
 
@@ -20,8 +20,6 @@ $( document ).ready(function() {
   $(window).resize(function() {
     windowWidth = $(window).width();
     windowHeight = $(window).height();
-    console.log(windowHeight);
-    console.log(windowWidth);
   });
 
   ////////////////////////// AJAX LOAD /////////////////////////////
@@ -244,6 +242,11 @@ $( document ).ready(function() {
     changeImg();
   })
 
+  // change slide every 4 seconds
+  setInterval(function(){
+    changeImg(1000);
+  }, 5000);
+
   // cool nav select effect
   $(".page-link").hover(
     function() {
@@ -329,10 +332,10 @@ function reloadMasonry() {
 // Project Metadata
 var projectData = [
     {
-      'imgFile':'01.jpg',
-      'name':'Artificial Personality Boxx',
-      'page':'personality-box.html',
-      'year': 2015,
+      'imgFile':'02.png',
+      'name':'Infrastructural Utopia Towerr',
+      'page':'utopia-tower.html',
+      'year': 2016
     },
     {
       'imgFile':'01.jpg',
@@ -384,32 +387,54 @@ var projectData = [
     },
     {
       'name':'Data Poetics',
-      'page':'js-experiments.html',
+      'page':'data-poetics.html',
+      'year': 2016
+    },
+    {
+      'name':'Stardust Music Composer',
+      'page':'stardust-composer.html',
       'year': 2016
     }
 ];
 
-// Slide image change function
 var previousIndex;
 var imageIndex;
-function changeImg() {
-  previousIndex = imageIndex;
+function changeImg(time) {
   // Randomize the sequence of photos
-  imageIndex = (Math.floor(Math.random() * projectData.length) + 1) % (projectData.length);
-
+  previousIndex = imageIndex;
+  // on start
   if (previousIndex == null) {
-    previousIndex = imageIndex;
+    imageIndex = (Math.floor(Math.random() * projectData.length) + 1) % (projectData.length);
+  }
+
+  // next image until it is different
+  // avoids duplicates and project without images
+  while (previousIndex == imageIndex || projectData[imageIndex]["imgFile"] == null || imageIndex == 0) {
+    imageIndex++;
+    imageIndex = (imageIndex + 1) % projectData.length;
   }
 
   var imgText = projectData[imageIndex]["name"] + " (" + projectData[imageIndex]["year"]  + ")";
 
-  $("#slide-img > img#previous-slide")
-  .attr('src', "src/img/" + projectData[previousIndex]["imgFile"])
-  .attr('alt', imgText);
-  $("#slide-img > img#current-slide")
-    .attr('src', "src/img/" + projectData[imageIndex]["imgFile"])
-    .attr('alt', imgText);
-  $(".img-caption").text(imgText);
+  var slideImg = $("#slide-img > img");
+  var imgCaption = $(".img-caption");
+  if (time == null || time == 0) {
+    slideImg
+      .attr('src', "src/img/" + projectData[imageIndex]["imgFile"])
+      .attr('alt', imgText);
+    imgCaption.text(imgText);
+  } else {
+    TweenLite.to(slideImg, (time/1000)/2, {opacity:0, ease:Power2.easeIn, onComplete:next});
+    TweenLite.to(imgCaption, (time/1000)/2, {opacity:0, ease:Power2.easeIn, onComplete:next});
+    function next() {
+      slideImg
+        .attr('src', "src/img/" + projectData[imageIndex]["imgFile"])
+        .attr('alt', imgText);
+      imgCaption.text(imgText);
+      TweenLite.to(slideImg, (time/1000)/2, {opacity:1, ease:Power2.easeIn});
+      TweenLite.to(imgCaption, (time/1000)/2, {opacity:1, ease:Power2.easeIn});
+    }
+  }
 }
 
 // Iluminati-conspiracy-surveilance Google Analytics script

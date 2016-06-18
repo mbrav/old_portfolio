@@ -147,10 +147,11 @@ a {
 .crop-img img {
   visibility: visible;
   width: 100%;
+  /*background-blend-mode: lighten;*/
 }
 
 .img-caption {
-  margin: 6px;
+  margin-top: 8px;
   text-align: right;
   color: grey;
 }
@@ -197,10 +198,6 @@ a {
 
 .grid-item:hover {
   background-blend-mode: difference;
-}
-
-.grid-item:hover .grid-description{
-  background-color: rgba(0,0,0,1);
 }
 
 /*mansory settings */
