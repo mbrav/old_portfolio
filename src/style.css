@@ -12,9 +12,6 @@ body {
   background: #F1F6FF;
   margin: 0;
   padding: 30px;
-  /*for footer */
-  margin-bottom: 50px;
-  padding-bottom: 50px;
 }
 
 /*TITLES*/
@@ -217,24 +214,6 @@ iframe {
   height: 200px;
 }
 
-/*hi, I'm footer, I like acting like a d**k. */
-footer {
-  position: fixed;
-  bottom: 0;
-  height: 50px;
-  background-color: #F1F6FF;
-  width: 100%;
-}
-
-footer p {
-  left: 190px;
-  text-align: left;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-}
-
 /*for background canvas */
 /*NOT USED */
 canvas {
@@ -272,8 +251,6 @@ canvas {
 @media screen and (max-width: 650px) {
   body {
     padding: 0;
-    padding-bottom: 50px;
-    margin-bottom: 50px;
   }
 
   #title {
@@ -363,6 +340,12 @@ canvas {
   }
 
   footer {
-    height: 30px;
+    background-color: #B3C3DC;
+    height: 70px;
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  footer div {
   }
 }

@@ -1,15 +1,23 @@
 //Portfolio Site
 //created by Michael Braverman on April 16, 2016
 
-// initial animations
-TweenLite.to($('body'), 0.7, {opacity:1});
-TweenLite.from($('#title'), 1.5, {opacity:0.4, scale:3, rotationZ:360, rotationY:360, perspective:200, delay:0.7, ease:Elastic.easeInOut});
-TweenLite.from($('nav ul'), 1.5, {opacity:0, scaleX:0, delay:1.0, ease:Elastic.easeInOut});
-TweenLite.from($('#slide-img'), 1.5, {opacity:0, scale:0, rotationX:360, delay:1.5, ease:Elastic.easeOut});
-TweenLite.from($('#nav-toggle-button'), 1.5, {opacity:0, scale:2, rotationX:720, delay:1.5, scale:0, ease:Elastic.easeInOut});
-TweenLite.from($('.img-caption'), 1.5, {opacity:0, scale:0, delay:1,ease:Elastic.easeIn});
-TweenLite.from($('.content'), 1.5, {opacity:0, scale:0, rotationY:180, delay:2.0, ease:Elastic.easeOut});
-TweenLite.from($('footer'), 1.5, {opacity:0, scale:0, delay:2.0});
+// welcome animations
+if(!window.location.hash){
+  TweenLite.to($('body'), 0.7, {opacity:1});
+  TweenLite.from($('#title'), 1.5, {opacity:0.4, scale:3, rotationZ:360, rotationY:360, perspective:200, delay:0.7, ease:Elastic.easeInOut});
+  TweenLite.from($('nav ul'), 1.5, {opacity:0, scaleX:0, delay:1.0, transformOrigin:"left", ease:Elastic.easeInOut});
+  TweenLite.from($('#slide-img'), 1.5, {opacity:0, scale:0, rotationX:360, delay:1.5, ease:Elastic.easeOut});
+  TweenLite.from($('#nav-toggle-button'), 1.5, {opacity:0, scale:2, rotationX:720, delay:1.5, scale:0, ease:Elastic.easeInOut});
+  TweenLite.from($('.img-caption'), 1.5, {opacity:0, scale:0, delay:1,ease:Elastic.easeIn});
+  TweenLite.from($('.content'), 1.5, {opacity:0, scale:0, rotationY:180, delay:2.0, ease:Elastic.easeOut});
+  TweenLite.from($('footer'), 1.5, {opacity:0, scale:0, delay:2.0});
+} else {
+  // when something other than home is specified
+  TweenLite.to($('body'), 0, {opacity:1});
+  TweenLite.from($('#title'), 1, {opacity:0});
+  TweenLite.from($('nav ul'), 1, {opacity:0, transformOrigin:"left", scaleX:0, ease:Elastic.easeInOut});
+  TweenLite.from($('footer'), 0.5, {opacity:0, scale:0, delay:1});
+}
 
 // on load
 $( document ).ready(function() {
@@ -30,6 +38,9 @@ $( document ).ready(function() {
     // remove blur effect
     $("main").removeClass("blur-effect");
     $("footer").removeClass("blur-effect");
+
+    // remove the lock on the slide
+    slideLock = false;
   });
 
   // ABOUT PAGE click
@@ -240,11 +251,15 @@ $( document ).ready(function() {
   // change image slide on click
   $("#slide-img").click(function() {
     changeImg();
+    slideLock = true;
   })
 
+  var slideLock = false;
   // change slide every 4 seconds
   setInterval(function(){
-    changeImg(1000);
+    if (!slideLock) {
+      changeImg(1000);
+    }
   }, 5000);
 
   // cool nav select effect
@@ -436,6 +451,14 @@ function changeImg(time) {
     }
   }
 }
+
+// Glitch effects
+// setInterval(function(){
+//   var length = Math.floor(Math.random() * projectData.length;
+//   if (!slideLock) {
+//     changeImg(1000);
+//   }
+// }, 8000);
 
 // Iluminati-conspiracy-surveilance Google Analytics script
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
