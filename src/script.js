@@ -152,14 +152,14 @@ $( document ).ready(function() {
   }
 
   // Generate Media for Gallery PAGE
-  // CONTACT PAGE click
+  var j = 0;
   for (var i in mediaData) {
-    if(mediaData[i]["type"] == "project"){
+    if(mediaData[i]["type"] != "project"){
       $("#gallery-grid").append(
-        $("<div>").attr("id","project-" + i).addClass(function(){
+        $("<div>").attr("id","media-" + j).addClass(function(){
           // set first element to grid-sizer
           // needed for responsive Masonry grid
-          if( i == 0){
+          if( j == 0){
             return "grid-sizer";
           } else {
             return "grid-item";
@@ -167,7 +167,7 @@ $( document ).ready(function() {
         })
         // make a tall tile every other 3 tiles
         .addClass(function(){
-          if ( i % 2 == 0 && i !=0) {
+          if ( j % 2 == 0 && j !=0) {
             return "grid-item--height2";
           } else {
             return null;
@@ -175,11 +175,12 @@ $( document ).ready(function() {
         })
         // project image in the background
         .css({
-          "background-image" : "url(src/img/" + mediaData[i]["imgFile"] + ")",
+          "background-image" : "url(" + mediaData[i]["tumbnail"] + ")",
           "background-size" : "cover",
           "background-position" : "center"
         })
       );
+      j++;
     }
   }
 
@@ -454,6 +455,34 @@ var mediaData = [
       'name':'Stardust Music Composer',
       'page':'stardust-composer.html',
       'year': 2016
+    },
+    {
+      'type':'photo',
+      'name':'Unconditional Gratitude',
+      'tumbnail':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5.jpg',
+      'imgFile':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5_b.jpg',
+      'year': 2016
+    },
+    {
+      'type':'photo',
+      'name':'Unconditional Gratitude',
+      'tumbnail':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5.jpg',
+      'imgFile':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5_b.jpg',
+      'year': 2016
+    },
+    {
+      'type':'photo',
+      'name':'Venice In Detail',
+      'tumbnail':'https://c1.staticflickr.com/1/583/21344021219_536a380f88.jpg',
+      'imgFile':'https://c1.staticflickr.com/1/583/21344021219_536a380f88_b.jpg',
+      'year': 2016
+    },
+    {
+      'type':'photo',
+      'name':'Sea Wonder',
+      'tumbnail':'https://c1.staticflickr.com/1/663/21519790602_db05c34eac.jpg',
+      'imgFile':'https://c1.staticflickr.com/1/663/21519790602_db05c34eac_b.jpg',
+      'year': 2016
     }
 ];
 
@@ -468,20 +497,29 @@ function changeImg(time) {
   }
 
   // next image until it is different
-  // avoids duplicates and project without images
+  // avoids duplicates and projects without images
   while (previousIndex == imageIndex || mediaData[imageIndex]["imgFile"] == null || imageIndex == 0) {
     imageIndex++;
     imageIndex = (imageIndex + 1) % mediaData.length;
   }
+
+  console.log(imageIndex);
 
   var imgText = mediaData[imageIndex]["name"] + " (" + mediaData[imageIndex]["year"]  + ")";
 
   var slideImg = $("#slide-img > img");
   var imgCaption = $(".img-caption");
   if (time == null || time == 0) {
-    slideImg
+    // different image location for various types
+    if (mediaData[imageIndex]["type"] == "project") {
+      slideImg
       .attr('src', "src/img/" + mediaData[imageIndex]["imgFile"])
       .attr('alt', imgText);
+    } else {
+      slideImg
+      .attr('src', mediaData[imageIndex]["tumbnail"])
+      .attr('alt', imgText);
+    }
     imgCaption.text(imgText);
   } else {
     TweenLite.to(slideImg, (time/1000)/2, {opacity:0, ease:Power2.easeIn, onComplete:next});
