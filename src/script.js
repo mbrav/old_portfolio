@@ -109,44 +109,78 @@ $( document ).ready(function() {
   });
 
   // Generate project links for PROJECT PAGE
-  for (var i in projectData) {
-    $("#project-grid").append(
-      $("<div>").attr("id","project-" + i).addClass(function(){
-        // set first element to grid-sizer
-        // needed for responsive Masonry grid
-        if( i == 0){
-          return "grid-sizer";
-        } else {
-          return "grid-item";
-        }
-      })
-      // make a tall tile every other 3 tiles
-      .addClass(function(){
-        if ( i % 2 == 0 && i !=0) {
-          return "grid-item--height2";
-        } else {
-          return null;
-        }
-      })
-      // project image in the background
-      .css({
-        "background-image" : "url(src/img/" + projectData[i]["imgFile"] + ")",
-        "background-size" : "cover",
-        "background-position" : "center"
-      })
-      // content that goes inside each grid element
-      .append(
-        $("<div>").addClass("grid-description").append(
-          // link to project
-          $("<a>", {
-            href : "/pages/" + projectData[i]["page"],
-            text : projectData[i]["name"]
-          }),
-          // span same level as <a>
-          $("<span>", {text : projectData[i]["year"]})
+  for (var i in mediaData) {
+    if(mediaData[i]["type"] == "project"){
+      $("#project-grid").append(
+        $("<div>").attr("id","project-" + i).addClass(function(){
+          // set first element to grid-sizer
+          // needed for responsive Masonry grid
+          if( i == 0){
+            return "grid-sizer";
+          } else {
+            return "grid-item";
+          }
+        })
+        // make a tall tile every other 3 tiles
+        .addClass(function(){
+          if ( i % 2 == 0 && i !=0) {
+            return "grid-item--height2";
+          } else {
+            return null;
+          }
+        })
+        // project image in the background
+        .css({
+          "background-image" : "url(src/img/" + mediaData[i]["imgFile"] + ")",
+          "background-size" : "cover",
+          "background-position" : "center"
+        })
+        // content that goes inside each grid element
+        .append(
+          $("<div>").addClass("grid-description").append(
+            // link to project
+            $("<a>", {
+              href : "/pages/" + mediaData[i]["page"],
+              text : mediaData[i]["name"]
+            }),
+            // span same level as <a>
+            $("<span>", {text : mediaData[i]["year"]})
+          )
         )
-      )
-    );
+      );
+    }
+  }
+
+  // Generate Media for Gallery PAGE
+  // CONTACT PAGE click
+  for (var i in mediaData) {
+    if(mediaData[i]["type"] == "project"){
+      $("#gallery-grid").append(
+        $("<div>").attr("id","project-" + i).addClass(function(){
+          // set first element to grid-sizer
+          // needed for responsive Masonry grid
+          if( i == 0){
+            return "grid-sizer";
+          } else {
+            return "grid-item";
+          }
+        })
+        // make a tall tile every other 3 tiles
+        .addClass(function(){
+          if ( i % 2 == 0 && i !=0) {
+            return "grid-item--height2";
+          } else {
+            return null;
+          }
+        })
+        // project image in the background
+        .css({
+          "background-image" : "url(src/img/" + mediaData[i]["imgFile"] + ")",
+          "background-size" : "cover",
+          "background-position" : "center"
+        })
+      );
+    }
   }
 
   // On project link click load AJAX
@@ -219,7 +253,7 @@ $( document ).ready(function() {
       $(show).addClass("current-main");
 
       // SHOW exeptions
-      if (show == "#projects") {
+      if (show == "#projects" || show == "#gallery") {
         // reload tiles
         reloadMasonry();
       }
@@ -318,7 +352,7 @@ $( document ).ready(function() {
 
 function reloadMasonry() {
   // layout tiles using Masonry jQuery plugin
-  $("#project-grid").masonry({
+  $(".tile-grid").masonry({
     itemSelector: '.grid-item',
     columnWidth: '.grid-sizer',
     percentagePosition: true
@@ -345,67 +379,78 @@ function reloadMasonry() {
 
 
 // Project Metadata
-var projectData = [
+var mediaData = [
     {
+      'type':'project',
       'imgFile':'02.png',
       'name':'Infrastructural Utopia Towerr',
       'page':'utopia-tower.html',
       'year': 2016
     },
     {
+      'type':'project',
       'imgFile':'01.jpg',
       'name':'Artificial Personality Box',
       'page':'personality-box.html',
       'year': 2015,
     },
     {
+      'type':'project',
       'imgFile':'02.png',
       'name':'Infrastructural Utopia Tower',
       'page':'utopia-tower.html',
       'year': 2016
     },
     {
+      'type':'project',
       'imgFile':'03.png',
       'name':'infORM alpha',
       'page':'inform.html',
       'year': 2016
     },
     {
+      'type':'project',
       'imgFile':'04.jpg',
       'name':'Poem Maschine',
       'page':'poem-maschine.html',
       'year': 2015
     },
     {
+      'type':'project',
       'imgFile':'05.png',
       'name':'Emotion Cube',
       'page':'emotion-cube.html',
       'year': 2015
     },
     {
+      'type':'project',
       'imgFile':'06.png',
       'name':'Multiverse Clockwork',
       'page':'multiverse-clockwork.html',
       'year': 2016
     },
     {
+      'type':'project',
       'imgFile':'07.png',
       'name':'Flowing Pagoda',
       'page':'flowing-pagoda.html',
       'year': 2015
     },
     {
+      'type':'project',
       'imgFile':'08.jpg',
       'name':'The Endevours Guide to The 21st Century',
       'page':'endevour.html',
       'year': 2015
     },
     {
+      'type':'project',
       'name':'Data Poetics',
       'page':'data-poetics.html',
       'year': 2016
     },
     {
+      'type':'project',
       'name':'Stardust Music Composer',
       'page':'stardust-composer.html',
       'year': 2016
@@ -419,23 +464,23 @@ function changeImg(time) {
   previousIndex = imageIndex;
   // on start
   if (previousIndex == null) {
-    imageIndex = (Math.floor(Math.random() * projectData.length) + 1) % (projectData.length);
+    imageIndex = (Math.floor(Math.random() * mediaData.length) + 1) % (mediaData.length);
   }
 
   // next image until it is different
   // avoids duplicates and project without images
-  while (previousIndex == imageIndex || projectData[imageIndex]["imgFile"] == null || imageIndex == 0) {
+  while (previousIndex == imageIndex || mediaData[imageIndex]["imgFile"] == null || imageIndex == 0) {
     imageIndex++;
-    imageIndex = (imageIndex + 1) % projectData.length;
+    imageIndex = (imageIndex + 1) % mediaData.length;
   }
 
-  var imgText = projectData[imageIndex]["name"] + " (" + projectData[imageIndex]["year"]  + ")";
+  var imgText = mediaData[imageIndex]["name"] + " (" + mediaData[imageIndex]["year"]  + ")";
 
   var slideImg = $("#slide-img > img");
   var imgCaption = $(".img-caption");
   if (time == null || time == 0) {
     slideImg
-      .attr('src', "src/img/" + projectData[imageIndex]["imgFile"])
+      .attr('src', "src/img/" + mediaData[imageIndex]["imgFile"])
       .attr('alt', imgText);
     imgCaption.text(imgText);
   } else {
@@ -443,7 +488,7 @@ function changeImg(time) {
     TweenLite.to(imgCaption, (time/1000)/2, {opacity:0, ease:Power2.easeIn, onComplete:next});
     function next() {
       slideImg
-        .attr('src', "src/img/" + projectData[imageIndex]["imgFile"])
+        .attr('src', "src/img/" + mediaData[imageIndex]["imgFile"])
         .attr('alt', imgText);
       imgCaption.text(imgText);
       TweenLite.to(slideImg, (time/1000)/2, {opacity:1, ease:Power2.easeIn});
@@ -454,7 +499,7 @@ function changeImg(time) {
 
 // Glitch effects
 // setInterval(function(){
-//   var length = Math.floor(Math.random() * projectData.length;
+//   var length = Math.floor(Math.random() * mediaData.length;
 //   if (!slideLock) {
 //     changeImg(1000);
 //   }

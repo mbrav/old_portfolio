@@ -97,9 +97,9 @@ main {
   display: block;
 }
 
-/*more width for projects */
-main#projects {
-  max-width: 750px;
+/*more width for projects and gallery */
+main#projects, main#gallery {
+  max-width: 800px;
 }
 
 /*general element styles */
