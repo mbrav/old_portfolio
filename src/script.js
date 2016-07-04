@@ -475,14 +475,28 @@ var mediaData = [
       'name':'Venice In Detail',
       'tumbnail':'https://c1.staticflickr.com/1/583/21344021219_536a380f88.jpg',
       'imgFile':'https://c1.staticflickr.com/1/583/21344021219_536a380f88_b.jpg',
-      'year': 2016
+      'year': 2015
     },
     {
       'type':'photo',
       'name':'Sea Wonder',
       'tumbnail':'https://c1.staticflickr.com/1/663/21519790602_db05c34eac.jpg',
       'imgFile':'https://c1.staticflickr.com/1/663/21519790602_db05c34eac_b.jpg',
-      'year': 2016
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':'Classics',
+      'tumbnail':'https://c2.staticflickr.com/6/5659/21539637051_33e908a0be.jpg',
+      'imgFile':'https://c2.staticflickr.com/6/5659/21539637051_33e908a0be_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':'Mystical',
+      'tumbnail':'https://c1.staticflickr.com/1/625/21344007079_1eb9f7f574.jpg',
+      'imgFile':'https://c1.staticflickr.com/1/625/21344007079_1eb9f7f574_b.jpg',
+      'year': 2015
     }
 ];
 

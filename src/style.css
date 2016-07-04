@@ -9,6 +9,7 @@ body {
   opacity: 0;
 
   font-family: "Brown-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   background: #F1F6FF;
   margin: 0;
   padding: 30px;
@@ -16,16 +17,17 @@ body {
 
 /*TITLES*/
 #title {
-  text-transform: uppercase;
+  font-family: 'Bitter', serif;
+  /*text-transform: lowercase;*/
   line-height: 75%;
 }
 
 #title h1 {
+  font-size: 22px;
   display: block;
   padding: 15px;
   margin: 0;
-  font-size: 20px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   background-color: #9CBEF2;
   color: black;
   border-radius: 2px;
@@ -109,12 +111,15 @@ main h1, main h2, main h3, main h4, main h5, main h6 {
 }
 
 main h1 {
+  font-family: 'Bitter', serif;
   color: #5A88CE;
+  text-transform: lowercase;
 }
 
 main h2 {
+  font-family: 'Bitter', serif;
   color: #9CBEF2;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 
 main h3, main h4  {
@@ -183,12 +188,14 @@ a {
 }
 
 .grid-item a {
+  /*font-family: 'Bitter', serif;*/
   color: #9CBEF2;
   display: block;
   font-size: 20px;
 }
 
 .grid-item span {
+  font-family: 'Bitter', serif;
   color: white;
   display: block;
 }
