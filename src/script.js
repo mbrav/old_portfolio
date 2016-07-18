@@ -129,12 +129,23 @@ $( document ).ready(function() {
             return null;
           }
         })
-        // project image in the background
+
+        // background-image
         .css({
-          "background-image" : "url(src/img/" + mediaData[i]["imgFile"] + ")",
+          "background-image" : function(){
+            var mediaURL = " ";
+            // load the Gif if availabe
+            if (mediaData[i]["gifFile"] != null) {
+              var mediaURL = "url(" + mediaData[i]["gifFile"] + ")";
+            } else if (mediaData[i]["imgFile"] != null) {
+              var mediaURL = "url(" + mediaData[i]["imgFile"] + ")";
+            }
+            return mediaURL;
+          },
           "background-size" : "cover",
           "background-position" : "center"
         })
+
         // content that goes inside each grid element
         .append(
           $("<div>").addClass("grid-description").append(
@@ -173,7 +184,7 @@ $( document ).ready(function() {
             return null;
           }
         })
-        // project image in the background
+        // media image in the background
         .css({
           "background-image" : "url(" + mediaData[i]["tumbnail"] + ")",
           "background-size" : "cover",
@@ -378,128 +389,6 @@ function reloadMasonry() {
 //   });
 // }
 
-
-// Project Metadata
-var mediaData = [
-    {
-      'type':'project',
-      'imgFile':'02.png',
-      'name':'Infrastructural Utopia Towerr',
-      'page':'utopia-tower.html',
-      'year': 2016
-    },
-    {
-      'type':'project',
-      'imgFile':'01.jpg',
-      'name':'Artificial Personality Box',
-      'page':'personality-box.html',
-      'year': 2015,
-    },
-    {
-      'type':'project',
-      'imgFile':'02.png',
-      'name':'Infrastructural Utopia Tower',
-      'page':'utopia-tower.html',
-      'year': 2016
-    },
-    {
-      'type':'project',
-      'imgFile':'03.png',
-      'name':'infORM alpha',
-      'page':'inform.html',
-      'year': 2016
-    },
-    {
-      'type':'project',
-      'imgFile':'04.jpg',
-      'name':'Poem Maschine',
-      'page':'poem-maschine.html',
-      'year': 2015
-    },
-    {
-      'type':'project',
-      'imgFile':'05.png',
-      'name':'Emotion Cube',
-      'page':'emotion-cube.html',
-      'year': 2015
-    },
-    {
-      'type':'project',
-      'imgFile':'06.png',
-      'name':'Multiverse Clockwork',
-      'page':'multiverse-clockwork.html',
-      'year': 2016
-    },
-    {
-      'type':'project',
-      'imgFile':'07.png',
-      'name':'Flowing Pagoda',
-      'page':'flowing-pagoda.html',
-      'year': 2015
-    },
-    {
-      'type':'project',
-      'imgFile':'08.jpg',
-      'name':'The Endevours Guide to The 21st Century',
-      'page':'endevour.html',
-      'year': 2015
-    },
-    {
-      'type':'project',
-      'name':'Data Poetics',
-      'page':'data-poetics.html',
-      'year': 2016
-    },
-    {
-      'type':'project',
-      'name':'Stardust Music Composer',
-      'page':'stardust-composer.html',
-      'year': 2016
-    },
-    {
-      'type':'photo',
-      'name':'Unconditional Gratitude',
-      'tumbnail':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5.jpg',
-      'imgFile':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5_b.jpg',
-      'year': 2016
-    },
-    {
-      'type':'photo',
-      'name':'Unconditional Gratitude',
-      'tumbnail':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5.jpg',
-      'imgFile':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5_b.jpg',
-      'year': 2016
-    },
-    {
-      'type':'photo',
-      'name':'Venice In Detail',
-      'tumbnail':'https://c1.staticflickr.com/1/583/21344021219_536a380f88.jpg',
-      'imgFile':'https://c1.staticflickr.com/1/583/21344021219_536a380f88_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'Sea Wonder',
-      'tumbnail':'https://c1.staticflickr.com/1/663/21519790602_db05c34eac.jpg',
-      'imgFile':'https://c1.staticflickr.com/1/663/21519790602_db05c34eac_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'Classics',
-      'tumbnail':'https://c2.staticflickr.com/6/5659/21539637051_33e908a0be.jpg',
-      'imgFile':'https://c2.staticflickr.com/6/5659/21539637051_33e908a0be_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'Mystical',
-      'tumbnail':'https://c1.staticflickr.com/1/625/21344007079_1eb9f7f574.jpg',
-      'imgFile':'https://c1.staticflickr.com/1/625/21344007079_1eb9f7f574_b.jpg',
-      'year': 2015
-    }
-];
-
 var previousIndex;
 var imageIndex;
 function changeImg(time) {
@@ -512,7 +401,7 @@ function changeImg(time) {
 
   // next image until it is different
   // avoids duplicates and projects without images
-  while (previousIndex == imageIndex || mediaData[imageIndex]["imgFile"] == null || imageIndex == 0) {
+  while (previousIndex == imageIndex || mediaData[imageIndex]["imgFile"] == null || mediaData[imageIndex]["type"] != "project" ||imageIndex == 0) {
     imageIndex++;
     imageIndex = (imageIndex + 1) % mediaData.length;
   }
@@ -524,23 +413,16 @@ function changeImg(time) {
   var slideImg = $("#slide-img > img");
   var imgCaption = $(".img-caption");
   if (time == null || time == 0) {
-    // different image location for various types
-    if (mediaData[imageIndex]["type"] == "project") {
-      slideImg
-      .attr('src', "src/img/" + mediaData[imageIndex]["imgFile"])
-      .attr('alt', imgText);
-    } else {
-      slideImg
+    slideImg
       .attr('src', mediaData[imageIndex]["tumbnail"])
       .attr('alt', imgText);
-    }
     imgCaption.text(imgText);
   } else {
     TweenLite.to(slideImg, (time/1000)/2, {opacity:0, ease:Power2.easeIn, onComplete:next});
     TweenLite.to(imgCaption, (time/1000)/2, {opacity:0, ease:Power2.easeIn, onComplete:next});
     function next() {
       slideImg
-        .attr('src', "src/img/" + mediaData[imageIndex]["imgFile"])
+        .attr('src', mediaData[imageIndex]["imgFile"])
         .attr('alt', imgText);
       imgCaption.text(imgText);
       TweenLite.to(slideImg, (time/1000)/2, {opacity:1, ease:Power2.easeIn});
@@ -549,13 +431,392 @@ function changeImg(time) {
   }
 }
 
-// Glitch effects
-// setInterval(function(){
-//   var length = Math.floor(Math.random() * mediaData.length;
-//   if (!slideLock) {
-//     changeImg(1000);
-//   }
-// }, 8000);
+// Project Metadata
+var mediaData = [
+    {
+      'type':'project',
+      'imgFile':'https://c1.staticflickr.com/9/8674/28310046481_76696628b6_b.jpg',
+      'name':'Infrastructural Utopia Towerr',
+      'page':'utopia-tower.html',
+      'year': 2016
+    },
+    {
+      'type':'project',
+      'gifFile':'http://i.giphy.com/26BoEscVHpDa5XYre.gif',
+      'name':'Ossacip Bot',
+      'page':'ossacip-bot.html',
+      'year': 2016,
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c1.staticflickr.com/9/8674/28310046481_76696628b6_b.jpg',
+      'name':'Infrastructural Utopia Tower',
+      'page':'utopia-tower.html',
+      'year': 2016
+    },
+    {
+      'type':'project',
+      'imgFile':'https://www.flickr.com/photos/mixania/27772929903/sizes/o/',
+      'gifFile': 'http://i.giphy.com/3o6ZtfAxUtrmLKFMv6.gif',
+      'name':'Artificial Personality Box',
+      'page':'personality-box.html',
+      'year': 2015,
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c2.staticflickr.com/8/7570/27772929823_ae1922ff53_b.jpg',
+      'name':'infORM alpha',
+      'page':'inform.html',
+      'year': 2016
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c1.staticflickr.com/9/8802/28388678085_ac9fdce3fe_b.jpg',
+      'gifFile':'http://i.giphy.com/3o6Zt8gmabVDL2AQV2.gif',
+      'name':'Multiverse Clockwork',
+      'page':'multiverse-clockwork.html',
+      'year': 2016
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c2.staticflickr.com/8/7675/28284474322_5efdb11d54_b.jpg  ',
+      'name':'Poem Maschine',
+      'page':'poem-maschine.html',
+      'year': 2015
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c2.staticflickr.com/8/7656/27772929453_622e677747_b.jpg',
+      'name':'Emotion Cube',
+      'page':'emotion-cube.html',
+      'year': 2015
+    },
+    {
+      'type':'project',
+      'name':'Data Poetics',
+      'page':'data-poetics.html',
+      'year': 2016
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c1.staticflickr.com/9/8819/27772928563_557a48d304_o.png',
+      'name':'Flowing Pagoda',
+      'page':'flowing-pagoda.html',
+      'year': 2015
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c1.staticflickr.com/9/8638/28388677955_11eacf2c1e_o.jpg',
+      'name':'The Endevours Guide to The 21st Century',
+      'page':'endevour.html',
+      'year': 2015
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c1.staticflickr.com/9/8787/28389454205_6c3c3ffe1a_z.jpg',
+      'name':'Stardust Music Composer',
+      'page':'stardust-composer.html',
+      'year': 2015
+    },
+
+    // IMAGES
+    {
+      'type':'photo',
+      'name':'Unconditional Gratitude',
+      'tumbnail':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5_b.jpg',
+      'year': 2016
+    },
+    {
+      'type':'photo',
+      'name':'Unconditional Gratitude',
+      'tumbnail':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5_b.jpg',
+      'year': 2016
+    },
+    {
+      'type':'photo',
+      'name':'Venice In Detail',
+      'tumbnail':'https://c1.staticflickr.com/1/583/21344021219_536a380f88_n.jpg',
+      'imgFile':'https://c1.staticflickr.com/1/583/21344021219_536a380f88_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':'Sea Wonder',
+      'tumbnail':'https://c1.staticflickr.com/1/663/21519790602_db05c34eac_n.jpg',
+      'imgFile':'https://c1.staticflickr.com/1/663/21519790602_db05c34eac_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':'Classics',
+      'tumbnail':'https://c2.staticflickr.com/6/5659/21539637051_33e908a0be_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/6/5659/21539637051_33e908a0be_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':'Mystical',
+      'tumbnail':'https://c1.staticflickr.com/1/625/21344007079_1eb9f7f574_n.jpg',
+      'imgFile':'https://c1.staticflickr.com/1/625/21344007079_1eb9f7f574_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':'Modern Gondola',
+      'tumbnail':'https://c1.staticflickr.com/1/659/21504731546_7db50fe7d9_n.jpg',
+      'imgFile':'https://c1.staticflickr.com/1/659/21504731546_7db50fe7d9_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':'Venice In Detail',
+      'tumbnail':'https://c2.staticflickr.com/6/5802/21539659241_8215aba2ed_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/6/5802/21539659241_8215aba2ed_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':'View Of Venice',
+      'tumbnail':'https://c2.staticflickr.com/6/5627/20908182644_37611fe49f_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/6/5627/20908182644_37611fe49f_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':'Pleasure',
+      'tumbnail':'https://c2.staticflickr.com/6/5812/21530938305_307d43ff4f_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/6/5812/21530938305_307d43ff4f_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':'Content',
+      'tumbnail':'https://c2.staticflickr.com/6/5820/20909797523_9cdbe7883c_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/6/5820/20909797523_9cdbe7883c_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':'The Just Gardens',
+      'tumbnail':'https://c1.staticflickr.com/1/633/21343069138_921ce7e54d_n.jpg',
+      'imgFile':'https://c1.staticflickr.com/1/633/21343069138_921ce7e54d_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':'Silent Resonance',
+      'tumbnail':'https://c2.staticflickr.com/6/5759/21539620721_69a2ae8dc9_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/6/5759/21539620721_69a2ae8dc9_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':'Spring Hybernation',
+      'description':'This person was caught sleeping at the Union Square Park. It was interesting to see how people tried to avoid encountering the sleeping stranger even thought the park was crowded with people.',
+      'tumbnail':'https://c2.staticflickr.com/8/7615/17068693648_07e6a22747_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7615/17068693648_07e6a22747_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':'Spring Hybernation',
+      'tumbnail':'https://c2.staticflickr.com/8/7630/16803620029_539d37542f_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7630/16803620029_539d37542f_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Palm's Sunrise II",
+      'tumbnail':'https://c2.staticflickr.com/8/7606/16968755992_26fce707cd_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7606/16968755992_26fce707cd_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Dualism",
+      'tumbnail':'https://c1.staticflickr.com/9/8732/16968753852_04143cb34d_n.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8732/16968753852_04143cb34d_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Untitled",
+      'tumbnail':'https://c2.staticflickr.com/8/7282/16347716254_e8f35a7e45_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7282/16347716254_e8f35a7e45_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Urban Looks",
+      'tumbnail':'https://c1.staticflickr.com/9/8737/16590957179_91cca283b0_n.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8737/16590957179_91cca283b0_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"East Village",
+      'tumbnail':'https://c2.staticflickr.com/8/7285/16157163403_8cfb8d0e8c_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7285/16157163403_8cfb8d0e8c_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Morning Waiters",
+      'tumbnail':'https://c2.staticflickr.com/8/7631/16589702460_25c7bc2166_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7631/16589702460_25c7bc2166_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Reason for Trust",
+      'tumbnail':'https://c2.staticflickr.com/8/7339/15793250994_92867db4d4_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7339/15793250994_92867db4d4_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Yin and Yang Battle",
+      'tumbnail':'https://c1.staticflickr.com/9/8653/16413967181_18aed69cf7_n.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8653/16413967181_18aed69cf7_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Interesting Books are Worth Standing Up for",
+      'tumbnail':'https://c2.staticflickr.com/8/7349/15795616473_abae7a3595_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7349/15795616473_abae7a3595_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Twitty - The Chess Master",
+      'description':"Twitty is famous chess player amoung many New Yorkers who spend time at the Union Square. He always wears two watches when he invites people to sit down with him an play chess claiming that 'In chess, It's all about time.'",
+      'tumbnail':'https://c2.staticflickr.com/8/7419/16229441189_40af7dbdae_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7419/16229441189_40af7dbdae_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Anonymous Person",
+      'tumbnail':'https://c1.staticflickr.com/9/8658/16228014888_70986a9f26_n.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8658/16228014888_70986a9f26_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Stairs and Motion",
+      'tumbnail':'https://c1.staticflickr.com/9/8644/16389684036_07c6000d2c_n.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8644/16389684036_07c6000d2c_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Mutual Love",
+      'tumbnail':'https://c2.staticflickr.com/8/7411/15793173854_5db38cfa6b_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7411/15793173854_5db38cfa6b_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Dogs at Play",
+      'tumbnail':'https://c2.staticflickr.com/8/7413/16415661525_a1488e77f1_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7413/16415661525_a1488e77f1_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Even Old Things Had Smiles",
+      'tumbnail':'https://c2.staticflickr.com/8/7452/16228245410_da1e09638e_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7452/16228245410_da1e09638e_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Blizzard of 2015",
+      'tumbnail':'https://c2.staticflickr.com/8/7333/16375454921_34c7826bd8_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7333/16375454921_34c7826bd8_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Brushing Hair",
+      'tumbnail':'https://c2.staticflickr.com/8/7332/16191299637_83876dab6c_n.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7332/16191299637_83876dab6c_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"College Students at a Snowball Fight",
+      'tumbnail':'https://c1.staticflickr.com/9/8634/16190954269_a1417079e8.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8634/16190954269_a1417079e8_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"George Washington and The Union",
+      'tumbnail':'https://c1.staticflickr.com/9/8584/16377166395_674bd417b0.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8584/16377166395_674bd417b0_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"Up Views",
+      'tumbnail':'https://c2.staticflickr.com/8/7391/16351188586_346116b132.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7391/16351188586_346116b132_b.jpg',
+      'year': 2015
+    },
+    {
+      'type':'photo',
+      'name':"New Jersey Sunset",
+      'tumbnail':'https://c1.staticflickr.com/3/2946/15353155071_5af7773b47.jpg',
+      'imgFile':'https://c1.staticflickr.com/3/2946/15353155071_5af7773b47_b.jpg',
+      'year': 2014
+    },
+    {
+      'type':'photo',
+      'name':"Palm's Sunrise",
+      'tumbnail':'https://c1.staticflickr.com/9/8147/7463857976_8daa5eb1b4.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8147/7463857976_8daa5eb1b4_b.jpg',
+      'year': 2014
+    },
+    {
+      'type':'photo',
+      'name':"Miami Vice",
+      'tumbnail':'https://c1.staticflickr.com/9/8007/7463859332_822bdc83d9.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8007/7463859332_822bdc83d9_b.jpg',
+      'year': 2012
+    },
+    {
+      'type':'photo',
+      'name':"Old Factory in China",
+      'tumbnail':'https://c2.staticflickr.com/8/7019/6731368649_2f86e141d9.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7019/6731368649_2f86e141d9_b.jpg',
+      'year': 2011
+    },
+    {
+      'type':'photo',
+      'name':"Chajka",
+      'tumbnail':'https://c2.staticflickr.com/8/7011/6731273281_09b5d5e4bb.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7011/6731273281_09b5d5e4bb_b.jpg',
+      'year': 2011
+    },
+    {
+      'type':'photo',
+      'name':"Jack Daniels",
+      'tumbnail':'https://c2.staticflickr.com/8/7015/6731185307_2ecd6a726b.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7015/6731185307_2ecd6a726b_b.jpg',
+      'year': 2011
+    },
+    {
+      'type':'photo',
+      'name':"Passing life",
+      'tumbnail':'https://c2.staticflickr.com/8/7161/6720384385_310b02a451_b.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7161/6720384385_310b02a451_b.jpg',
+      'year': 2011
+    }
+];
 
 // Iluminati-conspiracy-surveilance Google Analytics script
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
