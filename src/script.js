@@ -288,9 +288,8 @@ $( document ).ready(function() {
   }
 
   /////////////////////// INDIVIDUAL ANIMATIONS ///////////////////////
-
   // change image on load
-  changeImg();
+  changeImg(100);
   // change image slide on click
   $("#slide-img").click(function() {
     changeImg(100);
@@ -405,22 +404,15 @@ function changeImg(time) {
 
   var slideImg = $("#slide-img > img");
   var imgCaption = $(".img-caption");
-  if (time == null || time == 0) {
+  TweenLite.to(slideImg, (time/1000)/2, {opacity:0, ease:Power2.easeIn, onComplete:next});
+  TweenLite.to(imgCaption, (time/1000)/2, {opacity:0, ease:Power2.easeIn, onComplete:next});
+  function next() {
     slideImg
-      .attr('src', mediaData[imageIndex]["tumbnail"])
+      .attr('src', mediaData[imageIndex]["imgFile"])
       .attr('alt', imgText);
     imgCaption.text(imgText);
-  } else {
-    TweenLite.to(slideImg, (time/1000)/2, {opacity:0, ease:Power2.easeIn, onComplete:next});
-    TweenLite.to(imgCaption, (time/1000)/2, {opacity:0, ease:Power2.easeIn, onComplete:next});
-    function next() {
-      slideImg
-        .attr('src', mediaData[imageIndex]["imgFile"])
-        .attr('alt', imgText);
-      imgCaption.text(imgText);
-      TweenLite.to(slideImg, (time/1000)/2, {opacity:1, ease:Power2.easeIn});
-      TweenLite.to(imgCaption, (time/1000)/2, {opacity:1, ease:Power2.easeIn});
-    }
+    TweenLite.to(slideImg, (time/1000)/2, {opacity:1, ease:Power2.easeIn});
+    TweenLite.to(imgCaption, (time/1000)/2, {opacity:1, ease:Power2.easeIn});
   }
 }
 
