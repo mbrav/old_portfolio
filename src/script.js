@@ -38,9 +38,6 @@ $( document ).ready(function() {
     // remove blur effect
     $("main").removeClass("blur-effect");
     $("footer").removeClass("blur-effect");
-
-    // remove the lock on the slide
-    slideLock = false;
   });
 
   // ABOUT PAGE click
@@ -296,16 +293,12 @@ $( document ).ready(function() {
   changeImg();
   // change image slide on click
   $("#slide-img").click(function() {
-    changeImg();
-    slideLock = true;
+    changeImg(100);
   })
 
-  var slideLock = false;
   // change slide every 4 seconds
   setInterval(function(){
-    if (!slideLock) {
-      changeImg(1000);
-    }
+    changeImg(1000);
   }, 5000);
 
   // cool nav select effect
@@ -443,6 +436,7 @@ var mediaData = [
     {
       'type':'project',
       'gifFile':'http://i.giphy.com/26BoEscVHpDa5XYre.gif',
+      'imgFile':'https://c1.staticflickr.com/9/8695/28808877635_c977be1337_b.jpg',
       'name':'Ossacip Bot',
       'page':'ossacip-bot.html',
       'year': 2016,
@@ -456,7 +450,7 @@ var mediaData = [
     },
     {
       'type':'project',
-      'imgFile':'https://www.flickr.com/photos/mixania/27772929903/sizes/o/',
+      'imgFile':'https://c1.staticflickr.com/9/8277/27772929903_68a55209e1_b.jpg',
       'gifFile': 'http://i.giphy.com/3o6ZtfAxUtrmLKFMv6.gif',
       'name':'Artificial Personality Box',
       'page':'personality-box.html',
@@ -507,9 +501,9 @@ var mediaData = [
     {
       'type':'project',
       'imgFile':'https://c1.staticflickr.com/9/8638/28388677955_11eacf2c1e_o.jpg',
-      'name':'The Endevours Guide to The 21st Century',
+      'name':"The Endevour's Guide to The 21st Century",
       'page':'endevour.html',
-      'year': 2015
+      'year': 2016
     },
     {
       'type':'project',
@@ -667,154 +661,6 @@ var mediaData = [
       'tumbnail':'https://c2.staticflickr.com/8/7631/16589702460_25c7bc2166_n.jpg',
       'imgFile':'https://c2.staticflickr.com/8/7631/16589702460_25c7bc2166_b.jpg',
       'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Reason for Trust",
-      'tumbnail':'https://c2.staticflickr.com/8/7339/15793250994_92867db4d4_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7339/15793250994_92867db4d4_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Yin and Yang Battle",
-      'tumbnail':'https://c1.staticflickr.com/9/8653/16413967181_18aed69cf7_n.jpg',
-      'imgFile':'https://c1.staticflickr.com/9/8653/16413967181_18aed69cf7_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Interesting Books are Worth Standing Up for",
-      'tumbnail':'https://c2.staticflickr.com/8/7349/15795616473_abae7a3595_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7349/15795616473_abae7a3595_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Twitty - The Chess Master",
-      'description':"Twitty is famous chess player amoung many New Yorkers who spend time at the Union Square. He always wears two watches when he invites people to sit down with him an play chess claiming that 'In chess, It's all about time.'",
-      'tumbnail':'https://c2.staticflickr.com/8/7419/16229441189_40af7dbdae_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7419/16229441189_40af7dbdae_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Anonymous Person",
-      'tumbnail':'https://c1.staticflickr.com/9/8658/16228014888_70986a9f26_n.jpg',
-      'imgFile':'https://c1.staticflickr.com/9/8658/16228014888_70986a9f26_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Stairs and Motion",
-      'tumbnail':'https://c1.staticflickr.com/9/8644/16389684036_07c6000d2c_n.jpg',
-      'imgFile':'https://c1.staticflickr.com/9/8644/16389684036_07c6000d2c_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Mutual Love",
-      'tumbnail':'https://c2.staticflickr.com/8/7411/15793173854_5db38cfa6b_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7411/15793173854_5db38cfa6b_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Dogs at Play",
-      'tumbnail':'https://c2.staticflickr.com/8/7413/16415661525_a1488e77f1_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7413/16415661525_a1488e77f1_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Even Old Things Had Smiles",
-      'tumbnail':'https://c2.staticflickr.com/8/7452/16228245410_da1e09638e_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7452/16228245410_da1e09638e_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Blizzard of 2015",
-      'tumbnail':'https://c2.staticflickr.com/8/7333/16375454921_34c7826bd8_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7333/16375454921_34c7826bd8_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Brushing Hair",
-      'tumbnail':'https://c2.staticflickr.com/8/7332/16191299637_83876dab6c_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7332/16191299637_83876dab6c_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"College Students at a Snowball Fight",
-      'tumbnail':'https://c1.staticflickr.com/9/8634/16190954269_a1417079e8.jpg',
-      'imgFile':'https://c1.staticflickr.com/9/8634/16190954269_a1417079e8_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"George Washington and The Union",
-      'tumbnail':'https://c1.staticflickr.com/9/8584/16377166395_674bd417b0.jpg',
-      'imgFile':'https://c1.staticflickr.com/9/8584/16377166395_674bd417b0_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Up Views",
-      'tumbnail':'https://c2.staticflickr.com/8/7391/16351188586_346116b132.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7391/16351188586_346116b132_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"New Jersey Sunset",
-      'tumbnail':'https://c1.staticflickr.com/3/2946/15353155071_5af7773b47.jpg',
-      'imgFile':'https://c1.staticflickr.com/3/2946/15353155071_5af7773b47_b.jpg',
-      'year': 2014
-    },
-    {
-      'type':'photo',
-      'name':"Palm's Sunrise",
-      'tumbnail':'https://c1.staticflickr.com/9/8147/7463857976_8daa5eb1b4.jpg',
-      'imgFile':'https://c1.staticflickr.com/9/8147/7463857976_8daa5eb1b4_b.jpg',
-      'year': 2014
-    },
-    {
-      'type':'photo',
-      'name':"Miami Vice",
-      'tumbnail':'https://c1.staticflickr.com/9/8007/7463859332_822bdc83d9.jpg',
-      'imgFile':'https://c1.staticflickr.com/9/8007/7463859332_822bdc83d9_b.jpg',
-      'year': 2012
-    },
-    {
-      'type':'photo',
-      'name':"Old Factory in China",
-      'tumbnail':'https://c2.staticflickr.com/8/7019/6731368649_2f86e141d9.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7019/6731368649_2f86e141d9_b.jpg',
-      'year': 2011
-    },
-    {
-      'type':'photo',
-      'name':"Chajka",
-      'tumbnail':'https://c2.staticflickr.com/8/7011/6731273281_09b5d5e4bb.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7011/6731273281_09b5d5e4bb_b.jpg',
-      'year': 2011
-    },
-    {
-      'type':'photo',
-      'name':"Jack Daniels",
-      'tumbnail':'https://c2.staticflickr.com/8/7015/6731185307_2ecd6a726b.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7015/6731185307_2ecd6a726b_b.jpg',
-      'year': 2011
-    },
-    {
-      'type':'photo',
-      'name':"Passing life",
-      'tumbnail':'https://c2.staticflickr.com/8/7161/6720384385_310b02a451_b.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7161/6720384385_310b02a451_b.jpg',
-      'year': 2011
     }
 ];
 
