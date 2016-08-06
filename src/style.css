@@ -113,7 +113,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 {
 main h1 {
   font-family: 'Bitter', serif;
   color: #5A88CE;
-  text-transform: lowercase;
+  /*text-transform: lowercase;*/
 }
 
 main h2 {
@@ -219,6 +219,23 @@ a {
 iframe {
   width: 100%;
   height: 300px;
+}
+
+/*INDIVIDUAL PAGE SPECIFIC STUFF*/
+
+.tweet-wrap {
+  width: 30%;
+  display: inline-block;
+  margin: 40px;
+  margin-bottom: 0px;
+}
+
+@media screen and (max-width: 850px) {
+  .tweet-wrap {
+    width: 100%;
+    display: block;
+    margin: 4px;
+  }
 }
 
 /*for background canvas */
