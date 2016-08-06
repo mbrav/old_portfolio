@@ -442,26 +442,18 @@ var mediaData = [
     },
     {
       'type':'project',
-      'imgFile':'https://c1.staticflickr.com/9/8277/27772929903_68a55209e1_b.jpg',
-      'gifFile': 'http://i.giphy.com/3o6ZtfAxUtrmLKFMv6.gif',
-      'name':'Artificial Personality Box',
-      'page':'personality-box.html',
-      'year': 2015,
-    },
-    {
-      'type':'project',
-      'imgFile':'https://c2.staticflickr.com/8/7570/27772929823_ae1922ff53_b.jpg',
-      'name':'infORM alpha',
-      'page':'inform.html',
-      'year': 2016
-    },
-    {
-      'type':'project',
       'imgFile':'https://c1.staticflickr.com/9/8802/28388678085_ac9fdce3fe_b.jpg',
       'gifFile':'http://i.giphy.com/3o6Zt8gmabVDL2AQV2.gif',
       'name':'Multiverse Clockwork',
       'page':'multiverse-clockwork.html',
       'year': 2016
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c1.staticflickr.com/9/8277/27772929903_68a55209e1_b.jpg',
+      'name':'Artificial Personality Box',
+      'page':'personality-box.html',
+      'year': 2015,
     },
     {
       'type':'project',
@@ -472,6 +464,13 @@ var mediaData = [
     },
     {
       'type':'project',
+      'imgFile':'https://c2.staticflickr.com/8/7570/27772929823_ae1922ff53_b.jpg',
+      'name':'infORM alpha',
+      'page':'inform.html',
+      'year': 2016
+    },
+    {
+      'type':'project',
       'imgFile':'https://c2.staticflickr.com/8/7656/27772929453_622e677747_b.jpg',
       'name':'Emotion Cube',
       'page':'emotion-cube.html',
@@ -479,6 +478,7 @@ var mediaData = [
     },
     {
       'type':'project',
+      'imgFile':'https://c1.staticflickr.com/9/8824/28191822784_c837bc1ee4_b.jpg',
       'name':'Data Poetics',
       'page':'data-poetics.html',
       'year': 2016

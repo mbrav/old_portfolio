@@ -128,7 +128,9 @@ main h3, main h4  {
 }
 
 p {
-  line-height: 1.4;
+  line-height: 1.5em;
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
 }
 
 a {
@@ -191,7 +193,7 @@ a {
   /*font-family: 'Bitter', serif;*/
   color: #9CBEF2;
   display: block;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .grid-item span {
