@@ -420,7 +420,7 @@ function changeImg(time) {
 var mediaData = [
     {
       'type':'project',
-      'imgFile':'https://c1.staticflickr.com/9/8674/28310046481_76696628b6_b.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8674/28310046481_76696628b6_c.jpg',
       'name':'Infrastructural Utopia Towerr',
       'page':'utopia-tower.html',
       'year': 2016
@@ -428,21 +428,21 @@ var mediaData = [
     {
       'type':'project',
       'gifFile':'http://i.giphy.com/26BoEscVHpDa5XYre.gif',
-      'imgFile':'https://c1.staticflickr.com/9/8695/28808877635_c977be1337_b.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8695/28808877635_c977be1337_c.jpg',
       'name':'Ossacip Bot',
       'page':'ossacip-bot.html',
       'year': 2016,
     },
     {
       'type':'project',
-      'imgFile':'https://c1.staticflickr.com/9/8674/28310046481_76696628b6_b.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8674/28310046481_76696628b6_c.jpg',
       'name':'Infrastructural Utopia Tower',
       'page':'utopia-tower.html',
       'year': 2016
     },
     {
       'type':'project',
-      'imgFile':'https://c1.staticflickr.com/9/8802/28388678085_ac9fdce3fe_b.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8802/28388678085_ac9fdce3fe_c.jpg',
       'gifFile':'http://i.giphy.com/3o6Zt8gmabVDL2AQV2.gif',
       'name':'Multiverse Clockwork',
       'page':'multiverse-clockwork.html',
@@ -450,35 +450,35 @@ var mediaData = [
     },
     {
       'type':'project',
-      'imgFile':'https://c1.staticflickr.com/9/8277/27772929903_68a55209e1_b.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8277/27772929903_68a55209e1_c.jpg',
       'name':'Artificial Personality Box',
       'page':'personality-box.html',
       'year': 2015,
     },
     {
       'type':'project',
-      'imgFile':'https://c2.staticflickr.com/8/7675/28284474322_5efdb11d54_b.jpg  ',
+      'imgFile':'https://c2.staticflickr.com/8/7675/28284474322_5efdb11d54_c.jpg  ',
       'name':'Poem Maschine',
       'page':'poem-maschine.html',
       'year': 2015
     },
     {
       'type':'project',
-      'imgFile':'https://c2.staticflickr.com/8/7570/27772929823_ae1922ff53_b.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7570/27772929823_ae1922ff53_c.jpg',
       'name':'infORM alpha',
       'page':'inform.html',
       'year': 2016
     },
     {
       'type':'project',
-      'imgFile':'https://c2.staticflickr.com/8/7656/27772929453_622e677747_b.jpg',
+      'imgFile':'https://c2.staticflickr.com/8/7656/27772929453_622e677747_c.jpg',
       'name':'Emotion Cube',
       'page':'emotion-cube.html',
       'year': 2015
     },
     {
       'type':'project',
-      'imgFile':'https://c1.staticflickr.com/9/8824/28191822784_c837bc1ee4_b.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8824/28191822784_c837bc1ee4_c.jpg',
       'name':'Data Poetics',
       'page':'data-poetics.html',
       'year': 2016
@@ -492,16 +492,30 @@ var mediaData = [
     },
     {
       'type':'project',
-      'imgFile':'https://c1.staticflickr.com/9/8638/28388677955_11eacf2c1e_o.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8638/28388677955_4c28b7db75_z.jpg',
       'name':"The Endevour's Guide to The 21st Century",
       'page':'endevour.html',
       'year': 2016
     },
     {
       'type':'project',
-      'imgFile':'https://c1.staticflickr.com/9/8787/28389454205_6c3c3ffe1a_z.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8787/28389454205_6c3c3ffe1a_c.jpg',
       'name':'Stardust Music Composer',
       'page':'stardust-composer.html',
+      'year': 2015
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c1.staticflickr.com/9/8692/28206313953_c4b26799de_c.jpg',
+      'name':'Logos',
+      'page':'logos.html',
+      'year': 2015
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c1.staticflickr.com/9/8157/28744393481_a61f2cb437_c.jpg',
+      'name':'9x6',
+      'page':'9x6.html',
       'year': 2015
     },
 
