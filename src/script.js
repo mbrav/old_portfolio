@@ -407,15 +407,18 @@ function changeImg(time) {
   previousIndex = imageIndex;
   // on start
   if (previousIndex == null) {
-    imageIndex = (Math.floor(Math.random() * mediaData.length) + 1) % (mediaData.length);
+    imageIndex = (Math.floor(Math.random() * 16) + 1) % (mediaData.length);
+    console.log("SHUFFLE slides ");
   }
 
   // next image until it is different
   // avoids duplicates and projects without images
   while (previousIndex == imageIndex || mediaData[imageIndex]["imgFile"] == null || mediaData[imageIndex]["type"] != "project" ||imageIndex == 0) {
     imageIndex++;
-    imageIndex = (imageIndex + 1) % mediaData.length;
+    imageIndex = (imageIndex) % mediaData.length;
   }
+
+  console.log("slide " + imageIndex);
 
   var imgText = mediaData[imageIndex]["name"] + " (" + mediaData[imageIndex]["year"]  + ")";
 
