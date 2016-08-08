@@ -30,6 +30,55 @@ $( document ).ready(function() {
     windowHeight = $(window).height();
   });
 
+  // CHECK THE URL
+  checkHash();
+  // check if user presses back in history
+  $(window).on('hashchange', function(){
+    checkHash();
+  });
+  // open window based on hash
+  function checkHash() {
+    // open pages on load based on the url hash
+    var windowHash = window.location.hash;
+    switch (windowHash  ) {
+      case "#about":
+      loadAboutPage();
+      break;
+      case "#gallery":
+      loadGalleryPage();
+      break;
+      case "#projects":
+      loadProjectPage();
+      break;
+      case "#resume":
+      loadResumePage();
+      break;
+      case "#contact":
+      loadContactPage();
+      break;
+      default:
+      // check if it's a project
+      var project = false;
+      for (var i in mediaData) {
+        var url = "/pages/" + mediaData[i]["page"];
+        if (("#"+mediaData[i]["page"]) == windowHash) {
+          $("#ajax > .content").load(url, function(){
+            // scroll to top of menu
+            $(window).scrollTop(0);
+            // wait before loaded
+            pageTransition("main", "#ajax");
+            project = true;
+          });
+        }
+      }
+      // default home page
+      if (!project) {
+        loadAboutPage();
+      }
+      break;
+    }
+  }
+  
   ////////////////////////// AJAX LOAD /////////////////////////////
   // ANY page click
   $(".page-link").click(function() {
@@ -148,7 +197,7 @@ $( document ).ready(function() {
           $("<div>").addClass("grid-description").append(
             // link to project
             $("<a>", {
-              href : "/pages/" + mediaData[i]["page"],
+              href : "#" + mediaData[i]["page"],
               text : mediaData[i]["name"]
             }),
             // span same level as <a>
@@ -194,8 +243,8 @@ $( document ).ready(function() {
 
   // On project link click load AJAX
   $(".grid-description > a").on('click', function(event) {
-    event.preventDefault(); // ignore default link behaviour
-    var url = this.href; // get link path
+    // event.preventDefault(); // ignore default link behaviour
+    var url = "/pages/" + $(this).attr("href"); // get link path
 
     // change nav button text for mobile
     $("#nav-toggle-button").html("BACK");
@@ -213,36 +262,6 @@ $( document ).ready(function() {
   });
 
 
-  checkHash();
-  // check if user presses back in history
-  $(window).on('hashchange', function(){
-    checkHash();
-  });
-  // open window based on hash
-  function checkHash() {
-    // open pages on load based on the url hash
-    switch (window.location.hash) {
-      case "#about":
-      loadAboutPage();
-      break;
-      case "#gallery":
-      loadGalleryPage();
-      break;
-      case "#projects":
-      loadProjectPage();
-      break;
-      case "#resume":
-      loadResumePage();
-      break;
-      case "#contact":
-      loadContactPage();
-      break;
-      default:
-      // default home page
-      loadAboutPage();
-      break;
-    }
-  }
 
   // General page transitions
   function pageTransition(hide, show) {
@@ -397,8 +416,6 @@ function changeImg(time) {
     imageIndex++;
     imageIndex = (imageIndex + 1) % mediaData.length;
   }
-
-  console.log(imageIndex);
 
   var imgText = mediaData[imageIndex]["name"] + " (" + mediaData[imageIndex]["year"]  + ")";
 
@@ -621,7 +638,7 @@ var mediaData = [
     },
     {
       'type':'photo',
-      'name':'Spring Hybernation',
+      'name':'Mr. Vintage',
       'tumbnail':'https://c2.staticflickr.com/8/7630/16803620029_539d37542f_n.jpg',
       'imgFile':'https://c2.staticflickr.com/8/7630/16803620029_539d37542f_b.jpg',
       'year': 2015
