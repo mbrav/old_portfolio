@@ -78,7 +78,7 @@ $( document ).ready(function() {
       break;
     }
   }
-  
+
   ////////////////////////// AJAX LOAD /////////////////////////////
   // ANY page click
   $(".page-link").click(function() {
@@ -106,7 +106,7 @@ $( document ).ready(function() {
     $(this).addClass("selected-link");
 
     // load project grid
-    reloadMasonry();
+    // reloadMasonry();
 
     pageTransition("main", "#projects");
 
