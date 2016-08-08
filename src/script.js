@@ -535,6 +535,13 @@ var mediaData = [
       'page':'9x6.html',
       'year': 2015
     },
+    {
+      'type':'project',
+      'imgFile':'https://usercontent1.hubstatic.com/1137335_f496.jpg',
+      'name':'Feeduino',
+      'page':'feeduino.html',
+      'year': 2012
+    },
 
     // IMAGES
     {
