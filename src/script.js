@@ -200,6 +200,7 @@ $( document ).ready(function() {
               href : "#" + mediaData[i]["page"],
               text : mediaData[i]["name"]
             }),
+            (" / "),
             // span same level as <a>
             $("<span>", {text : mediaData[i]["year"]})
           )
