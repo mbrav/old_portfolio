@@ -450,6 +450,34 @@ var mediaData = [
     },
     {
       'type':'project',
+      'imgFile':'https://c2.staticflickr.com/8/7570/27772929823_ae1922ff53_c.jpg',
+      'name':'infORM',
+      'page':'inform.html',
+      'year': 2016
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c1.staticflickr.com/9/8824/28191822784_c837bc1ee4_c.jpg',
+      'name':'Data Poetics',
+      'page':'data-poetics.html',
+      'year': 2016
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c2.staticflickr.com/8/7656/27772929453_622e677747_c.jpg',
+      'name':'Emotion Cube',
+      'page':'emotion-cube.html',
+      'year': 2015
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c1.staticflickr.com/9/8638/28388677955_4c28b7db75_z.jpg',
+      'name':"The Endevour's Guide to The 21st Century",
+      'page':'endevour.html',
+      'year': 2016
+    },
+    {
+      'type':'project',
       'imgFile':'https://c1.staticflickr.com/9/8277/27772929903_68a55209e1_c.jpg',
       'name':'Artificial Personality Box',
       'page':'personality-box.html',
@@ -464,38 +492,10 @@ var mediaData = [
     },
     {
       'type':'project',
-      'imgFile':'https://c2.staticflickr.com/8/7570/27772929823_ae1922ff53_c.jpg',
-      'name':'infORM alpha',
-      'page':'inform.html',
-      'year': 2016
-    },
-    {
-      'type':'project',
-      'imgFile':'https://c2.staticflickr.com/8/7656/27772929453_622e677747_c.jpg',
-      'name':'Emotion Cube',
-      'page':'emotion-cube.html',
-      'year': 2015
-    },
-    {
-      'type':'project',
-      'imgFile':'https://c1.staticflickr.com/9/8824/28191822784_c837bc1ee4_c.jpg',
-      'name':'Data Poetics',
-      'page':'data-poetics.html',
-      'year': 2016
-    },
-    {
-      'type':'project',
       'imgFile':'https://c1.staticflickr.com/9/8819/27772928563_557a48d304_o.png',
       'name':'Flowing Pagoda',
       'page':'flowing-pagoda.html',
       'year': 2015
-    },
-    {
-      'type':'project',
-      'imgFile':'https://c1.staticflickr.com/9/8638/28388677955_4c28b7db75_z.jpg',
-      'name':"The Endevour's Guide to The 21st Century",
-      'page':'endevour.html',
-      'year': 2016
     },
     {
       'type':'project',

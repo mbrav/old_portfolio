@@ -169,9 +169,9 @@ main a {
 }
 
 .img-caption {
-  margin-top: 8px;
+  margin-top: 6px;
   text-align: right;
-  color: grey;
+  color: #BBB;
 }
 
 .blur-effect {
