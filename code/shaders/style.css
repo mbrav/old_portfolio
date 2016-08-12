@@ -5,12 +5,12 @@ Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 #title {
-  background-color: rgba(30, 30, 30, 0.6);
-  color: white;
+  background-color: rgba(230, 230, 230, 0.6);
+  color: black;
   border-radius: 4px;
-  padding: 20px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 16px;
+  padding-top: 6px;
+  padding-bottom: 6px;
   margin: 8px;
   display: block;
   /*position: absolute;*/
@@ -20,8 +20,8 @@ Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 #title h1 {
-  font-size: 28px;
-  margin-top: 12px;
+  font-size: 20px;
+  margin-top: 8px;
 }
 
 #project-nav {
@@ -38,8 +38,8 @@ Helvetica, Arial, "Lucida Grande", sans-serif;
   border-radius: 5px;
   color: white;
   text-decoration: none;
-  padding: 8px;
-  background-color: rgba(255, 255, 255, 0.2);
+  padding: 4px;
+  background-color: rgba(20, 20, 20, 0.5);
 }
 
 #project-nav a:hover {

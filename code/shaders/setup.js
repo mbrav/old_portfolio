@@ -14,12 +14,12 @@ function projectSetup(projectNumber, projectName) {
   if (projectNumber > 1) {
     var pastProject = document.getElementById('past-project');
     pastLink = "../" + doubleDigit(projectNumber-1) + "/index.html";
-    pastProject.innerHTML = "<a href='"+ pastLink+ "'>shader" + doubleDigit(projectNumber-1)+ " </a>";
+    pastProject.innerHTML = "<a href='"+ pastLink+ "'>" + doubleDigit(projectNumber-1)+ " </a>";
   }
 
   var nextProject = document.getElementById('next-project');
   nextLink = "../" + doubleDigit(projectNumber+1) + "/index.html";
-  nextProject.innerHTML = "<a href='"+ nextLink+ "'>shader" + doubleDigit(projectNumber+1) + " </a>";
+  nextProject.innerHTML = "<a href='"+ nextLink+ "'>" + doubleDigit(projectNumber+1) + " </a>";
 
   function doubleDigit(n){
       return n > 9 ? "" + n: "0" + n;
