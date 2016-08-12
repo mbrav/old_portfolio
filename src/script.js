@@ -158,15 +158,8 @@ $( document ).ready(function() {
   for (var i in mediaData) {
     if(mediaData[i]["type"] == "project"){
       $("#project-grid").append(
-        $("<div>").attr("id","project-" + i).addClass(function(){
-          // set first element to grid-sizer
-          // needed for responsive Masonry grid
-          if( i == 0){
-            return "grid-sizer";
-          } else {
-            return "grid-item";
-          }
-        })
+        $("<div>").attr("id","project-" + i).addClass("grid-item")
+
         // make a tall tile every other 3 tiles
         .addClass(function(){
           if ( i % 2 == 0 && i !=0) {
@@ -200,7 +193,7 @@ $( document ).ready(function() {
               href : "#" + mediaData[i]["page"],
               text : mediaData[i]["name"]
             }),
-            (" / "),
+            ("  "),
             // span same level as <a>
             $("<span>", {text : mediaData[i]["year"]})
           )
@@ -214,15 +207,8 @@ $( document ).ready(function() {
   for (var i in mediaData) {
     if(mediaData[i]["type"] != "project"){
       $("#gallery-grid").append(
-        $("<div>").attr("id","media-" + j).addClass(function(){
-          // set first element to grid-sizer
-          // needed for responsive Masonry grid
-          if( j == 0){
-            return "grid-sizer";
-          } else {
-            return "grid-item";
-          }
-        })
+        $("<div>").attr("id","media-" + j).addClass("grid-item")
+
         // make a tall tile every other 3 tiles
         .addClass(function(){
           if ( j % 2 == 0 && j !=0) {
@@ -441,13 +427,6 @@ function changeImg(time) {
 var mediaData = [
     {
       'type':'project',
-      'imgFile':'https://c1.staticflickr.com/9/8674/28310046481_76696628b6_c.jpg',
-      'name':'Infrastructural Utopia Towerr',
-      'page':'utopia-tower.html',
-      'year': 2016
-    },
-    {
-      'type':'project',
       'gifFile':'http://i.giphy.com/26BoEscVHpDa5XYre.gif',
       'imgFile':'https://c1.staticflickr.com/9/8695/28808877635_c977be1337_c.jpg',
       'name':'Ossacip Bot',
@@ -548,13 +527,6 @@ var mediaData = [
     },
 
     // IMAGES
-    {
-      'type':'photo',
-      'name':'Unconditional Gratitude',
-      'tumbnail':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5_b.jpg',
-      'year': 2016
-    },
     {
       'type':'photo',
       'name':'Unconditional Gratitude',

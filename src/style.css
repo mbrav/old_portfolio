@@ -196,6 +196,7 @@ main a {
 
 .grid-description {
   position: absolute;
+  bottom: 0px;
   margin: 6px;
   padding: 2px;
   border-radius: 2px;
@@ -206,14 +207,15 @@ main a {
 .grid-item a {
   color: #9CBEF2;
   /*display: block;*/
-  font-size: 16px;
+  font-size: 15px;
+  text-transform: uppercase;
   text-decoration: none;
   border-radius: 3px;
   line-height: 1.2em;
 }
 
 .grid-item span {
-  color: #5A88CE;
+  color: white;
   font-size: 14px;
 }
 
