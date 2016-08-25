@@ -190,7 +190,7 @@ main a {
   background-color: #9CBEF2;
   float: left;
   width: 31%;
-  height: 180px;
+  height: 140px;
   display: table;
 }
 
@@ -225,6 +225,10 @@ main a {
 
 /*mansory settings */
 .grid-item--height2 {
+  height: 220px;
+}
+
+.grid-item--height3 {
   height: 300px;
 }
 

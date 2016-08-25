@@ -162,8 +162,10 @@ $( document ).ready(function() {
 
         // make a tall tile every other 3 tiles
         .addClass(function(){
-          if ( i % 2 == 0 && i !=0) {
+          if ( mediaData[i]["priority"] == 2) {
             return "grid-item--height2";
+          } else if ( mediaData[i]["priority"] == 3) {
+            return "grid-item--height3";
           } else {
             return null;
           }
@@ -370,23 +372,6 @@ function reloadMasonry() {
 }
 /////////////////////////////////// MISC ///////////////////////////////////
 
-// var isMobile = false;
-// // check if mobile device
-//
-// if (isMobile) {
-//   $(".grid-description > a").show();
-//   $(".grid-description > span").show();
-// } else {
-//   $(".grid-description > a").hide();
-//   $(".grid-description > span").hide();
-//   $(".grid-description > a").hover(function() {
-//     $(this).show();
-//   });
-//   $(".grid-description > span").hover(function() {
-//     $(this).show();
-//   });
-// }
-
 var previousIndex;
 var imageIndex;
 function changeImg(time) {
@@ -429,6 +414,7 @@ var mediaData = [
       'type':'project',
       'gifFile':'http://i.giphy.com/26BoEscVHpDa5XYre.gif',
       'imgFile':'https://c1.staticflickr.com/9/8695/28808877635_c977be1337_c.jpg',
+      'priority' : 2,
       'name':'Ossacip Bot',
       'page':'ossacip-bot.html',
       'year': 2016,
@@ -437,6 +423,7 @@ var mediaData = [
       'type':'project',
       'imgFile':'https://c1.staticflickr.com/9/8674/28310046481_76696628b6_c.jpg',
       'name':'Infrastructural Utopia Tower',
+      'priority' : 3,
       'page':'utopia-tower.html',
       'year': 2016
     },
@@ -452,6 +439,7 @@ var mediaData = [
       'type':'project',
       'imgFile':'https://c2.staticflickr.com/8/7570/27772929823_ae1922ff53_c.jpg',
       'name':'infORM',
+      'priority' : 1,
       'page':'inform.html',
       'year': 2016
     },
@@ -459,6 +447,7 @@ var mediaData = [
       'type':'project',
       'imgFile':'https://c1.staticflickr.com/9/8824/28191822784_c837bc1ee4_c.jpg',
       'name':'Data Poetics',
+      'priority' : 1,
       'page':'data-poetics.html',
       'year': 2016
     },
@@ -466,6 +455,7 @@ var mediaData = [
       'type':'project',
       'imgFile':'https://c2.staticflickr.com/8/7656/27772929453_622e677747_c.jpg',
       'name':'Emotion Cube',
+      'priority' : 2,
       'page':'emotion-cube.html',
       'year': 2015
     },
@@ -473,6 +463,7 @@ var mediaData = [
       'type':'project',
       'imgFile':'https://c1.staticflickr.com/9/8638/28388677955_4c28b7db75_z.jpg',
       'name':"The Endevour's Guide to The 21st Century",
+      'priority' : 1,
       'page':'endevour.html',
       'year': 2016
     },
@@ -480,6 +471,7 @@ var mediaData = [
       'type':'project',
       'imgFile':'https://c1.staticflickr.com/9/8277/27772929903_68a55209e1_c.jpg',
       'name':'Artificial Personality Box',
+      'priority' : 3,
       'page':'personality-box.html',
       'year': 2015,
     },
@@ -487,6 +479,7 @@ var mediaData = [
       'type':'project',
       'imgFile':'https://c2.staticflickr.com/8/7675/28284474322_5efdb11d54_c.jpg  ',
       'name':'Poem Maschine',
+      'priority' : 2,
       'page':'poem-maschine.html',
       'year': 2015
     },
@@ -494,6 +487,7 @@ var mediaData = [
       'type':'project',
       'imgFile':'https://c1.staticflickr.com/9/8819/27772928563_557a48d304_o.png',
       'name':'Flowing Pagoda',
+      'priority' : 2,
       'page':'flowing-pagoda.html',
       'year': 2015
     },
@@ -502,6 +496,7 @@ var mediaData = [
       'imgFile':'https://c1.staticflickr.com/9/8787/28389454205_6c3c3ffe1a_c.jpg',
       'name':'Stardust Music Composer',
       'page':'stardust-composer.html',
+      'priority' : 1,
       'year': 2015
     },
     {
@@ -509,6 +504,7 @@ var mediaData = [
       'imgFile':'https://c1.staticflickr.com/9/8692/28206313953_c4b26799de_c.jpg',
       'name':'Logos',
       'page':'logos.html',
+      'priority' : 1,
       'year': 2015
     },
     {
@@ -516,6 +512,7 @@ var mediaData = [
       'imgFile':'https://c1.staticflickr.com/9/8157/28744393481_a61f2cb437_c.jpg',
       'name':'9x6',
       'page':'9x6.html',
+      'priority' : 1,
       'year': 2015
     },
     {
@@ -523,6 +520,7 @@ var mediaData = [
       'imgFile':'https://usercontent1.hubstatic.com/1137335_f496.jpg',
       'name':'Feeduino',
       'page':'feeduino.html',
+      'priority' : 1,
       'year': 2012
     },
 
