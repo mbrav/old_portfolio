@@ -173,6 +173,7 @@ main a {
   margin-top: 6px;
   text-align: right;
   color: #BBB;
+  font-size: 86%;
 }
 
 .blur-effect {
@@ -261,9 +262,6 @@ iframe {
 
 @media screen and (max-width: 850px) {
 
-  .tweet-wrap {
-    width: 100%;
-  }
 
   body {
     padding: 20px;
@@ -369,8 +367,8 @@ iframe {
     margin: 0;
   }
 
-  .content {
-    margin: 8px;
+  p, h1, h2, h3, h4, h5, h6 {
+    margin: 12px;
   }
 
   /*truncate part of the gpg fingerprint*/
