@@ -89,8 +89,8 @@ span#return-to-projecs {
 /*MAIN SITE BODY */
 main {
   overflow: hidden; /*life saver, worth dedicating */
-  min-height: 500px;
-  max-width: 600px;
+  min-height: 600px;
+  max-width: 640px;
 
   /*hide all mains in the beginning */
   display: none;
@@ -102,7 +102,7 @@ main {
 
 /*more width for projects and gallery */
 main#projects, main#gallery {
-  max-width: 800px;
+  max-width: 960px;
 }
 
 /*general element styles */
@@ -189,7 +189,7 @@ main a {
   border-radius: 6px;
   background-color: #9CBEF2;
   float: left;
-  width: 31%;
+  width: 23%;
   height: 140px;
   display: table;
 }
@@ -232,7 +232,13 @@ main a {
   height: 300px;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 1080px) {
+  .grid-sizer, .grid-item {
+    width: 31%;
+  }
+}
+
+@media screen and (max-width: 760px) {
   .grid-sizer, .grid-item {
     width: 48%;
   }
@@ -253,12 +259,10 @@ iframe {
 }
 
 @media screen and (max-width: 850px) {
+
   .tweet-wrap {
     width: 100%;
   }
-}
-
-@media screen and (max-width: 850px) {
 
   body {
     padding: 20px;
@@ -282,7 +286,7 @@ iframe {
 }
 
 /*thanks, Steve Jobs*/
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 640px) {
   body {
     padding: 0;
   }
