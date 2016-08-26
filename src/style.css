@@ -8,6 +8,7 @@ body {
   /*initial opacity */
   opacity: 0;
   line-height: 1.4em;
+  font-size: 110%;
 
   font-family: "Brown-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-family: 'Source Sans Pro', sans-serif;
@@ -90,7 +91,7 @@ span#return-to-projecs {
 main {
   overflow: hidden; /*life saver, worth dedicating */
   min-height: 600px;
-  max-width: 640px;
+  max-width: 740px;
 
   /*hide all mains in the beginning */
   display: none;
