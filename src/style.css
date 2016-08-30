@@ -163,6 +163,14 @@ main a {
 
 /*PAGES*/
 
+#portrait {
+  width: 100px;
+  border-radius: 50px;
+  float: left;
+  margin: 10px;
+  margin-left: 0;
+}
+
 /*image viewer*/
 .crop-img {
   width: 100%;
