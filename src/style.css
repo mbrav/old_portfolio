@@ -248,6 +248,12 @@ main a {
   }
 }
 
+@media screen and (max-width: 540px) {
+  .grid-sizer, .grid-item {
+    width: 48%;
+  }
+}
+
 @media screen and (max-width: 60çc0px) {
   .grid-sizer, .grid-item {
     width: 48%;
