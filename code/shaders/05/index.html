@@ -38,7 +38,7 @@
 
     float random (vec2 st) {
         return fract(sin(dot(st.xy,
-                             vec2(-0.09)))* 1.1+(u_time/10.));
+                             vec2(-0.09)))* 1.1+(u_time/40.));
     }
 
     void main() {
@@ -50,7 +50,7 @@
         // st = fract(st);
 
         float rnd = random( st );
-        vec3 rnd2 = vec3(random( cos(st)), random(st), random(st));
+        vec3 rnd2 = vec3(random( cos(st/2.)), random(st), random(st));
 
         gl_FragColor = vec4(vec3(rnd2),10.0);
     }
