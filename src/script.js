@@ -412,6 +412,22 @@ function changeImg(time) {
 var mediaData = [
     {
       'type':'project',
+      'imgFile':'https://c1.staticflickr.com/9/8438/29417930580_3822ebf3c5_c.jpg',
+      'priority' : 1,
+      'name':'600 Grief',
+      'page':'600-grief.html',
+      'year': 2016,
+    },
+    {
+      'type':'project',
+      'imgFile':'https://c2.staticflickr.com/8/7484/29628885231_f997dba9e5_c.jpg',
+      'priority' : 1,
+      'name':'Hummin',
+      'page':'hummin.html',
+      'year': 2016,
+    },
+    {
+      'type':'project',
       'gifFile':'http://i.giphy.com/26BoEscVHpDa5XYre.gif',
       'imgFile':'https://c1.staticflickr.com/9/8695/28808877635_c977be1337_c.jpg',
       'priority' : 2,
@@ -445,7 +461,7 @@ var mediaData = [
     },
     {
       'type':'project',
-      'imgFile':'https://c1.staticflickr.com/9/8824/28191822784_c837bc1ee4_c.jpg',
+      'imgFile':'https://c1.staticflickr.com/9/8578/28524788990_3f76b39b23_c.jpg',
       'name':'Data Poetics',
       'priority' : 1,
       'page':'data-poetics.html',
