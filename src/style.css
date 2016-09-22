@@ -282,6 +282,25 @@ iframe {
   margin: 0 auto;
 }
 
+blockquote {
+  font-size: 120%;
+  color: #7e8fa9;
+  margin-bottom: 14px;
+}
+
+blockquote::before {
+    content: '“';
+    font-size: 200%;
+    color: #7e8fa9;
+}
+
+blockquote::after {
+    vertical-align: -0.8em;
+    content: '”';
+    font-size: 200%;
+    color: #7e8fa9;
+}
+
 @media screen and (max-width: 850px) {
 
 
