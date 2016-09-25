@@ -154,11 +154,12 @@ main a {
 }
 
 #resume a {
-  color: black;
+  color: #9e9e9e;
 }
 
 #resume a:hover {
-  background-color: #9CBEF2;
+  color: #9CBEF2;
+  background-color: black;
 }
 
 /*PAGES*/
