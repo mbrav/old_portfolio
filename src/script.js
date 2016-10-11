@@ -412,6 +412,14 @@ function changeImg(time) {
 var mediaData = [
     {
       'type':'project',
+      'imgFile':'https://c1.staticflickr.com/9/8600/29629268244_e10ab41e98_c.jpg',
+      'priority' : 1,
+      'name':'Sleep Data Abyss',
+      'page':'data-abyss.html',
+      'year': 2016,
+    },
+    {
+      'type':'project',
       'imgFile':'https://c1.staticflickr.com/9/8438/29417930580_3822ebf3c5_c.jpg',
       'priority' : 1,
       'name':'600 Grief',
@@ -541,147 +549,6 @@ var mediaData = [
     },
 
     // IMAGES
-    {
-      'type':'photo',
-      'name':'Unconditional Gratitude',
-      'tumbnail':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/2/1543/24610481726_eef9d8a7f5_b.jpg',
-      'year': 2016
-    },
-    {
-      'type':'photo',
-      'name':'Venice In Detail',
-      'tumbnail':'https://c1.staticflickr.com/1/583/21344021219_536a380f88_n.jpg',
-      'imgFile':'https://c1.staticflickr.com/1/583/21344021219_536a380f88_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'Sea Wonder',
-      'tumbnail':'https://c1.staticflickr.com/1/663/21519790602_db05c34eac_n.jpg',
-      'imgFile':'https://c1.staticflickr.com/1/663/21519790602_db05c34eac_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'Classics',
-      'tumbnail':'https://c2.staticflickr.com/6/5659/21539637051_33e908a0be_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/6/5659/21539637051_33e908a0be_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'Mystical',
-      'tumbnail':'https://c1.staticflickr.com/1/625/21344007079_1eb9f7f574_n.jpg',
-      'imgFile':'https://c1.staticflickr.com/1/625/21344007079_1eb9f7f574_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'Modern Gondola',
-      'tumbnail':'https://c1.staticflickr.com/1/659/21504731546_7db50fe7d9_n.jpg',
-      'imgFile':'https://c1.staticflickr.com/1/659/21504731546_7db50fe7d9_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'Venice In Detail',
-      'tumbnail':'https://c2.staticflickr.com/6/5802/21539659241_8215aba2ed_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/6/5802/21539659241_8215aba2ed_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'View Of Venice',
-      'tumbnail':'https://c2.staticflickr.com/6/5627/20908182644_37611fe49f_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/6/5627/20908182644_37611fe49f_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'Pleasure',
-      'tumbnail':'https://c2.staticflickr.com/6/5812/21530938305_307d43ff4f_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/6/5812/21530938305_307d43ff4f_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'Content',
-      'tumbnail':'https://c2.staticflickr.com/6/5820/20909797523_9cdbe7883c_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/6/5820/20909797523_9cdbe7883c_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'The Just Gardens',
-      'tumbnail':'https://c1.staticflickr.com/1/633/21343069138_921ce7e54d_n.jpg',
-      'imgFile':'https://c1.staticflickr.com/1/633/21343069138_921ce7e54d_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'Silent Resonance',
-      'tumbnail':'https://c2.staticflickr.com/6/5759/21539620721_69a2ae8dc9_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/6/5759/21539620721_69a2ae8dc9_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'Spring Hybernation',
-      'description':'This person was caught sleeping at the Union Square Park. It was interesting to see how people tried to avoid encountering the sleeping stranger even thought the park was crowded with people.',
-      'tumbnail':'https://c2.staticflickr.com/8/7615/17068693648_07e6a22747_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7615/17068693648_07e6a22747_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':'Mr. Vintage',
-      'tumbnail':'https://c2.staticflickr.com/8/7630/16803620029_539d37542f_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7630/16803620029_539d37542f_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Palm's Sunrise II",
-      'tumbnail':'https://c2.staticflickr.com/8/7606/16968755992_26fce707cd_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7606/16968755992_26fce707cd_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Dualism",
-      'tumbnail':'https://c1.staticflickr.com/9/8732/16968753852_04143cb34d_n.jpg',
-      'imgFile':'https://c1.staticflickr.com/9/8732/16968753852_04143cb34d_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Untitled",
-      'tumbnail':'https://c2.staticflickr.com/8/7282/16347716254_e8f35a7e45_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7282/16347716254_e8f35a7e45_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Urban Looks",
-      'tumbnail':'https://c1.staticflickr.com/9/8737/16590957179_91cca283b0_n.jpg',
-      'imgFile':'https://c1.staticflickr.com/9/8737/16590957179_91cca283b0_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"East Village",
-      'tumbnail':'https://c2.staticflickr.com/8/7285/16157163403_8cfb8d0e8c_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7285/16157163403_8cfb8d0e8c_b.jpg',
-      'year': 2015
-    },
-    {
-      'type':'photo',
-      'name':"Morning Waiters",
-      'tumbnail':'https://c2.staticflickr.com/8/7631/16589702460_25c7bc2166_n.jpg',
-      'imgFile':'https://c2.staticflickr.com/8/7631/16589702460_25c7bc2166_b.jpg',
-      'year': 2015
-    }
 ];
 
 // Iluminati-conspiracy-surveilance Google Analytics script
