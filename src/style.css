@@ -263,12 +263,6 @@ main a {
   }
 }
 
-@media screen and (max-width: 60çc0px) {
-  .grid-sizer, .grid-item {
-    width: 48%;
-  }
-}
-
 /*for inline videos*/
 iframe {
   width: 100%;
