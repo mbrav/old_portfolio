@@ -412,6 +412,14 @@ function changeImg(time) {
 var mediaData = [
     {
       'type':'project',
+      'imgFile':'https://c2.staticflickr.com/6/5706/30441769776_245fc2f92d_c.jpg',
+      'priority' : 1,
+      'name':'Ice Nine',
+      'page':'ice-nine.html',
+      'year': 2016,
+    },
+    {
+      'type':'project',
       'imgFile':'https://c1.staticflickr.com/9/8600/29629268244_e10ab41e98_c.jpg',
       'priority' : 1,
       'name':'Sleep Data Abyss',

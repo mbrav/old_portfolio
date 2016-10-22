@@ -140,9 +140,17 @@ main h3 {
   /*font-style: italic;*/
 }
 
+/*responisve images*/
+main img {
+  height: auto;
+  width: auto;
+  max-width: 100%;
+}
+
 main ul {
   margin-top: 6 px;
   margin-bottom: 12px;
+  list-style-type:square;
 }
 
 main p {
@@ -280,7 +288,7 @@ iframe {
 blockquote {
   font-size: 120%;
   color: #7e8fa9;
-  margin-bottom: 14px;
+  margin-bottom: 0px;
 }
 
 blockquote::before {
