@@ -7,7 +7,6 @@
 body {
   /*initial opacity */
   opacity: 0;
-  font-size: 110%;
   /*backup font */
   font-family: "Brown-Regular","Helvetica Neue",Helvetica,Arial,sans-serif;
   /*the aesthetic font */
@@ -40,6 +39,7 @@ nav {
   float: left;
   /* for the gap between nav and main*/
   margin-right: 30px;
+  font-size: 110%;
 }
 
 nav ul {
@@ -103,7 +103,7 @@ main {
 
 /*more width for projects and gallery */
 main#projects, main#gallery {
-  max-width: 1160px;
+  max-width: 960px;
 }
 
 /*general element styles */
@@ -130,7 +130,6 @@ main h2 {
   color: #9CBEF2;
   text-transform: uppercase;
   font-size: 18px;
-  margin-top: 18cpx;
   margin-bottom: 2px;
 }
 

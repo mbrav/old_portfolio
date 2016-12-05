@@ -412,6 +412,14 @@ function changeImg(time) {
 var mediaData = [
     {
       'type':'project',
+      'imgFile':'https://c2.staticflickr.com/6/5551/30620093464_1e20da06d6_c.jpg',
+      'priority' : 3,
+      'name':'Extensions of Bias',
+      'page':'bias.html',
+      'year': 2016,
+    },
+    {
+      'type':'project',
       'imgFile':'https://c2.staticflickr.com/6/5706/30441769776_245fc2f92d_c.jpg',
       'priority' : 1,
       'name':'Ice Nine',

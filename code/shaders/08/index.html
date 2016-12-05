@@ -50,7 +50,7 @@
         st = st *2.-1.;
 
         // Number of sides of your shape
-        int N = 5;
+        int N = 3;
 
         // Angle and radius from the current pixel
         float a = atan(st.x,st.y)+PI;
@@ -59,7 +59,7 @@
         // Shaping function that modulate the distance
         d = cos(floor(0.9+a/r)*r-a)*length(st);
 
-        color = vec3(smoothstep(.4,cos(u_time/11.123),d), smoothstep(.4,cos(u_time/13.235),d), step(cos(u_time/8.57),d));
+        color = vec3(smoothstep(.4,tan(u_time/3.123),d), smoothstep(.4,sin(u_time/7.235),d), step(cos(u_time/11.57),d));
         // color = vec3(d);
 
         gl_FragColor = vec4(color,1.0);
@@ -70,7 +70,7 @@
 <script src="../setup.js" type="text/javascript"></script>
 <script type="text/javascript">
       // set project's number and name
-      projectSetup(8  ,"MultiFlower");
+      projectSetup(8  ,"Tearlines");
 </script>
 </body>
 </html>
